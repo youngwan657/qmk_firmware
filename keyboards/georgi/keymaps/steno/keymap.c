@@ -86,7 +86,7 @@ void processQwerty(void) {
 	P( RG,	 						register_code(KC_DOT););
 	P( RT, 							register_code(KC_P););
 	P( RS, 							register_code(KC_SLSH););
-	P( RD, 							register_code(KC_L););
+	P( RD, 							register_code(KC_BSPC););
 	P( RZ, 							register_code(KC_LSFT););
 
 	P( LA, 							register_code(KC_SPC););

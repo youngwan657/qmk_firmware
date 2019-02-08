@@ -133,9 +133,9 @@ KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,        KC_TRNS,  K
 [QSTENO] = LAYOUT_GERGO(  
 KC_TRNS,  KC_1,    KC_2,  KC_3,   KC_4,   KC_5,                                 KC_6, KC_7, KC_8, KC_9,    KC_0,    KC_TRNS, 
 KC_TRNS,  KC_TRNS, KC_Q,  KC_W,   KC_E,   KC_R, KC_T,                 KC_Y,     KC_U, KC_I, KC_O, KC_P,    KC_LBRC, KC_TRNS, 
-KC_TRNS,  KC_TRNS, KC_A,  KC_S,   KC_D,   KC_F, KC_G,                 KC_BSPC,  KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_TRNS,
+KC_TRNS,  KC_TRNS, KC_A,  KC_S,   KC_D,   KC_F, KC_G,                 KC_H,  KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_TRNS,
                                       
-			                            KC_TRNS, KC_TRNS,       KC_TRNS, KC_TRNS,
+			                               KC_TRNS, KC_1,       KC_1, KC_TRNS,
                                                  KC_TRNS,       TG(QSTENO),
                                 		      KC_C, KC_V,       KC_N, KC_M),
 /* Keymap 5: Steno layer
@@ -165,7 +165,7 @@ KC_NO,KC_NO, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2,       STN_ST4, STN_RR, STN
                                       
 			                             KC_NO, STN_N1,       STN_N1, KC_NO,
                                                  KC_NO,       TG(STENO),
-                                		    STN_A, STN_O,       STN_E, STN_U)
+                                		  STN_A, STN_O,       STN_E, STN_U)
 };
 
 /* Keymap template 
