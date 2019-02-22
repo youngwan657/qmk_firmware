@@ -506,7 +506,7 @@ ISR (PCINT0_vect) {
   // Don't get fancy, we're in a interrupt here
   // PCINT reports a interrupt for a change on the bus
   // We hand the button at scantime for debounce
-  volatile uint8_t pState = PINB & TRKMASK;
+  volatile uint8_t pState = PINB;
   if ((pState & TRKUP) != (trkState & TRKUP)) tbUpCnt++;
   if ((pState & TRKDN) != (trkState & TRKDN)) tbDnCnt++;
   if ((pState & TRKLT) != (trkState & TRKLT)) tbLtCnt++;

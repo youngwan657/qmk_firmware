@@ -67,7 +67,7 @@ enum ORDER {
 // Intercept for send
 bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) { 
 	// Lone FN press, toggle QWERTY
-	if (cChord == STN(FN)) {
+	if (cChord == FN) {
 		uprintf("Switching to QWER\n");
 		(cMode == STENO) ? (cMode = QWERTY) : (cMode = STENO);
 
@@ -113,10 +113,10 @@ bool process_steno_user(uint16_t keycode, keyrecord_t *record) {
 			case STN_ST2:			pr ? (cChord |= (ST2)): (cChord &= ~(ST2)); break;
 			case STN_ST3:			pr ? (cChord |= (ST3)): (cChord &= ~(ST3)); break;
 			case STN_ST4:			pr ? (cChord |= (ST4)): (cChord &= ~(ST4)); break;
+			case STN_FN:			pr ? (cChord |= (FN)) : (cChord &= ~(FN)); break;
 			case STN_PWR:			pr ? (cChord |= (PWR)): (cChord &= ~(PWR)); break;
 			case STN_N1...STN_N6: 
 			case STN_N7...STN_NC: 	pr ? (cChord |= (NUM)): (cChord &= ~(NUM)); break;
-			case STN_FN:			pr ? (cChord |= (FN)) : (cChord &= ~(FN)); break;
 
 			// All the letter keys
 			case STN_S1: 			pr ? (cChord |= (LSU)) : (cChord &= ~(LSU));  break;

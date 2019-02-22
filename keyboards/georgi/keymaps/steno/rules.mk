@@ -5,10 +5,10 @@
 
 #Debug options
 VERBOSE 		 = yes
-CONSOLE_ENABLE = yes
+CONSOLE_ENABLE   = yes
 DEBUG_MATRIX_SCAN_RATE   = no
-DEBUG_MATRIX		 = no
-KEYBOARD_SHARED_EP = no
+DEBUG_MATRIX		     = yes
+KEYBOARD_SHARED_EP       = yes
 
 CUSTOM_MATRIX       = yes
 MOUSEKEY_ENABLE		= no

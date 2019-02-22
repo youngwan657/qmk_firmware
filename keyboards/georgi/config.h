@@ -28,10 +28,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x1307
+#define PRODUCT_ID      0x1337
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    g Heavy Industries 
-#define PRODUCT         Gergo
+#define PRODUCT         Georgi
 #define DESCRIPTION     QMK keyboard firmware for Gergo
 
 /* key matrix size */
