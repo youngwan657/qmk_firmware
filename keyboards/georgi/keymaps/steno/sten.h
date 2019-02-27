@@ -4,7 +4,12 @@
 uint32_t cChord = 0;
 enum MODE { STENO = 0, QWERTY, COMMAND };
 enum MODE cMode = STENO;
+enum MODE pMode;
 
+// Buffer for command keycodes
+#define MAX_CMD_BUF 20
+uint8_t CMDBUF[MAX_CMD_BUF];
+uint8_t CMDLEN = 0;
 
 // See if a given chord is pressed. 
 // P will return, PJ will continue processing
@@ -12,13 +17,27 @@ enum MODE cMode = STENO;
 // chord: The keys OR'd together
 // act:   code to eval if pressed
 // jmp:   bool to jump to out
-#define PROCESS(jmp, chord, act) if ((cChord & (chord)) == (chord)) { act; if (jmp) return; }
+#define PROCESS(jmp, chord, act) if ((cChord & (chord)) == (chord)) { cChord ^= chord; act; if (jmp) return true; }
 #define P(chord, act)  PROCESS(true,  (chord), act)
 #define PJ(chord, act) PROCESS(false, (chord), act)
 
+// Send a Keycode, we wrap register_code to hook and log
+// For Command mode
+void SEND(uint8_t kc) {
+	uprintf("CMD LEN: %d BUF: %d\n", CMDLEN, MAX_CMD_BUF);
+	if (cMode == COMMAND && CMDLEN < MAX_CMD_BUF) {
+		CMDBUF[CMDLEN] = kc;
+		CMDLEN++;
+		uprintf("COMMAND %d\n", kc);
+	} 
+
+	if (cMode != COMMAND) register_code(kc);
+	return;
+}
+
 // Defs for hooks
-void processQwerty(void);
-void processSymbol(void);
+bool processQwerty(void);
+bool processSymbol(void);
 
 // All Steno Codes
 // Shift to internal representation
@@ -66,9 +85,31 @@ enum ORDER {
 
 // Intercept for send
 bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) { 
+	// Dual PWR + FN, handle command mode
+	if ((cChord & PWR) && (cChord & FN)) {
+		uprintf("COMMAND Toggle\n");
+		if (cMode != COMMAND) {   // Entering Command Mode
+			CMDLEN = 0;
+			pMode = cMode;
+			cMode = COMMAND;
+		} else {                  // Exiting Command Mode
+			uprintf("\nSending comand\n");
+			cMode = pMode;
+
+			// Press all and release all
+			for (int i = 0; i < CMDLEN; i++) {
+				register_code(CMDBUF[i]);
+			}
+			clear_keyboard();
+		}
+
+		cChord = 0;
+		return false;
+	}
+
 	// Lone FN press, toggle QWERTY
 	if (cChord == FN) {
-		uprintf("Switching to QWER\n");
+		uprintf("QWER Toggle\n");
 		(cMode == STENO) ? (cMode = QWERTY) : (cMode = STENO);
 
 		clear_keyboard();
@@ -77,7 +118,8 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 	}
 
 	// Check for Symbol combo
-	if ((cChord & PWR) && !(cChord & FN)) {
+	if (cChord & PWR) {
+		uprintf("SYMB Toggle\n");
 		processSymbol();
 
 		clear_keyboard();
@@ -86,15 +128,17 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 	}
 
 	// Do pseudoQWERTY
-	if (cMode == QWERTY) {
-		processQwerty();
-
-		clear_keyboard();
-		cChord = 0;
-		return false;
+	if (cMode == QWERTY || (cMode == COMMAND)) {
+		// Try to lookup, send steno otherwise
+		if (processQwerty()) {
+			clear_keyboard();
+			cChord = 0;
+			return false;
+		}
 	}
 
-	// TODO: Do command mode
+
+
 	// Hey that's a steno chord!
 	cChord = 0;
 	return true; 

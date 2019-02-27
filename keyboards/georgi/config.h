@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Defaults */
 
+#define VERSION "Alpha 00 "
 #define VERBOSE
 #define FORCE_NKRO
 

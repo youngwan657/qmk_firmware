@@ -36,13 +36,13 @@ uint8_t init_mcp23018(void);
                	L20,L21,L22,            R20,R21,R22)              \
                                                                   \
     {                         \
-    { KC_NO,  KC_NO, KC_NO, KC_NO},     \
-    { KC_NO,  R00,   R10,   R20},     \
-    { KC_NO,  R01,   R11,   R21},     \
-    { KC_NO,  R02,   R12,   R21},     \
+    { KC_NO,  R00,   R10,   R21},     \
+    { KC_NO,  R01,   R11,   R20},     \
+    { KC_NO,  R02,   R12,   R22},     \
     { KC_NO,  R03,   R13,   KC_NO},   \
     { KC_NO,  R04,   R14,   KC_NO},   \
     { KC_NO,  R05,   R15,   KC_NO},   \
+    { KC_NO,  KC_NO, KC_NO, KC_NO},     \
 							  \
     { KC_NO,  L05,   L15,   L22},     \
     { KC_NO,  L04,   L14,   L21},     \

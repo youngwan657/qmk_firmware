@@ -7,7 +7,7 @@
 VERBOSE 		 = yes
 CONSOLE_ENABLE   = yes
 DEBUG_MATRIX_SCAN_RATE   = no
-DEBUG_MATRIX		     = yes
+DEBUG_MATRIX		     = no
 KEYBOARD_SHARED_EP       = yes
 
 CUSTOM_MATRIX       = yes
