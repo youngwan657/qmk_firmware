@@ -50,7 +50,7 @@ STN_PWR, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2,       STN_ST4, STN_RR, STN_BR,
 bool processQwerty(void) {
 	// Version Debug / MISC
 	P( RT | RS | RT | RZ | NUM,     SEND_STRING(VERSION); SEND_STRING(__DATE__););
-	P( NUM | LA | LO | RE | RU,     SEND(KC_MPLAY););
+	P( NUM | LA | LO | RE | RU,     SEND(KC_MPLY););
 	P( ST1 | ST2 | ST3 | ST4, 		SEND(KC_BSPC););
 
 	// Function Layer 
