@@ -34,19 +34,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               | # | A | O |    | E | U | # |
  *               `-----------'    `-----------'
  */
-// Temporary Gergo Shim
 [0] = LAYOUT_GEORGI(  
 STN_FN,  STN_S1, STN_TL, STN_PL, STN_HL, STN_ST1,       STN_ST3, STN_FR, STN_PR, STN_LR, STN_TR, STN_DR,
 STN_PWR, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2,       STN_ST4, STN_RR, STN_BR, STN_GR, STN_SR, STN_ZR,
 			             STN_N1, STN_A,  STN_O,     	STN_E,   STN_U,  STN_N1)
-                                		         
 };
 
-//P will return from processing on the first match it finds. Therefore
+// P will return from processing on the first match it finds. Therefore
 //   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //   !!!  YOU MUST ORDER THIS!  !!!
 //   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//First any mods should be checked, you can use the PJ macro to suppress the return
+// First any mods should be checked, you can use the PJ macro to suppress the return
 bool processQwerty(void) {
 	// Version Debug / MISC
 	P( RT | RS | RT | RZ | NUM,     SEND_STRING(VERSION); SEND_STRING(__DATE__););
@@ -130,7 +128,6 @@ bool processQwerty(void) {
 }
 
 // Read the above notice
-// Returns true if a code is found
 bool processSymbol(void) {
 	PJ(RZ, 						SEND(KC_LSFT););
 
@@ -185,6 +182,7 @@ bool processSymbol(void) {
 
 	return false;
 }
+
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {

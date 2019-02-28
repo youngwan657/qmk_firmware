@@ -1,10 +1,15 @@
+// 2019, g Heavy Industries
+
 #include QMK_KEYBOARD_H
 
 // Bitfield representing the current chord
 uint32_t cChord = 0;
+
+// Mode globals
 enum MODE { STENO = 0, QWERTY, COMMAND };
 enum MODE cMode = STENO;
 enum MODE pMode;
+bool QWERSTENO = false;
 
 // Buffer for command keycodes
 #define MAX_CMD_BUF 20
@@ -24,11 +29,10 @@ uint8_t CMDLEN = 0;
 // Send a Keycode, we wrap register_code to hook and log
 // For Command mode
 void SEND(uint8_t kc) {
-	uprintf("CMD LEN: %d BUF: %d\n", CMDLEN, MAX_CMD_BUF);
 	if (cMode == COMMAND && CMDLEN < MAX_CMD_BUF) {
+		uprintf("CMD LEN: %d BUF: %d\n", CMDLEN, MAX_CMD_BUF);
 		CMDBUF[CMDLEN] = kc;
 		CMDLEN++;
-		uprintf("COMMAND %d\n", kc);
 	} 
 
 	if (cMode != COMMAND) register_code(kc);
@@ -38,6 +42,7 @@ void SEND(uint8_t kc) {
 // Defs for hooks
 bool processQwerty(void);
 bool processSymbol(void);
+bool processFakeSteno(void);
 
 // All Steno Codes
 // Shift to internal representation
@@ -51,7 +56,7 @@ enum ORDER {
 };
 
 // Break it all out
-#define FN 	STN(SFN)
+#define FN	STN(SFN)
 #define PWR	STN(SPWR)
 #define ST1 STN(SST1)
 #define ST2 STN(SST2)
@@ -85,8 +90,17 @@ enum ORDER {
 
 // Intercept for send
 bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) { 
+	// Toggle Serial/QWERTY steno
+	if   (cChord == (PWR | FN | ST1 | ST2)) {
+		uprintf("Fallback Toggle\n");
+		QWERSTENO = !QWERSTENO;
+		//QWERSTENO ? default_layer_set(1UL << QWERTY) : default_layer_set(1UL << STENO);
+		
+		goto out;
+	}
+
 	// Dual PWR + FN, handle command mode
-	if ((cChord & PWR) && (cChord & FN)) {
+	if (cChord == (PWR | FN)) {
 		uprintf("COMMAND Toggle\n");
 		if (cMode != COMMAND) {   // Entering Command Mode
 			CMDLEN = 0;
@@ -103,8 +117,7 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 			clear_keyboard();
 		}
 
-		cChord = 0;
-		return false;
+		goto out;
 	}
 
 	// Lone FN press, toggle QWERTY
@@ -112,9 +125,7 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 		uprintf("QWER Toggle\n");
 		(cMode == STENO) ? (cMode = QWERTY) : (cMode = STENO);
 
-		clear_keyboard();
-		cChord = 0;
-		return false;
+		goto out;
 	}
 
 	// Check for Symbol combo
@@ -122,26 +133,28 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 		uprintf("SYMB Toggle\n");
 		processSymbol();
 
-		clear_keyboard();
-		cChord = 0;
-		return false; 
+		goto out;
 	}
 
 	// Do pseudoQWERTY
 	if (cMode == QWERTY || (cMode == COMMAND)) {
 		// Try to lookup, send steno otherwise
-		if (processQwerty()) {
-			clear_keyboard();
-			cChord = 0;
-			return false;
-		}
+		if (processQwerty()) goto out;
 	}
 
-
+	if (cMode == STENO && QWERSTENO) {
+		processFakeSteno();
+		goto out;
+	}
 
 	// Hey that's a steno chord!
 	cChord = 0;
 	return true; 
+
+out:
+	clear_keyboard();
+	cChord = 0;
+	return false;
 }
 
 // Update the current chord as keys come in
@@ -160,12 +173,12 @@ bool process_steno_user(uint16_t keycode, keyrecord_t *record) {
 			case STN_FN:			pr ? (cChord |= (FN)) : (cChord &= ~(FN)); break;
 			case STN_PWR:			pr ? (cChord |= (PWR)): (cChord &= ~(PWR)); break;
 			case STN_N1...STN_N6: 
-			case STN_N7...STN_NC: 	pr ? (cChord |= (NUM)): (cChord &= ~(NUM)); break;
+			case STN_N7...STN_NC:	pr ? (cChord |= (NUM)): (cChord &= ~(NUM)); break;
 
 			// All the letter keys
-			case STN_S1: 			pr ? (cChord |= (LSU)) : (cChord &= ~(LSU));  break;
-			case STN_S2: 			pr ? (cChord |= (LSD)) : (cChord &= ~(LSD));  break;
-			case STN_TL: 			pr ? (cChord |= (LFT)) : (cChord &= ~(LFT)); break;
+			case STN_S1:			pr ? (cChord |= (LSU)) : (cChord &= ~(LSU));  break;
+			case STN_S2:			pr ? (cChord |= (LSD)) : (cChord &= ~(LSD));  break;
+			case STN_TL:			pr ? (cChord |= (LFT)) : (cChord &= ~(LFT)); break;
 			case STN_KL:			pr ? (cChord |= (LK)) : (cChord &= ~(LK)); break;
 			case STN_PL:			pr ? (cChord |= (LP)) : (cChord &= ~(LP)); break;
 			case STN_WL:			pr ? (cChord |= (LW)) : (cChord &= ~(LW)); break;
@@ -180,11 +193,45 @@ bool process_steno_user(uint16_t keycode, keyrecord_t *record) {
 			case STN_PR:			pr ? (cChord |= (RP)) : (cChord &= ~(RP)); break;
 			case STN_BR:			pr ? (cChord |= (RB)) : (cChord &= ~(RB)); break;
 			case STN_LR:			pr ? (cChord |= (RL)) : (cChord &= ~(RL)); break;
-			case STN_GR: 			pr ? (cChord |= (RG)) : (cChord &= ~(RG)); break;
+			case STN_GR:			pr ? (cChord |= (RG)) : (cChord &= ~(RG)); break;
 			case STN_TR:			pr ? (cChord |= (RT)) : (cChord &= ~(RT)); break;
 			case STN_SR:			pr ? (cChord |= (RS)) : (cChord &= ~(RS)); break;
 			case STN_DR:			pr ? (cChord |= (RD)) : (cChord &= ~(RD)); break;
 			case STN_ZR:			pr ? (cChord |= (RZ)) : (cChord &= ~(RZ)); break;
 	}
+
 	return true; 
+}
+
+// Keycodes for Pseudosteno
+bool processFakeSteno(void) {
+	PJ( LSU, 			SEND(KC_Q););
+	PJ( LSD, 			SEND(KC_A););
+	PJ( LFT, 			SEND(KC_W););
+	PJ( LP, 			SEND(KC_E););
+	PJ( LH, 			SEND(KC_R););
+	PJ( LK, 			SEND(KC_S););
+	PJ( LW, 			SEND(KC_D););
+	PJ( LR, 			SEND(KC_F););
+	PJ( ST1, 			SEND(KC_T););
+	PJ( ST2, 			SEND(KC_G););
+	PJ( LA, 			SEND(KC_C););
+	PJ( LO, 			SEND(KC_V););
+	PJ( RE, 			SEND(KC_N););
+	PJ( RU, 			SEND(KC_M););
+	PJ( ST3, 			SEND(KC_Y););
+	PJ( ST4, 			SEND(KC_H););
+	PJ( RF, 			SEND(KC_U););
+	PJ( RP, 			SEND(KC_I););
+	PJ( RL, 			SEND(KC_O););
+	PJ( RT, 			SEND(KC_P););
+	PJ( RD, 			SEND(KC_LBRC););
+	PJ( RR, 			SEND(KC_J););
+	PJ( RB, 			SEND(KC_K););
+	PJ( RG, 			SEND(KC_L););
+	PJ( RS, 			SEND(KC_SCLN););
+	PJ( RZ, 			SEND(KC_COMM););
+	PJ( NUM, 			SEND(KC_1););
+
+	return false;
 }
