@@ -25,7 +25,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define VERSION "Alpha 00 "
 #define VERBOSE
+
 #define FORCE_NKRO
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
@@ -33,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    g Heavy Industries 
 #define PRODUCT         Georgi
-#define DESCRIPTION     QMK keyboard firmware for Gergo
+#define DESCRIPTION     QMK keyboard firmware for Georgi
 
 /* key matrix size */
 #define MATRIX_ROWS 14

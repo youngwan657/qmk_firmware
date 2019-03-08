@@ -1,48 +1,37 @@
 // 2019, g Heavy Industries
-
+#include "mousekey.h"
 #include QMK_KEYBOARD_H
 
 // Bitfield representing the current chord
 uint32_t cChord = 0;
 
-// Mode globals
+// Mode state
 enum MODE { STENO = 0, QWERTY, COMMAND };
 enum MODE cMode = STENO;
 enum MODE pMode;
 bool QWERSTENO = false;
 
-// Buffer for command keycodes
+// Command State
 #define MAX_CMD_BUF 20
 uint8_t CMDBUF[MAX_CMD_BUF];
 uint8_t CMDLEN = 0;
 
+// Key Repeat state
+bool     inChord  = false;
+uint16_t repTimer = 0;
+#define  REP_DELAY 300
+
 // See if a given chord is pressed. 
-// P will return, PJ will continue processing
-//
-// chord: The keys OR'd together
-// act:   code to eval if pressed
-// jmp:   bool to jump to out
-#define PROCESS(jmp, chord, act) if ((cChord & (chord)) == (chord)) { cChord ^= chord; act; if (jmp) return true; }
-#define P(chord, act)  PROCESS(true,  (chord), act)
-#define PJ(chord, act) PROCESS(false, (chord), act)
-
-// Send a Keycode, we wrap register_code to hook and log
-// For Command mode
-void SEND(uint8_t kc) {
-	if (cMode == COMMAND && CMDLEN < MAX_CMD_BUF) {
-		uprintf("CMD LEN: %d BUF: %d\n", CMDLEN, MAX_CMD_BUF);
-		CMDBUF[CMDLEN] = kc;
-		CMDLEN++;
-	} 
-
-	if (cMode != COMMAND) register_code(kc);
-	return;
-}
+// P will return 
+// PJ will continue processing, removing the found chord 
+#define P(chord, act)  if (cChord == (chord)) { act; return true; }
+#define PJ(chord, act) if ((cChord & (chord)) == (chord)) { cChord ^= chord; act; }
 
 // Defs for hooks
 bool processQwerty(void);
-bool processSymbol(void);
 bool processFakeSteno(void);
+void clickMouse(uint8_t kc);
+void SEND(uint8_t kc);
 
 // All Steno Codes
 // Shift to internal representation
@@ -62,11 +51,11 @@ enum ORDER {
 #define ST2 STN(SST2)
 #define ST3 STN(SST3)
 #define ST4 STN(SST4)
-#define NUM STN(SNUM)
+#define NUM STN(SNUM) // No distinction between left and right
 
 #define LSU STN(SLSU)
 #define LSD STN(SLSD)
-#define LFT STN(SLT) // (L)e(F)t (T), preprocessor conflict
+#define LFT STN(SLT)  // (L)e(F)t (T), preprocessor conflict
 #define LK  STN(SLK)
 #define LP  STN(SLP)
 #define LW  STN(SLW)
@@ -88,26 +77,38 @@ enum ORDER {
 #define RD  STN(SRD)
 #define RZ  STN(SRZ)
 
+// Send a Keycode, we wrap register_code to hook and log
+// Does not work for Quantum Codes
+void SEND(uint8_t kc) {
+	if (cMode == COMMAND && CMDLEN < MAX_CMD_BUF) {
+		uprintf("CMD LEN: %d BUF: %d\n", CMDLEN, MAX_CMD_BUF);
+		CMDBUF[CMDLEN] = kc;
+		CMDLEN++;
+	} 
+
+	if (cMode != COMMAND) register_code(kc);
+	return;
+}
+
 // Intercept for send
+//bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) { 
 bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) { 
 	// Toggle Serial/QWERTY steno
-	if   (cChord == (PWR | FN | ST1 | ST2)) {
+	if (cChord == (PWR | FN | ST1 | ST2)) {
 		uprintf("Fallback Toggle\n");
 		QWERSTENO = !QWERSTENO;
-		//QWERSTENO ? default_layer_set(1UL << QWERTY) : default_layer_set(1UL << STENO);
 		
 		goto out;
 	}
 
-	// Dual PWR + FN, handle command mode
-	if (cChord == (PWR | FN)) {
+	// handle command mode
+	if (cChord == (PWR | FN | RD | RZ)) {
 		uprintf("COMMAND Toggle\n");
 		if (cMode != COMMAND) {   // Entering Command Mode
 			CMDLEN = 0;
 			pMode = cMode;
 			cMode = COMMAND;
 		} else {                  // Exiting Command Mode
-			uprintf("\nSending comand\n");
 			cMode = pMode;
 
 			// Press all and release all
@@ -122,48 +123,54 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 
 	// Lone FN press, toggle QWERTY
 	if (cChord == FN) {
-		uprintf("QWER Toggle\n");
 		(cMode == STENO) ? (cMode = QWERTY) : (cMode = STENO);
-
 		goto out;
 	}
 
-	// Check for Symbol combo
-	if (cChord & PWR) {
-		uprintf("SYMB Toggle\n");
-		processSymbol();
+	// Check for Plover momentary
+	if (cMode == QWERTY && (cChord & FN)) {
+		cChord ^= FN;
+		goto steno;
+	}
 
+	// Do QWERTY and Momentary QWERTY
+	if (cMode == QWERTY || (cMode == COMMAND) || (cChord & (FN | PWR))) {
+		if (cChord & FN)  cChord ^= FN;
+		processQwerty();
 		goto out;
 	}
 
-	// Do pseudoQWERTY
-	if (cMode == QWERTY || (cMode == COMMAND)) {
-		// Try to lookup, send steno otherwise
-		if (processQwerty()) goto out;
-	}
-
+	// Fallback NKRO Steno
 	if (cMode == STENO && QWERSTENO) {
 		processFakeSteno();
 		goto out;
 	}
 
+steno:
 	// Hey that's a steno chord!
+	inChord = false;
 	cChord = 0;
 	return true; 
 
 out:
+	inChord = false;
 	clear_keyboard();
 	cChord = 0;
 	return false;
 }
 
-// Update the current chord as keys come in
+// Runs as keys come in
 bool process_steno_user(uint16_t keycode, keyrecord_t *record) { 
-	// Bail on keyup, TODO: Find a way to keep this together
-	bool pr = record->event.pressed;
-	if (pr == false) return true;
+	// Everything happens in here when steno keys come in.
+	// Bail on keyup
+	if (!record->event.pressed) return true;
+
+	// Update key repeat timers
+	repTimer = timer_read();
+	inChord  = true;
 
 	// Switch on the press adding to chord
+	bool pr = record->event.pressed;
 	switch (keycode) {
 			// Mods and stuff
 			case STN_ST1:			pr ? (cChord |= (ST1)): (cChord &= ~(ST1)); break;
@@ -200,38 +207,64 @@ bool process_steno_user(uint16_t keycode, keyrecord_t *record) {
 			case STN_ZR:			pr ? (cChord |= (RZ)) : (cChord &= ~(RZ)); break;
 	}
 
+	// Check for key repeat in QWERTY mode
 	return true; 
 }
 
+void matrix_scan_user(void) {
+	// We abuse this for early sending of key
+	// Key repeat only on QWER/SYMB layers
+	if (cMode != QWERTY) return;
+
+	// Check timers
+	if (timer_elapsed(repTimer) > REP_DELAY) {
+		// Process Key for report
+		processQwerty();
+
+		// Send report to host
+		send_keyboard_report();
+		repTimer = timer_read();
+	}
+};
+
 // Keycodes for Pseudosteno
 bool processFakeSteno(void) {
-	PJ( LSU, 			SEND(KC_Q););
-	PJ( LSD, 			SEND(KC_A););
-	PJ( LFT, 			SEND(KC_W););
-	PJ( LP, 			SEND(KC_E););
-	PJ( LH, 			SEND(KC_R););
-	PJ( LK, 			SEND(KC_S););
-	PJ( LW, 			SEND(KC_D););
-	PJ( LR, 			SEND(KC_F););
-	PJ( ST1, 			SEND(KC_T););
-	PJ( ST2, 			SEND(KC_G););
-	PJ( LA, 			SEND(KC_C););
-	PJ( LO, 			SEND(KC_V););
-	PJ( RE, 			SEND(KC_N););
-	PJ( RU, 			SEND(KC_M););
-	PJ( ST3, 			SEND(KC_Y););
-	PJ( ST4, 			SEND(KC_H););
-	PJ( RF, 			SEND(KC_U););
-	PJ( RP, 			SEND(KC_I););
-	PJ( RL, 			SEND(KC_O););
-	PJ( RT, 			SEND(KC_P););
-	PJ( RD, 			SEND(KC_LBRC););
-	PJ( RR, 			SEND(KC_J););
-	PJ( RB, 			SEND(KC_K););
-	PJ( RG, 			SEND(KC_L););
-	PJ( RS, 			SEND(KC_SCLN););
-	PJ( RZ, 			SEND(KC_COMM););
-	PJ( NUM, 			SEND(KC_1););
+	PJ( LSU,			SEND(KC_Q););
+	PJ( LSD,			SEND(KC_A););
+	PJ( LFT,			SEND(KC_W););
+	PJ( LP,				SEND(KC_E););
+	PJ( LH,				SEND(KC_R););
+	PJ( LK,				SEND(KC_S););
+	PJ( LW,				SEND(KC_D););
+	PJ( LR,				SEND(KC_F););
+	PJ( ST1,			SEND(KC_T););
+	PJ( ST2,			SEND(KC_G););
+	PJ( LA,				SEND(KC_C););
+	PJ( LO,				SEND(KC_V););
+	PJ( RE,				SEND(KC_N););
+	PJ( RU,				SEND(KC_M););
+	PJ( ST3,			SEND(KC_Y););
+	PJ( ST4,			SEND(KC_H););
+	PJ( RF,				SEND(KC_U););
+	PJ( RP,				SEND(KC_I););
+	PJ( RL,				SEND(KC_O););
+	PJ( RT,				SEND(KC_P););
+	PJ( RD,				SEND(KC_LBRC););
+	PJ( RR,				SEND(KC_J););
+	PJ( RB,				SEND(KC_K););
+	PJ( RG,				SEND(KC_L););
+	PJ( RS,				SEND(KC_SCLN););
+	PJ( RZ,				SEND(KC_COMM););
+	PJ( NUM,			SEND(KC_1););
 
 	return false;
+}
+
+// Helpers
+void clickMouse(uint8_t kc) {
+	mousekey_on(kc);
+	mousekey_send();
+	_delay_ms(10);
+	mousekey_off(kc);
+	mousekey_send();
 }
