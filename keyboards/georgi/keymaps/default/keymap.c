@@ -14,8 +14,8 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 
 // "Layers"
-#define FUNCT   (RR | RG | RB | RS)
-#define MEDIA   (LS | LK | LW | LR)
+#define FUNCT   (LSD | LK | LP | LH)
+#define MEDIA   (LSD | LK | LW | LR)
 #define MOVE    (ST1 | ST2)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,16 +43,19 @@ STN_PWR, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2,       STN_ST4, STN_RR, STN_BR,
 // P   Will return from processing on the first match it finds. Therefore
 // PJ  Will run the requested action, remove the matched chord and continue 
 // First any mods should be checked using PJ !
+// For PJ all chords should be ordered by length!
 bool processQwerty(void) {
-	// P that PJ interferes with, Chords placed here will never
-	// be shifted, alt'd, etc
-	P( LA | LO,							SEND(KC_LALT));
-
+	// Place P's that would be trashed by PJ's here
+	P( RT  | RS  | RD  | RZ | NUM,		SEND_STRING(VERSION); SEND_STRING(__DATE__));
+	P( NUM | LA  | LO  | RE | RU,		SEND(KC_MPLY));
+	P( ST1 | ST2 | ST3 | ST4,			SEND(KC_BSPC));
+	
 	// Mods 
 	PJ( RT | RD | RS | RZ,				SEND(KC_LGUI));
 	PJ( RT | RD,						SEND(KC_LCTL));
 	PJ( RS | RZ,						SEND(KC_LALT));
 	PJ( LA | NUM,						SEND(KC_LCTRL));
+	PJ( LA | LO,						SEND(KC_LALT));
 	PJ( LO,								SEND(KC_LSFT));
 
 	// Function Layer 
@@ -71,12 +74,20 @@ bool processQwerty(void) {
 
 	// Movement Layer
 	P( MOVE | RF,						SEND(KC_LEFT));
-	P( MOVE | RF,						SEND(KC_LEFT));
 	P( MOVE | RP,						SEND(KC_DOWN));
 	P( MOVE | RL,						SEND(KC_UP));
 	P( MOVE | RT,						SEND(KC_RIGHT));
 	P( MOVE | ST3,						SEND(KC_PGUP));
 	P( MOVE | ST4,						SEND(KC_PGDN));
+
+	// Media Layer
+	P( MEDIA | RF,						SEND(KC_MPRV));
+	P( MEDIA | RP,						SEND(KC_MPLY));
+	P( MEDIA | RL,						SEND(KC_MPLY));
+	P( MEDIA | RT,						SEND(KC_MNXT));
+	P( MEDIA | RD,						SEND(KC_VOLU));
+	P( MEDIA | RZ,						SEND(KC_VOLD));
+	P( MEDIA | RS,						SEND(KC_MUTE));
 
 	// Mouse Keys
 	P( LP | LH,							clickMouse(KC_MS_BTN1));
@@ -175,10 +186,6 @@ bool processQwerty(void) {
 	P( PWR | RE,						SEND(KC_SCLN));
 	P( PWR | RU,						SEND(KC_SLSH));
 
-	// Version Debug / MISC
-	P( RT  | RS  | RT  | RZ | NUM,		SEND_STRING(VERSION); SEND_STRING(__DATE__));
-	P( NUM | LA  | LO  | RE | RU,		SEND(KC_MPLY));
-	P( ST1 | ST2 | ST3 | ST4,			SEND(KC_BSPC));
 
 	// If we make here, send as a steno chord
 	// If plover is running we can hook that host side
