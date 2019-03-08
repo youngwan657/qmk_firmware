@@ -44,6 +44,10 @@ STN_PWR, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2,       STN_ST4, STN_RR, STN_BR,
 // PJ  Will run the requested action, remove the matched chord and continue 
 // First any mods should be checked using PJ !
 bool processQwerty(void) {
+	// P that PJ interferes with, Chords placed here will never
+	// be shifted, alt'd, etc
+	P( LA | LO,							SEND(KC_LALT));
+
 	// Mods 
 	PJ( RT | RD | RS | RZ,				SEND(KC_LGUI));
 	PJ( RT | RD,						SEND(KC_LCTL));
