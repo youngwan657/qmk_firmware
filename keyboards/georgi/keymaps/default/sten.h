@@ -262,9 +262,11 @@ bool processFakeSteno(void) {
 
 // Helpers
 void clickMouse(uint8_t kc) {
+#ifdef MOUSEKEY_ENABLE
 	mousekey_on(kc);
 	mousekey_send();
 	_delay_ms(10);
 	mousekey_off(kc);
 	mousekey_send();
+#endif
 }

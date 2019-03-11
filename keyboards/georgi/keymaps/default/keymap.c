@@ -54,14 +54,14 @@ bool processQwerty(void) {
 	PJ( RT | RD | RS | RZ,				SEND(KC_LGUI));
 	PJ( RT | RD,						SEND(KC_LCTL));
 	PJ( RS | RZ,						SEND(KC_LALT));
-	PJ( LA | NUM,						SEND(KC_LCTRL));
+	PJ( LA | NUM,						SEND(KC_LCTL));
 	PJ( LA | LO,						SEND(KC_LALT));
 	PJ( LO,								SEND(KC_LSFT));
 
 	// Function Layer 
 	P( FUNCT | RF | RR,					SEND(KC_F5));
-	P( FUNCT | RP | RG,					SEND(KC_F6));
-	P( FUNCT | RL | RB,					SEND(KC_F7));
+	P( FUNCT | RP | RB,					SEND(KC_F6));
+	P( FUNCT | RL | RG,					SEND(KC_F7));
 	P( FUNCT | RT | RS,					SEND(KC_F8));
 	P( FUNCT | RF,						SEND(KC_F1));
 	P( FUNCT | RP,						SEND(KC_F2));
