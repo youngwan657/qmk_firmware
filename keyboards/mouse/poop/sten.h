@@ -85,11 +85,11 @@ enum ORDER {
 #define RZ  STN(SRZ)
 
 // Trackball Aliases for chords
-#define LMB  STN(SST1)
-#define RMB  STN(SST2)
-#define MMB  STN(SST3)
-#define FN1  STN(SST4)
-#define FN2  STN(SLSU)
+#define LMB  ST1
+#define RMB  ST2
+#define MMB  ST3
+#define FN1  ST4
+#define FN2  LFT
 
 // Trackball Aliases for keymap
 #define TB_LMB  STN_ST1

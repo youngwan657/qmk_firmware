@@ -14,6 +14,7 @@ uint32_t stickyBits = 0;			// Or'd with every incoming press
 #ifndef NO_DEBUG
 char debugMsg[32];
 #endif
+#define DEBUGENG false
 
 // StenoLayer
 uint32_t releasedChord	= 0;		// Keys released from current chord
@@ -201,6 +202,7 @@ bool process_steno_user(uint16_t keycode, keyrecord_t *record) {
 		chordIndex++;
 	}
 
+	if (DEBUGENG) uprintf("%b \n", cChord);
 	return true; 
 }
 void matrix_scan_user(void) {

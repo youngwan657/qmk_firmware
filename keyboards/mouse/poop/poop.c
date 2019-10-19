@@ -92,7 +92,7 @@ static void process_mouse(bool bMotion, bool* bBurst) {
 // Hardware Setup
 void keyboard_pre_init_kb(void) {
   debug_enable = false;
-  debug_matrix = false;
+  debug_matrix = true;
   debug_mouse  = false;
 
 	// Set up all the hardware
@@ -153,4 +153,9 @@ void keyboard_pre_init_kb(void) {
 }
 void matrix_scan_kb(void) {
   process_mouse(Motion, &BurstState);
+}
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // If console is enabled, it will print the matrix position and status of each key pressed
+  uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+  return true;
 }

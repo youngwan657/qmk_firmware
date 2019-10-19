@@ -4,7 +4,7 @@ F_CPU = 8000000
 BOOTLOADER = atmel-dfu
 
 # Compiler
-EXTRAFLAGS += -flto 
+EXTRAFLAGS += -flto  -DONLYQWERTY
 SRC += sten.c
 
 # QMK Options

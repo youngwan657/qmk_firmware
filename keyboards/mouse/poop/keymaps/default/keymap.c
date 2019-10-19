@@ -26,7 +26,7 @@
  * \--------------------/   \------|------/ */
 uint32_t processQwerty(bool lookup) {
     // Mouse Keys
-    P( FN1 | FN2,			SEND_STRING("Hello QMK!"));
+    P( FN1 | FN2,			SEND_STRING("What it do Drash!"));
     P( LMB,  	 				CLICK_MOUSE(KC_MS_BTN1));
     P( RMB,    				CLICK_MOUSE(KC_MS_BTN2));
     P( MMB,    				CLICK_MOUSE(KC_MS_BTN3));
@@ -46,7 +46,7 @@ uint32_t processQwerty(bool lookup) {
 // you know what you're doing. You can define a chord to 
 // jump to higher layers and then return to 0 with DF()
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT(TB_LMB, TB_RMB, TB_MMB, TB_FN1, TB_FN2),
+    [0] = LAYOUT(TB_LMB, TB_MMB, TB_RMB, TB_FN1, TB_FN2),
 };
 
 // Don't fuck with this, thanks. It's needed for the engine
