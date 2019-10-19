@@ -25,34 +25,39 @@
 #include "util.h"
 #include "matrix.h"
 #include "quantum.h"
-#include "debug.h"
 #include "debounce.h"
-#include "poop.h"
-#include "spi.h"
+#include "debug.h"
 #include "print.h"
-#include "spi.c"
 #include "math.h"
+#include "spi.h"
+#include "spi.c"
+#include "analog.c"
+#include "poop.h"
 
 #ifdef ENCODER_ENABLE
 #  include "encoder.h"
 #endif
 
-
 // TODO: Implement libinput profiles
 // https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
 // Compile time accel selection
 // Valid options are ACC_NONE, ACC_LINEAR, ACC_CUSTOM, ACC_QUADRATIC
-#define PROFILE_NONE
+#define PROFILE_NONE					
+#define DRAG_KC						  0					// (0-4) Button for drag lock numbered Left to Right 
 
 // Debug Options
-#define DEBUGMOUSE					false 	// Slows down scan rate!
+#define DEBUGMOUSE					true 			// Slows down scan rate!
+#define DEBUGOPTO						false			// Slows down scan rate!
 
 // Trackball State
-bool 					BurstState 	= false; 	// init burst state for Trackball module
-bool 					DragLock 		= false;  // Are we scrolling?
-uint16_t 			MotionStart = 0;			// Timer for accel, 0 is resting state
+bool 					BurstState 		= false; 	// init burst state for Trackball module
+bool 					DragLock 			= false;  // Are we scrolling?
+uint16_t 			MotionStart 	= 0;			// Timer for accel, 0 is resting state
+uint16_t			lastScroll 		= 0;			// Previous confirmed wheel event
+uint16_t			lastMidClick	= 0;
+uint8_t				OptLowPin			= OPT_ENC1;
 
-// Transform Selection
+// Mouse Processing
 static void process_mouse(bool bMotion, bool* bBurst) {
 	// Read state
 	PMWState 	d 		= point_burst_read(bMotion, bBurst);
@@ -79,7 +84,7 @@ static void process_mouse(bool bMotion, bool* bBurst) {
  	//uprintf("Elapsed:%u, X: %f Y: %\n", i, pgm_read_byte(firmware_data+i));
 
   report_mouse_t currentReport = pointing_device_get_report();
-  if (bMotion) {
+  if (!DragLock) {
     currentReport.x = (int)x;
     currentReport.y = (int)y;
   } else {
@@ -87,6 +92,55 @@ static void process_mouse(bool bMotion, bool* bBurst) {
     currentReport.h = (int)y;
   }
   pointing_device_set_report(currentReport);
+}
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	if (DEBUGMOUSE) uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", 
+			keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+
+	// Update Timer to prevent accidental scrolls
+	if ((keycode ==  KC_MS_BTN3) && (record->event.pressed == 0)) 
+		lastMidClick = timer_read();
+
+	// Process Drag Lock
+	if ((record->event.key.row ==  DRAG_KC) && (record->event.pressed == 1)) DragLock = true;
+	if ((record->event.key.row ==  DRAG_KC) && (record->event.pressed == 0)) DragLock = true;
+  return true;
+}
+void process_wheel(void) { 
+	// TODO: Replace this with interrupt driven code,  polling is S L O W
+	// Lovingly ripped from the Ploopy Source
+	
+  // If the mouse wheel was just released, do not scroll.
+  //unsigned long elapsed = micros() - middleClickRelease;
+  //if (elapsed < SCROLL_BUTT_DEBOUNCE) { return 0; }
+
+  // Limit the number of scrolls per unit time.
+	if ((timer_read() - lastScroll) < OPT_DEBOUNCE) 
+		return;
+
+  // Don't scroll if the middle button is depressed.
+  //int middleButtonPin = digitalRead(MOUSE_MIDDLE_PIN);
+  //if (middleButtonPin == LOW) { return 0; }
+  
+  lastScroll 	= timer_read();
+  uint16_t p1 = adc_read(OPT_ENC1_MUX);
+  uint16_t p2 = adc_read(OPT_ENC2_MUX);
+  if (DEBUGOPTO) uprintf("OPT1: %d, OPT2: %d\n", p1, p2);
+
+  uint8_t dir = 0;
+  if (p1 < OPT_THRES && p2 < OPT_THRES) {
+    if 			(OptLowPin == OPT_ENC1) { dir = -1; } // scroll down
+		else if (OptLowPin == OPT_ENC2) { dir =  1; } // scroll up
+  	OptLowPin = 0;
+  }
+	else if (p1 < OPT_THRES) { OptLowPin = OPT_ENC1; } 
+	else if (p2 < OPT_THRES) { OptLowPin = OPT_ENC2; }
+
+	// Bundle and send if needed
+	if (dir == 0) return;
+	report_mouse_t cRep = pointing_device_get_report();
+	cRep.v += dir*OPT_SCALE;
+	pointing_device_set_report(cRep);
 }
 
 // Hardware Setup
@@ -108,8 +162,8 @@ void keyboard_pre_init_kb(void) {
 	setPinInputHigh(MOUSE_FORWARD_PIN);
 
 	// This can probably be replaced with rotary encoder config,
-	setPinInput(OPT_ENC_PIN1);
-	setPinInput(OPT_ENC_PIN2);
+	setPinInput(OPT_ENC1);
+	setPinInput(OPT_ENC2);
 
 	// This is the debug LED.
 	setPinOutput(F7);
@@ -153,9 +207,5 @@ void keyboard_pre_init_kb(void) {
 }
 void matrix_scan_kb(void) {
   process_mouse(Motion, &BurstState);
-}
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // If console is enabled, it will print the matrix position and status of each key pressed
-  uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-  return true;
+	process_wheel();
 }

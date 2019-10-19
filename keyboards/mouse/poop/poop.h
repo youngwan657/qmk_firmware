@@ -31,19 +31,21 @@
 #define MOUSE_MIDDLE_PIN  D2
 #define MOUSE_BACK_PIN    B5
 #define MOUSE_FORWARD_PIN D7
+#define SENSOR_CS 				B0
 #define SS_TB							0
-#define SENSOR_CS B0
-#define OPT_ENC_PIN1 F4
-#define OPT_ENC_PIN2 F2
 
-/* This a shortcut to help you visually see your layout.
- *
- * The first section contains all of the arguments representing the physical
- * layout of the board and position of the keys.
- *
- * The second converts the arguments into a two-dimensional array which
- * represents the switch matrix.
- */
+// Sensor defs
+#define OPT_ENC1					F0
+#define OPT_ENC2					F4	
+#define OPT_ENC1_MUX			0
+#define OPT_ENC2_MUX			4
+#define OPT_DEBOUNCE			25		// (ms) 			Time between scroll events
+#define OPT_THRES					100		// (0-1024) 	Threshold for actication
+#define OPT_SCALE					1			// Multiplier for wheel
+
+//function defs
+void process_wheel(void);
+
 #define LAYOUT( \
     BL, BM, BR, \
       B4,  B5   \
