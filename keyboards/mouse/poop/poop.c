@@ -39,8 +39,8 @@
 
 // TODO: Move these options to keymap.c and import here, default if unset
 // User Config Options
-#define BALLANGLE 			degToRad(20)  // Angle in radians to rotate orientation
-#define BALLSENS				0.01;					 // Factor to scale raw read input by
+#define BALLANGLE 			degToRad(-20)  // Angle in radians to rotate orientation
+#define BALLSENS				1;					 // Factor to scale raw read input by
 
 // Compile time accel selection
 // Valid options are ACC_NONE, ACC_LINEAR, ACC_CUSTOM, ACC_QUADRATIC
@@ -58,26 +58,36 @@ uint16_t 		MotionStart = 0;			// Timer for accel, 0 is resting state
 static void process_mouse(bool bMotion, bool* bBurst) {
 	// Read state
 	PMWState 	d 		= point_burst_read(bMotion, bBurst);
-	double  	delta	= abs((double)d.X) + abs((double)d.Y);
+	int				delta	= (int)(abs((double)d.X) + abs((double)d.Y));
 
 	// Reset timer if stopped moving
-	if ((MotionStart != 0) && (delta == 0)) {
+	if (delta == 0) {
 		MotionStart = 0;
 		return;
 	} 
 
 	// Set timer if new motion
 	if ((MotionStart == 0) && (delta != 0)) {
+		uprintf("Starting motion.\n");
 		MotionStart = timer_read();
 	}
 
+	uprintf("Delt] d: %d t: %u\n", delta, MotionStart);
+	uprintf("Pre ] X: %d, Y: %d\n", d.X, d.Y);
+
+	// Use integer math for speed
 	// Rotate around origin
-	double x = (double)d.X*cos(BALLANGLE) - (double)d.Y*sin(BALLANGLE);
-	double y = (double)d.X*sin(BALLANGLE) + (double)d.Y*cos(BALLANGLE);
+	//double x = ((double)d.X)*cos(BALLANGLE) - ((double)d.Y)*sin(BALLANGLE);
+	//double y = ((double)d.X)*sin(BALLANGLE) + ((double)d.Y)*cos(BALLANGLE);
+	int16_t x = (d.X)*(1000*cos(BALLANGLE)) - (d.Y)*(1000*sin(BALLANGLE));
+	int16_t y = (d.X)*(1000*sin(BALLANGLE)) + (d.Y)*(1000*cos(BALLANGLE));
+	uprintf("Rot ] X: %d, Y: %d\n", x, y);
 
 	// Scale
 	x = x*BALLSENS;
 	y = y*BALLSENS;
+
+	uprintf("Scal] X: %d, Y: %d\n", x, y);
 
 	// Apply transform
 	//uint16_t elapsed = timer_elapsed(MotionStart);
@@ -91,10 +101,15 @@ static void process_mouse(bool bMotion, bool* bBurst) {
 		// TODO: Function call to keymap.c
 	#endif
 
+	// Return to normal int space
+	x = x/1000;
+	y = y/1000;
+
 	// Wrap to HID size
-	x = constrain(x, -127, 127)
-	y = constrain(x, -127, 127)
- 	uprintf("Elapsed:%u, X: %f Y: %\n", i, pgm_read_byte(firmware_data+i));
+	x = constrain(x, -127, 127);
+	y = constrain(y, -127, 127);
+	uprintf("Cons] X: %d, Y: %d\n", x, y);
+ 	//uprintf("Elapsed:%u, X: %f Y: %\n", i, pgm_read_byte(firmware_data+i));
 
   report_mouse_t currentReport = pointing_device_get_report();
   if (bMotion) {

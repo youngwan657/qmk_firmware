@@ -117,7 +117,7 @@ PMWState point_burst_read(bool AsMotion, bool* BurstState) {
   ret.Y |= (SPI_ReceiveByte() << 8);	// top 8 bits of Y
   //... rest of burst is ignored
   SS_HIGH(SS_TB);
-  uprintf("X: %d, Y: %d\n", ret.X, ret.Y);
+  //uprintf("X: %d, Y: %d\n", ret.X, ret.Y);
 
 	// Fill data struct 
 	return ret;
