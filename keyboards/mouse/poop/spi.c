@@ -8,6 +8,8 @@
 #include "pointing_device.h"
 #include "poop.h"
 
+#define SPIDEBUG false
+
 const uint16_t firmware_length = 4094;
 
 // Firmware Blob foor PMW3360
@@ -64,7 +66,7 @@ static void point_init(const uint8_t SSpin) {
   wait_us(40);
   SS_HIGH(SSpin);
   wait_us(40);
-  uprintf("initial reset\n");
+  if (SPIDEBUG) uprintf("initial reset\n");
   pmw_write(0x3a, 0x5a, SSpin);  // standard reset command
   wait_ms(50);                   // T bwrit
   // clear motion data by reading it
@@ -73,11 +75,10 @@ static void point_init(const uint8_t SSpin) {
   pmw_read(Delta_X_H, SSpin);
   pmw_read(Delta_Y_L, SSpin);
   pmw_read(Delta_Y_H, SSpin);
-  uprintf("cleared\n");
+  if (SPIDEBUG) uprintf("cleared\n");
 
   // upload firmware
   pmw_write(Config2, 0x00, SSpin);  // Write 0 to Rest_En bit of Config2 register to disable Rest mode.
-
   pmw_write(SROM_Enable, 0x1d, SSpin);  // write 0x1d in SROM_enable reg for initializing
   wait_ms(10);
   pmw_write(SROM_Enable, 0x18, SSpin);  // write 0x18 to SROM_enable to start SROM download
@@ -85,17 +86,21 @@ static void point_init(const uint8_t SSpin) {
   //upload firmware don't use seq_write because of loop length
   SPI_SendByte(SROM_Load_Burst | 0x80);
   wait_us(15);
-  uprintf("beginn firm upload\n");
+  if (SPIDEBUG) uprintf("beginn firm upload\n");
   for (uint16_t i = 0; i < firmware_length; i++) {
       SPI_SendByte(pgm_read_byte(firmware_data+i));
-      uprintf("firm loop %d, out %u \n", i, pgm_read_byte(firmware_data+i));
+      if (SPIDEBUG) uprintf("firm loop %d, out %u \n", i, pgm_read_byte(firmware_data+i));
       wait_us(15);
   }
-  uprintf("firm up complete\n");
+  if (SPIDEBUG) uprintf("firm up complete\n");
   pmw_read(SROM_ID, SSpin);
-  pmw_write(Config2, 0x00, SSpin);  // 0x00 for wired 0x20 for wireless mouse
+
+	// Configure TB
+  pmw_write(Config2, 		0x00, SSpin);  // 0x00 for wired 0x20 for wireless mouse
+  pmw_write(Config1, 		0x18, SSpin);  // 0x18 For 1/3 reports/inch
+  pmw_write(Angle_Tune, 0x1E, SSpin);  // 0xE2 for +30
+
   SS_HIGH(SSpin);
-  // set to burt mode?
 }
 PMWState point_burst_read(bool AsMotion, bool* BurstState) {
 	PMWState ret;	// Return State
@@ -104,39 +109,18 @@ PMWState point_burst_read(bool AsMotion, bool* BurstState) {
   if (!BurstState) {
       pmw_write(Motion_Burst, 0x01, SS_TB);  // Write something to enable bust mode
       *BurstState = true;
-      uprintf("Burst Reset\n");
+      if (SPIDEBUG) uprintf("Burst Reset\n");
   }
   SS_LOW(SS_TB);
   SPI_SendByte(Motion_Burst);
   wait_us(35);       // t_SRAD_MOTBR
-  SPI_SendByte(0x00); // Motion, assuming trackball , so lift stat is ignored, // send dummy 0x00 to skip
-  SPI_SendByte(0x00); // Observation skip
-  ret.X = SPI_ReceiveByte(); 					// lower 8 bits of x
-  ret.X |= (SPI_ReceiveByte() << 8); 	// top 8 bits of x
-  ret.Y = SPI_ReceiveByte();					// lower 8 bits of Y
-  ret.Y |= (SPI_ReceiveByte() << 8);	// top 8 bits of Y
-  //... rest of burst is ignored
-  SS_HIGH(SS_TB);
-  //uprintf("X: %d, Y: %d\n", ret.X, ret.Y);
-
-	// Fill data struct 
+	SPI_SendByte(0x00); 								// Motion, assuming trackball , so lift stat is ignored, // send dummy 0x00 to skip
+	SPI_SendByte(0x00); 								// Observation skip
+	ret.X = SPI_ReceiveByte(); 					// lower 8 bits of x
+	ret.X |= (SPI_ReceiveByte() << 8); 	// top 8 bits of x
+	ret.Y = SPI_ReceiveByte();					// lower 8 bits of Y
+	ret.Y |= (SPI_ReceiveByte() << 8);	// top 8 bits of Y
+  SS_HIGH(SS_TB);												//... rest of burst is ignored
+	ret.X = -ret.X;											// Reoriente X
 	return ret;
 }
-
-//static void pmw_seq_read(const uint8_t addr, const uint8_t* data, const uint16_t length) {
-//  SPI_SendByte(addr);
-//  wait_us(4);  // delay based on PMW? if so mod for mcp?
-//  for (uint8_t i = 0; i < length; i++) {
-//    data[i] = SPI_ReceiveByte();
-//    wait_us(4);
-//  }
-//}
-
-//static void pmw_seq_write(const uint8_t addr, const uint8_t* data, const uint8_t length) {
-//  SPI_SendByte(addr | 0x80);
-//  wait_us(15);  // 15 for SROM burst
-//  for (uint8_t i = 0; i < length; i++) {
-//    SPI_SendByte(data[i]);
-//    wait_us(15);  // TODO: determine worst case delay req for such sequenital writes
-//  }
-//}

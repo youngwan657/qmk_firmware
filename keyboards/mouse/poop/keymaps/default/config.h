@@ -18,3 +18,4 @@
 #pragma once
 
 // place overrides here
+//#define DEBUG_MATRIX_SCAN_RATE

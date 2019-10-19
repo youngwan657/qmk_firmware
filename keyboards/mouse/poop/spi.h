@@ -59,8 +59,8 @@
 
 // Tracks X/Y High/Low bits
 typedef struct {
-	uint16_t X;
-	uint16_t Y;
+	int16_t X;
+	int16_t Y;
 } PMWState ;
 
 static inline uint8_t pmw_read(const uint8_t addr, const uint8_t SSpin);

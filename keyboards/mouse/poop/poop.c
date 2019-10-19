@@ -37,100 +37,63 @@
 #  include "encoder.h"
 #endif
 
-// TODO: Move these options to keymap.c and import here, default if unset
-// User Config Options
-#define BALLANGLE 			degToRad(-20)  // Angle in radians to rotate orientation
-#define BALLSENS				1;					 // Factor to scale raw read input by
 
+// TODO: Implement libinput profiles
+// https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
 // Compile time accel selection
 // Valid options are ACC_NONE, ACC_LINEAR, ACC_CUSTOM, ACC_QUADRATIC
 #define PROFILE_NONE
 
-// TODO: Implement libinput profiles
-// https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
+// Debug Options
+#define DEBUGMOUSE					false 	// Slows down scan rate!
 
 // Trackball State
-bool 				BurstState 	= false; 	// init burst state for Trackball module
-bool 				DragLock 		= false;  // Are we scrolling?
-uint16_t 		MotionStart = 0;			// Timer for accel, 0 is resting state
+bool 					BurstState 	= false; 	// init burst state for Trackball module
+bool 					DragLock 		= false;  // Are we scrolling?
+uint16_t 			MotionStart = 0;			// Timer for accel, 0 is resting state
 
 // Transform Selection
 static void process_mouse(bool bMotion, bool* bBurst) {
 	// Read state
 	PMWState 	d 		= point_burst_read(bMotion, bBurst);
-	int				delta	= (int)(abs((double)d.X) + abs((double)d.Y));
-
+	bool isMoving = (d.X != 0) || (d.Y != 0);
 	// Reset timer if stopped moving
-	if (delta == 0) {
-		MotionStart = 0;
+	if (!isMoving) {
+		if (MotionStart != 0) MotionStart = 0;
 		return;
 	} 
 
 	// Set timer if new motion
-	if ((MotionStart == 0) && (delta != 0)) {
-		uprintf("Starting motion.\n");
+	if ((MotionStart == 0) && isMoving) {
+		if (DEBUGMOUSE) uprintf("Starting motion.\n");
 		MotionStart = timer_read();
 	}
 
-	uprintf("Delt] d: %d t: %u\n", delta, MotionStart);
-	uprintf("Pre ] X: %d, Y: %d\n", d.X, d.Y);
-
-	// Use integer math for speed
-	// Rotate around origin
-	//double x = ((double)d.X)*cos(BALLANGLE) - ((double)d.Y)*sin(BALLANGLE);
-	//double y = ((double)d.X)*sin(BALLANGLE) + ((double)d.Y)*cos(BALLANGLE);
-	int16_t x = (d.X)*(1000*cos(BALLANGLE)) - (d.Y)*(1000*sin(BALLANGLE));
-	int16_t y = (d.X)*(1000*sin(BALLANGLE)) + (d.Y)*(1000*cos(BALLANGLE));
-	uprintf("Rot ] X: %d, Y: %d\n", x, y);
-
-	// Scale
-	x = x*BALLSENS;
-	y = y*BALLSENS;
-
-	uprintf("Scal] X: %d, Y: %d\n", x, y);
-
-	// Apply transform
-	//uint16_t elapsed = timer_elapsed(MotionStart);
-	#ifdef PROFILE_NONE
-	#endif
-	#ifdef PROFILE_LINEAR
-	#endif
-	#ifdef PROFILE_INVERSE
-	#endif
-	#ifdef PROFILE_CUSTOM
-		// TODO: Function call to keymap.c
-	#endif
-
-	// Return to normal int space
-	x = x/1000;
-	y = y/1000;
+	if (DEBUGMOUSE) uprintf("Delt] d: %d t: %u\n", abs(d.X) + abs(d.Y), MotionStart);
+	if (DEBUGMOUSE) uprintf("Pre ] X: %d, Y: %d\n", d.X, d.Y);
 
 	// Wrap to HID size
-	x = constrain(x, -127, 127);
-	y = constrain(y, -127, 127);
-	uprintf("Cons] X: %d, Y: %d\n", x, y);
+	int16_t x = constrain(d.X, -127, 127);
+	int16_t y = constrain(d.Y, -127, 127);
+	if (DEBUGMOUSE) uprintf("Cons] X: %d, Y: %d\n", x, y);
  	//uprintf("Elapsed:%u, X: %f Y: %\n", i, pgm_read_byte(firmware_data+i));
 
   report_mouse_t currentReport = pointing_device_get_report();
   if (bMotion) {
-    currentReport.x = x;
-    currentReport.y = y;
+    currentReport.x = (int)x;
+    currentReport.y = (int)y;
   } else {
-    currentReport.v = x;
-    currentReport.h = y;
+    currentReport.v = (int)x;
+    currentReport.h = (int)y;
   }
   pointing_device_set_report(currentReport);
 }
 
-// This is the firmware that is uploaded to the PMW3360 each time the mouse starts up.
-// Don't mess with this. Just...just trust me. Don't do it.
-// "We fuckin' with it. " -- Germ
-//
 // Hardware Setup
 void keyboard_pre_init_kb(void) {
-  debug_enable = true;
-  debug_matrix = true;
-  debug_mouse  = true;
+  debug_enable = false;
+  debug_matrix = false;
+  debug_mouse  = false;
 
 	// Set up all the hardware
 	setPinOutput(SENSOR_CS);
