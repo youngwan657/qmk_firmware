@@ -57,17 +57,15 @@
 #define Raw_Data_Burst 0x64
 #define LiftCutoff_Tune2 0x65
 
-union data16_t {
-  int16_t all;
-  struct {
-    uint8_t L, H;
-  };
-};
-//void spi_init(const uint8_t SPIOptions);
+// Tracks X/Y High/Low bits
+typedef struct {
+	uint16_t X;
+	uint16_t Y;
+} PMWState ;
 
 static inline uint8_t pmw_read(const uint8_t addr, const uint8_t SSpin);
 static inline void    pmw_write(const uint8_t, const uint8_t, uint8_t);
+static void point_init(const uint8_t SSpin);
+PMWState point_burst_read(bool AsMotion, bool * BurstState);
 //static void spi_seq_read(const uint8_t, const uint8_t*, const uint16_t);
 //static void spi_seq_write(const uint8_t addr, const uint8_t* data,const uint16_t length);
-static void point_init(const uint8_t SSpin);
-static void point_burst_read(report_mouse_t * report, bool AsMotion, const uint8_t SSpin, bool * BurstState);
