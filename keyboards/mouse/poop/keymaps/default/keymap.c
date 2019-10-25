@@ -26,12 +26,13 @@
  * \--------------------/   \------|------/ */
 uint32_t processQwerty(bool lookup) {
     // Mouse Keys
-    P( FN1 | FN2,			SEND_STRING("What it do Drash!"));
-    P( LMB,  	 				CLICK_MOUSE(KC_MS_BTN1));
-    P( RMB,    				CLICK_MOUSE(KC_MS_BTN2));
-    P( MMB,    				CLICK_MOUSE(KC_MS_BTN3));
-    P( FN1,    				CLICK_MOUSE(KC_MS_BTN4));
-    P( FN2,    				CLICK_MOUSE(KC_MS_BTN5));
+    P( RMB | LMB | MMB | FN1 | FN2,		reset_keyboard());
+    P( FN1 | FN2,											SEND_STRING("What it do Drash!"));
+    P( LMB,  	 												CLICK_MOUSE(KC_MS_BTN1));
+    P( RMB,    												CLICK_MOUSE(KC_MS_BTN2));
+    P( MMB,    												CLICK_MOUSE(KC_MS_BTN3));
+    P( FN1,    												CLICK_MOUSE(KC_MS_BTN4));
+    P( FN2,    												CLICK_MOUSE(KC_MS_BTN5));
 
 		return 0;
 }

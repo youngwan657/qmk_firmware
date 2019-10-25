@@ -1,16 +1,16 @@
 #include "sten.h"
 
 // Chord state
-uint32_t cChord 		= 0;		// Current Chord
-int		 chordIndex 	= 0;		// Keys in previousachord
-int32_t  chordState[32];			// Full Chord history
-#define  QWERBUF		24			// Size of chords to buffer for output
+uint32_t 	cChord 			= 0;		// Current Chord
+int		 		chordIndex 	= 0;		// Keys in previousachord
+int32_t  	chordState	[32];		// Full Chord history
+#define  QWERBUF			24			// Size of chords to buffer for output
 
-bool	 repeatFlag 	= false;	// Should we repeat?
-uint32_t pChord 		= 0;		// Previous Chord
-int		 pChordIndex 	= 0;		// Keys in previousachord
-uint32_t pChordState[32];			// Previous chord sate 
-uint32_t stickyBits = 0;			// Or'd with every incoming press
+bool	 		repeatFlag 	= false;	// Should we repeat?
+uint32_t 	pChord 			= 0;			// Previous Chord
+int		 		pChordIndex = 0;			// Keys in previousachord
+uint32_t 	pChordState	[32];			// Previous chord sate 
+uint32_t 	stickyBits 	= 0;			// Or'd with every incoming press
 #ifndef NO_DEBUG
 char debugMsg[32];
 #endif

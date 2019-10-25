@@ -5,31 +5,32 @@
 //
 // Amen.
 
-#include QMK_KEYBOARD_H
 #include "mousekey.h"
 #include "keymap.h"
-#include "keymap_steno.h"
 #include "wait.h"
 
-extern size_t keymapsCount;			// Total keymaps
-extern uint32_t cChord;				// Current Chord
-extern uint32_t stenoLayers[];		// Chords that simulate QMK layers
-extern size_t stenoLayerCount;		// Number of simulated layers
-uint32_t refChord;					// Reference chord for PC macro
+#include "quantum.h"
+#include "keymap_steno.h"
+
+extern size_t 		keymapsCount;			// Total keymaps
+extern uint32_t 	cChord;						// Current Chord
+extern uint32_t 	stenoLayers[];		// Chords that simulate QMK layers
+extern size_t 		stenoLayerCount;	// Number of simulated layers
+uint32_t 					refChord;					// Reference chord for PC macro
 
 // Function defs
-void 			processChord(bool useFakeSteno);
+void 				processChord(bool useFakeSteno);
 uint32_t		processQwerty(bool lookup);
 uint32_t 		processFakeSteno(bool lookup);
-void 			saveState(uint32_t cChord);
-void 			restoreState(void);
+void 				saveState(uint32_t cChord);
+void 				restoreState(void);
 
 // Macros for use in keymap.c
-void 			SEND(uint8_t kc);
-void 			REPEAT(void);
-void 			SET_STICKY(uint32_t);
-void 			SWITCH_LAYER(int);
-void 			CLICK_MOUSE(uint8_t);
+void 				SEND(uint8_t kc);
+void 				REPEAT(void);
+void 				SET_STICKY(uint32_t);
+void 				SWITCH_LAYER(int);
+void 				CLICK_MOUSE(uint8_t);
 
 // Keymap helper
 #define P(chord, act) if (cChord == (chord)) { if (!lookup) {act;} return chord;}

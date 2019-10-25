@@ -24,7 +24,6 @@
 #include "wait.h"
 #include "util.h"
 #include "matrix.h"
-#include "quantum.h"
 #include "debounce.h"
 #include "debug.h"
 #include "print.h"
@@ -77,12 +76,23 @@ static void process_mouse(bool bMotion, bool* bBurst) {
 	if (DEBUGMOUSE) uprintf("Delt] d: %d t: %u\n", abs(d.X) + abs(d.Y), MotionStart);
 	if (DEBUGMOUSE) uprintf("Pre ] X: %d, Y: %d\n", d.X, d.Y);
 
+	// Apply any post processing required
+#ifdef PROFILE_NONE
+#endif
+#ifdef PROFILE_LINEAR
+	float scale = float(timer_elaspsed(MotionStart))/1000.0;
+	x = x*scale;
+	y = y*scale;
+#endif
+#ifdef PROFILE_INVERSE
+#endif
+
 	// Wrap to HID size
 	int16_t x = constrain(d.X, -127, 127);
 	int16_t y = constrain(d.Y, -127, 127);
 	if (DEBUGMOUSE) uprintf("Cons] X: %d, Y: %d\n", x, y);
  	//uprintf("Elapsed:%u, X: %f Y: %\n", i, pgm_read_byte(firmware_data+i));
-
+	
   report_mouse_t currentReport = pointing_device_get_report();
   if (!DragLock) {
     currentReport.x = (int)x;
@@ -103,7 +113,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 	// Process Drag Lock
 	if ((record->event.key.row ==  DRAG_KC) && (record->event.pressed == 1)) DragLock = true;
-	if ((record->event.key.row ==  DRAG_KC) && (record->event.pressed == 0)) DragLock = true;
+	if ((record->event.key.row ==  DRAG_KC) && (record->event.pressed == 0)) DragLock = false;
   return true;
 }
 void process_wheel(void) { 
