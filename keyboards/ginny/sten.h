@@ -38,6 +38,7 @@ void 			CLICK_MOUSE(uint8_t);
 		refChord = stenoLayers[i] | chord; \
 		if (cChord == (refChord)) { if (!lookup) {act;} return refChord;}; \
 }
+#define REBOOT() wdt_enable(WDTO_250MS); for (;;) ;
 
 // Shift to internal representation
 // i.e) S(teno)R(ight)F
