@@ -24,6 +24,10 @@
 #include QMK_KEYBOARD_H
 #include "sten.h"
 
+// If this define is removed, word based completion will
+// be disabled! If you need more space this is a good place to starj
+#define USE_COMMON
+
 // Asetniop aliases, to Ginny Fingers
 #define AA		GLP
 #define AS		GLR
@@ -34,7 +38,7 @@
 #define AO		GRR
 #define AP		GRP
 
-#define AL		GLT  // Left/Right thumbs
+#define AL		GLT  						// Left/Right thumbs
 #define AR		GRT
 
 #define NUM		RES1 						// Sticky Layer 1
@@ -136,21 +140,63 @@ uint32_t processQwerty(bool lookup) {
 	
 	// User defs
 
+#ifdef USE_COMMON
 	// Word Defs
-	P(AA | AS | AE,							SEND_STRING("we "));
-	P(AA | AE | AT,							SEND_STRING("are "));
-	P(AA | AS | AE | AT,				SEND_STRING("were "));
-	P(AA | AS | AN,							SEND_STRING("any "));
-	P(AA | AS | AE | AN,				SEND_STRING("and "));
-	P(AA | AS | AT | AN,				SEND_STRING("can "));
-	P(AE | AT | AN,							SEND_STRING("be "));
-	P(AS | AE | AI,							SEND_STRING("did "));
-	P(AA | AS | AE | AI,				SEND_STRING("said "));
-	P(AA | AS | AE | AT | AI,		SEND_STRING("first "));
-	P(AS | AE | AN | AI,				SEND_STRING("she "));
-	P(AA | AS | AE | AN | AI,		SEND_STRING("had "));
-	P(AA | AT | AN | AI,				SEND_STRING("that "));
-	P(AS | AT | AN | AI,				SEND_STRING("this "));
+	P(AA | AS | AE,									SEND_STRING("we "));
+	P(AA | AE | AT,									SEND_STRING("are "));
+	P(AA | AS | AE | AT,						SEND_STRING("were "));
+	P(AA | AS | AN,									SEND_STRING("any "));
+	P(AA | AS | AE | AN,						SEND_STRING("and "));
+	P(AA | AS | AT | AN,						SEND_STRING("can "));
+	P(AE | AT | AN,									SEND_STRING("be "));
+	P(AS | AE | AI,									SEND_STRING("did "));
+	P(AA | AS | AE | AI,						SEND_STRING("said "));
+	P(AA | AS | AE | AT | AI,				SEND_STRING("first "));
+	P(AS | AE | AN | AI,						SEND_STRING("she "));
+	P(AA | AS | AE | AN | AI,				SEND_STRING("had "));
+	P(AA | AT | AN | AI,						SEND_STRING("that "));
+	P(AS | AT | AN | AI,						SEND_STRING("this "));
+	P(AA | AE | AT | AN | AI,				SEND_STRING("with "));
+	P(AE | AT | AN | AI,						SEND_STRING("the "));
+	P(AA | AS | AT | AN | AI,				SEND_STRING("have "));
+	P(AS | AE | AT | AN | AI,				SEND_STRING("these "));
+	P(AA | AS | AE | AT | AN | AI,	SEND_STRING("where "));
+	P(AS | AE | AO,									SEND_STRING("do "));
+	P(AA | AT | AO,									SEND_STRING("of "));
+	P(AA | AS | AT | AO,						SEND_STRING("two "));
+	P(AE | AT | AO,									SEND_STRING("or "));
+	P(AA | AE | AT | AO,						SEND_STRING("for "));
+	P(AS | AE | AT | AO,						SEND_STRING("good "));
+	P(AE | AN | AO,									SEND_STRING("us "));
+	P(AA | AS | AN | AO,						SEND_STRING("now "));
+	P(AE | AN | AO,									SEND_STRING("you "));
+	P(AA | AS | AE | AN | AO,				SEND_STRING("down "));
+	P(AT | AN | AO,									SEND_STRING("but "));
+	P(AA | AT | AN | AO,						SEND_STRING("about "));
+	P(AS | AT | AN | AO,						SEND_STRING("just "));
+	P(AE | AT | AN | AO,						SEND_STRING("your "));
+	P(AA | AE | AT | AN | AO,				SEND_STRING("before "));
+	P(AA | AS | AE | AT | AN | AO,	SEND_STRING("because "));
+	P(AO | AP ,											SEND_STRING("I "));
+	P(AA | AI | AN ,								SEND_STRING("all "));
+	P(AA | AS | AI | AO,						SEND_STRING("will "));
+	P(AS | AE | AI | AO,						SEND_STRING("like "));
+	P(AA | AS | AE | AI | AO,				SEND_STRING("well "));
+	P(AE | AT | AI | AO,						SEND_STRING("over "));
+	P(AA | AS | AN | AO | AI,				SEND_STRING("how "));
+	P(AE | AN | AI | AO,						SEND_STRING("only "));
+	P(AA | AS | AE | AN | AI | AO,	SEND_STRING("would "));
+	P(AT | AN | AI | AO,						SEND_STRING("into "));
+	P(AE | AT | AN | AI | AO,				SEND_STRING("other "));
+	P(AS | AE | AT | AN | AI | AO,	SEND_STRING("could "));
+	P(AA | AN | AP,									SEND_STRING("man "));
+	P(AE | AN | AP,									SEND_STRING("my "));
+	P(AA | AS | AE | AN | AP,				SEND_STRING("made "));
+	P(AN | AI | AP,									SEND_STRING("him "));
+	P(AA | AS | AE | AN | AI | AP,	SEND_STRING("make "));
+	P(AE | AT | AN | AI | AP,				SEND_STRING("them "));
+	P(AN | AO | AP,									SEND_STRING("up "));
+#endif
 
 	// Extras
 	//P(AS | AE | AT,							SEND_STRING("set "));
@@ -159,15 +205,12 @@ uint32_t processQwerty(bool lookup) {
 	//P(AS | AE | AN,							SEND_STRING("need "));
 	return 0;
 }
-// Blank template at the bottom
+
+// QMK layout, Make all your changesw in processQwerty!
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT_ginny(
 		STN_S1, STN_S2, STN_TL, STN_KL, STN_PL, STN_WL, STN_HL, STN_RL, STN_ST1, STN_ST2
 )};
-
-/*[0] = LAYOUT_ginny(
-		KC_A, KC_B, KC_C, KC_D, KC_E, KC_0, KC_1, KC_2, KC_3, KC_4 
-)};*/
 
 // Don't fuck with this, thanks.
 size_t keymapsCount  = sizeof(keymaps)/sizeof(keymaps[0]);
