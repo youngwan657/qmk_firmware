@@ -1,0 +1,48 @@
+/* Welcome to ASETNIOP
+ *
+ * This file contains your personal chords, the  basic layout, symbols and 
+ * layers are in different files. Refer to dicts.def for their locations!
+ *
+ * This is a very different layout based off this table
+ * http://asetniop.com/ 
+ *
+ * Unlike standard Asetniop there are a few concessions that must be
+ * made. Namely we don't do partials and if a chord has multiple left/
+ * right words we go with the most common of the two.
+ *
+ * Also note, All Combos _must_ be done through Command Mode! If you
+ * use a combo enough add it to your dictionary in the USR section!
+ *
+ * Two 'layers' are avalible, CMD and USR. Just add these into a chord. 
+ * You'll enter/exit these layers with SET_STICKY(CMD) and SET_STICKY(0)
+ *
+ * Note: The engine optimizes for the longest chord it can find, every
+ * now and again this makes conflicts! If you have a better dictionary
+ * or come up with improvements, please submit a PR!
+ */
+
+
+// You can use the following aliases in your chords
+// AA, AS, AE, AT, AN, AI, AO, AP, AL, AR (Left/Right thumb)
+// NUM, USR and CMD are also avalible
+
+// User defs
+P(USR | AA,											SEND_STRING("undefined User "));
+P(USR | AS,											SEND_STRING("undefined User "));
+P(USR | AE,											SEND_STRING("undefined User "));
+P(USR | AT,											SEND_STRING("undefined User "));
+P(USR | AN,											SEND_STRING("undefined User "));
+P(USR | AI,											SEND_STRING("undefined User "));
+P(USR | AO,											SEND_STRING("undefined User "));
+P(USR | AP,											SEND_STRING("undefined User "));
+P(USR | AR,											SEND_STRING("undefined User "));
+P(USR | AL,											SEND_STRING("undefined User "));
+
+// Quick Fires
+P(AR | AA | AS,									SEND_STRING("Undefined Quick Fire"));
+P(AR | AS | AE,									SEND_STRING("Undefined Quick Fire"));
+P(AR | AE | AT,									SEND_STRING("Undefined Quick Fire"));
+P(AR | AT | AN,									SEND_STRING("Undefined Quick Fire"));
+P(AR | AN | AI,									SEND_STRING("Undefined Quick Fire"));
+P(AR | AI | AO,									SEND_STRING("Undefined Quick Fire"));
+P(AR | AO | AP,									SEND_STRING("Undefined Quick Fire"));
