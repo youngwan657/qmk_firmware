@@ -21,12 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "config_common.h"
 
-// Space saving jazz
-#define NO_ACTION_LAYER
-#define NO_ACTION_TAPPING
-#define NO_ACTION_ONESHOT
-
-// General keyboard configs
 #define BOOTMAGIC_LITE_ROW 9
 #define BOOTMAGIC_LITE_COLUMN 3
 

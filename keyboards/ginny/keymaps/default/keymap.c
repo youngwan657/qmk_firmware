@@ -18,10 +18,9 @@
  * or come up with improvements, please submit a PR!
  */
 
-#define LANG en
-
 #include QMK_KEYBOARD_H
 #include "sten.h"
+#include <stddef.h>
 
 // Asetniop aliases, to Ginny Fingers
 #define AA		GLP
@@ -40,9 +39,8 @@
 #define USR   RES2						// Sticky Layer 2
 #define CMD		RES2 | RES1			// Sticky Layer 3
 
-// Asetniop layout see above link
-uint32_t processQwerty(bool lookup) {
-	// These three are needed for numbers, commands and layering
+void keyboard_pre_init_user(void) {
+/*	// These three are needed for numbers, commands and layering
 	// These must be included before any other maps
 	#include "gen/aset/layer-keymap.c"
 	#include "gen/aset/cmd-keymap.c"
@@ -72,6 +70,44 @@ uint32_t processQwerty(bool lookup) {
 	P(AR | AN | AI,									SEND_STRING("Undefined Quick Fire"));
 	P(AR | AI | AO,									SEND_STRING("Undefined Quick Fire"));
 	P(AR | AO | AP,									SEND_STRING("Undefined Quick Fire"));
+	P(AA, SEND_STRING("YEET"))
+	P(AA, SEND_STRING("YEET"))
+	P(AA, SEND_STRING("YEET"))*/
+}
+
+// Asetniop layout see above link
+uint16_t processQwerty(bool lookup) {
+	/*
+	// These three are needed for numbers, commands and layering
+	// These must be included before any other maps
+	#include "gen/aset/layer-keymap.c"
+	#include "gen/aset/cmd-keymap.c"
+	#include "gen/aset/num-keymap.c"
+
+	// ASETNIOP supports various languages, define the one you wish to include here
+	// da, de, en, en-colemak, en-dvorak, es, fn, fr, hu, it, nl, nw, pl, pt, ro, sv, tr
+	#include "gen/aset/en-keymap.c"
+
+	// User defs
+	P(USR | AA,											SEND_STRING("undefined User "));
+	P(USR | AS,											SEND_STRING("undefined User "));
+	P(USR | AE,											SEND_STRING("undefined User "));
+	P(USR | AT,											SEND_STRING("undefined User "));
+	P(USR | AN,											SEND_STRING("undefined User "));
+	P(USR | AI,											SEND_STRING("undefined User "));
+	P(USR | AO,											SEND_STRING("undefined User "));
+	P(USR | AP,											SEND_STRING("undefined User "));
+	P(USR | AR,											SEND_STRING("undefined User "));
+	P(USR | AL,											SEND_STRING("undefined User "));
+
+	// Quick Fires
+	P(AR | AA | AS,									SEND_STRING("Undefined Quick Fire"));
+	P(AR | AS | AE,									SEND_STRING("Undefined Quick Fire"));
+	P(AR | AE | AT,									SEND_STRING("Undefined Quick Fire"));
+	P(AR | AT | AN,									SEND_STRING("Undefined Quick Fire"));
+	P(AR | AN | AI,									SEND_STRING("Undefined Quick Fire"));
+	P(AR | AI | AO,									SEND_STRING("Undefined Quick Fire"));
+	P(AR | AO | AP,									SEND_STRING("Undefined Quick Fire"));*/
 
 	return 0;
 }
@@ -82,5 +118,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		STN_S1, STN_S2, STN_TL, STN_KL, STN_PL, STN_WL, STN_HL, STN_RL, STN_ST1, STN_ST2
 )};
 
-// Don't fuck with this, thanks.
-size_t keymapsCount  = sizeof(keymaps)/sizeof(keymaps[0]);
+// Don't fuck with this. And don't put defs below here!
+struct dictEntry test[__COUNTER__];
