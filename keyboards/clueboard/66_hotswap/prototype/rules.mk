@@ -15,7 +15,6 @@ BOOTLOADER = atmel-dfu
 #   comment out to disable the options.
 #
 BACKLIGHT_ENABLE = yes
-BACKLIGHT_DRIVER = custom
 BOOTMAGIC_ENABLE = no
 MOUSEKEY_ENABLE = no
 EXTRAKEY_ENABLE = yes

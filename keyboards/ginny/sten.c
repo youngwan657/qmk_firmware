@@ -72,7 +72,7 @@ bool send_steno_chord_user(steno_mode_t mode, uint8_t chord[6]) {
 	}
 
 	// handle command mode
-	if (cChord == (PWR | FN | RD | RZ)) {
+	if (cChord == (GRM | GRI | GLI | GLM)) {
 #ifndef NO_DEBUG
 		uprintf("COMMAND Toggle\n");
 #endif
