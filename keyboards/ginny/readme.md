@@ -3,7 +3,8 @@
 ![Ginny](https://assets.bigcartel.com/product_images/247416878/IMG_20191025_1424438-01.jpeg)
 
 Quite possibly the smallest most feature filled board you can fit in your pocket. With multi-language
-onboard ASETNIOP and all sorts of fun shenanigans
+onboard ASETNIOP and all sorts of fun shenanigans. This board is more then a novelty, it's a ergonomic
+wonder!
 
 [More info on qmk.fm](https://www.gboards.ca/product/ginni/)
 
