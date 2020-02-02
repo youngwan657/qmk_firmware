@@ -14,9 +14,12 @@
 */
 
 #include QMK_KEYBOARD_H
+#include "keymap_steno.h"
 #include "mousekey.h"
 #include "keymap.h"
-#include "keymap_steno.h"
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
 #include "wait.h"
 
 struct dictEntry {
@@ -41,15 +44,31 @@ void 			SET_STICKY(uint16_t);
 void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
 
-#define P(chord, func) MAKE_CHORD(__COUNTER__, chord, func)
-#define MAKE_CHORD(id, match, func) 	\
-	test[id].chord 	= match;						\
-	test[id].act		= ({								\
-			void f_id(void) {func;}; &f_id;	\
-		});																\
+// Needed for hashing
+#define H1(s,i,x)   (x*65599u+(uint8_t)s[(i)<strlen(s)?strlen(s)-1-(i):strlen(s)])
+#define H4(s,i,x)   H1(s,i,H1(s,i+1,H1(s,i+2,H1(s,i+3,x))))
+#define H16(s,i,x)  H4(s,i,H4(s,i+4,H4(s,i+8,H4(s,i+12,x))))
+#define H64(s,i,x)  H16(s,i,H16(s,i+16,H16(s,i+32,H16(s,i+48,x))))
+#define H256(s,i,x) H64(s,i,H64(s,i+64,H64(s,i+128,H64(s,i+192,x))))
+#define HASH(s)    ((uint32_t)(H256(s,0,0)^(H256(s,0,0)>>16)))
+
+// X Macros for keymap definition
+#define P_ACTION(chord, act) 	void HASH(chord)(void) { act; }			
+#define P_KEYMAP(chord, act)	{chord, HASH(chord)},
+
+/*
+#define ASET_KEYMAP(path) \
+	#define P P_KEYMAP			\
+	#include path						\
+	#undef 	P								
+
+#define ASET_ACTION(path) \
+	#define P P_ACTION			\
+	#include path						\
+	#undef 	P								*/
 
 // Keymap helper
-//#define P(chord, act) if (cChord == (chord)) { if (!lookup) {act;} return chord;}
+//#define P(chord, act) if (cChord == (chord)) { if (!lookup) {act;} return chord;}*/
 #define REBOOT() wdt_enable(WDTO_250MS); for (;;) ;
 
 // Shift to internal representation
@@ -90,4 +109,21 @@ enum ORDER {
 #define ST2 STN(SST2)
 #define ST3 STN(SST3)
 #define ST4 STN(SST4)
+
+// Asetniop aliases, to Ginny Fingers
+#define AA		GLP
+#define AS		GLR
+#define AE		GLM
+#define AT		GLI
+#define AN		GRI
+#define AI		GRM
+#define AO		GRR
+#define AP		GRP
+
+#define AL		GLT							// Left/Right thumbs
+#define AR		GRT
+
+#define NUM		RES1						// Sticky Layer 1
+#define USR   RES2						// Sticky Layer 2
+#define CMD		RES2 | RES1			// Sticky Layer 3
 
