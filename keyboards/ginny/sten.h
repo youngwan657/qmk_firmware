@@ -45,27 +45,20 @@ void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
 
 // Needed for hashing
-#define H1(s,i,x)   (x*65599u+(uint8_t)s[(i)<strlen(s)?strlen(s)-1-(i):strlen(s)])
+/*#define H1(s,i,x)   (x*65599u+(uint8_t)s[(i)<strlen(s)?strlen(s)-1-(i):strlen(s)])
 #define H4(s,i,x)   H1(s,i,H1(s,i+1,H1(s,i+2,H1(s,i+3,x))))
 #define H16(s,i,x)  H4(s,i,H4(s,i+4,H4(s,i+8,H4(s,i+12,x))))
 #define H64(s,i,x)  H16(s,i,H16(s,i+16,H16(s,i+32,H16(s,i+48,x))))
 #define H256(s,i,x) H64(s,i,H64(s,i+64,H64(s,i+128,H64(s,i+192,x))))
-#define HASH(s)    ((uint32_t)(H256(s,0,0)^(H256(s,0,0)>>16)))
+#define HASH(s)    ((uint32_t)(H256(s,0,0)^(H256(s,0,0)>>16)))*/
+
+#define PASTER(x,y) x ## _ ## y
+#define EVALUATOR(x,y)  PASTER(x,y)
+#define NAME(arg) EVALUATOR(fn, arg)
 
 // X Macros for keymap definition
-#define P_ACTION(chord, act) 	void HASH(chord)(void) { act; }			
-#define P_KEYMAP(chord, act)	{chord, HASH(chord)},
-
-/*
-#define ASET_KEYMAP(path) \
-	#define P P_KEYMAP			\
-	#include path						\
-	#undef 	P								
-
-#define ASET_ACTION(path) \
-	#define P P_ACTION			\
-	#include path						\
-	#undef 	P								*/
+#define P_ACTION(chord, act) 	void NAME(chord) (void) { act; }			
+#define P_KEYMAP(chord, act)	{chord, NAME(chord)}
 
 // Keymap helper
 //#define P(chord, act) if (cChord == (chord)) { if (!lookup) {act;} return chord;}*/
@@ -73,7 +66,7 @@ void 			CLICK_MOUSE(uint8_t);
 
 // Shift to internal representation
 // i.e) S(teno)R(ight)F
-#define STN(n) ((uint16_t)1<<n)
+#define STN(n) (1u<<n)
 enum ORDER { 
 		SLSU= 0, SLSD, SLT, SLK, SLP, SLW, SLH, SLR, SST1, SST2,
 		SRES1, SRES2, SST3, SST4
@@ -126,4 +119,3 @@ enum ORDER {
 #define NUM		RES1						// Sticky Layer 1
 #define USR   RES2						// Sticky Layer 2
 #define CMD		RES2 | RES1			// Sticky Layer 3
-
