@@ -1,4 +1,6 @@
 #include QMK_KEYBOARD_H
+#include "sten.h"
+#include "keymap_steno.h"
 
 /* Note: Don't edit this file! 
  *
@@ -10,25 +12,35 @@
  *		-- Germ
  */
 
-#include "sten.h"
-
-#define P P_ACTION
+/*
+#define P BLANK
+#define K BLANK
+#define S BLANK
+#define F F_ACTION
 	#include "dicts.def"
-#undef P
+#undef P */
 
-#define P P_KEYMAP			
-struct dictEntry steno_keymap[] = {
+// Set up Macros for QMK Keys
+#define PRES P_KEYMAP			
+#define KEYS K_KEYMAP
+#define SUBS BLANK
+#define EXEC BLANK
+struct keyEntry keyDict[] = {
 	#include "dicts.def"
-}
-#undef P
+	{}
 
-#define P P_KEYMAP			
-struct dictEntry steno_keymap[] = {
-	#include "dicts.def"
-}
-#undef P
+#undef  P
+#undef  K
+#define P BLANK
+#define K BLANK
 
+// Set up Macros for SEND_STRINGS
+// Set up Macros for function calls
+//
+//struct funcEntry		funDict[] = {}
+//struct stringEntry	strDict[] = {}
 
+// Stub to be removed
 uint16_t processQwerty(bool lookup) {
 	return 0;
 }

@@ -18,6 +18,11 @@ uint16_t 	stickyBits 		= 0;			// Or'd with every incoming press
 int		 		pChordIndex		= 0;			// Keys in previousachord
 uint16_t 	pChordState[32];				// Previous chord sate 
 
+// Key Dicts
+extern struct keyEntry		keyDict[];
+extern struct funcEntry 	funDict[];
+extern struct stringEntry	strDict[];
+
 // Mode state
 enum MODE { STENO = 0, QWERTY, COMMAND };
 enum MODE pMode;
@@ -125,7 +130,6 @@ void matrix_scan_user(void) {
 	// We abuse this for early sending of key
 	// Key repeat only on QWER/SYMB layers
 	if (cMode != QWERTY || !inChord) return;
-	stickyBits = sizeof(test[100]);
 
 	// Check timers
 #ifndef NO_REPEAT

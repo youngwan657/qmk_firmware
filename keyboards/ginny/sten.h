@@ -15,7 +15,6 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_steno.h"
-#include "mousekey.h"
 #include "keymap.h"
 #include <string.h>
 #include <stdint.h>
@@ -26,20 +25,27 @@
 struct funcEntry {
 	uint16_t	chord;
 	void 			(*act)(void);
-} dictEntry_t;
+} funcEntry_t;
 
 struct stringEntry {
 	uint16_t	chord;
-	char			str[];
+	char*			str;
 } stringEntry_t;
+
+struct comboEntry {
+	uint16_t	chord;
+	uint8_t*	keys;
+} keyEntry_t;
 
 struct keyEntry {
 	uint16_t	chord;
-	uint8_t		keys[];
+	uint8_t		key;
 } keyEntry_t;
 
-extern struct 	dictEntry test[];
-extern uint16_t cChord;				// Current Chord
+
+// Chord Temps
+extern uint16_t cChord;			
+extern uint16_t test;			
 
 // Function defs
 void 			processChord(void);
@@ -55,33 +61,20 @@ void 			SET_STICKY(uint16_t);
 void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
 
-// Needed for hashing
-/*#define H1(s,i,x)   (x*65599u+(uint8_t)s[(i)<strlen(s)?strlen(s)-1-(i):strlen(s)])
-#define H4(s,i,x)   H1(s,i,H1(s,i+1,H1(s,i+2,H1(s,i+3,x))))
-#define H16(s,i,x)  H4(s,i,H4(s,i+4,H4(s,i+8,H4(s,i+12,x))))
-#define H64(s,i,x)  H16(s,i,H16(s,i+16,H16(s,i+32,H16(s,i+48,x))))
-#define H256(s,i,x) H64(s,i,H64(s,i+64,H64(s,i+128,H64(s,i+192,x))))
-#define HASH(s)    ((uint32_t)(H256(s,0,0)^(H256(s,0,0)>>16)))*/
-
 #define PASTER(x,y) x ## _ ## y
 #define EVALUATOR(x,y)  PASTER(x,y)
 #define NAME(arg) EVALUATOR(fn, arg)
-
-// X Macros for keymap definition
-#define P_ACTION(chord, act) 	void NAME(chord) (void) { act; }			
-#define P_KEYMAP(chord, act)	{chord, NAME(chord)}
-
-// Keymap helper
-//#define P(chord, act) if (cChord == (chord)) { if (!lookup) {act;} return chord;}*/
 #define REBOOT() wdt_enable(WDTO_250MS); for (;;) ;
 
+// Keymap helpers
 // New Approach, multiple structures
-P_KEYMAP(chord, keycode) 
-M_KEYMAP(chord, keycodes) 
-S_KEYMAP(chord, string)
-F_KEYMAP(chord, name, func)
-F_ACTION(chord, name, func)
+#define P_KEYMAP(chord, keycode)	 			{chord, keycode},
+#define K_KEYMAP(chord, keycodes) 			{chord, keycodes},
+#define S_KEYMAP(chord, string) 				{chord, string}
+#define X_KEYMAP(chord, name, func)			{chord, name},
 
+#define X_ACTION(chord, name, func)			
+#define BLANK	
 
 // Shift to internal representation
 // i.e) S(teno)R(ight)F
@@ -90,7 +83,6 @@ enum ORDER {
 		SLSU= 0, SLSD, SLT, SLK, SLP, SLW, SLH, SLR, SST1, SST2,
 		SRES1, SRES2, SST3, SST4
 };
-
 
 // Ginny Define
 #define GLP STN(SLSU)
