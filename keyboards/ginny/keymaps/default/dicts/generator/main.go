@@ -74,52 +74,74 @@ func main() {
 }
 
 func (e Entry) toKeymap(prefix string) (string) {
-	// Set up for later jumps
+	// storage for parts
+	var command, chord, arg string
 	wordInfo := parseWords(e)
+
+	// Handle prefix
+	if prefix != "" {
+		chord = prefix
+	}
 
 	// Format the chord
 	keys := []string{"AA", "AS", "AE", "AT", "AN", "AI", "AO", "AP"}
-	start := "P(" + prefix
 	for i, v := range e.Input { 
-		start += keys[v-1]
+		chord += keys[v-1]
 
 		if i != len(e.Input)-1 {
-			start +=" | "
+			chord += " | "
 		}
 	}
-	start += ","
-
-	// Format the end
-	var end string
 
 	// Handle specials first
 	if e.Special != "" {
 		v, ok := QMKLookup[e.Special] 
 		if ok {
-			end += v[0]
+			// Determine way to send key
+			if len(v) == 1 {
+				command = "PRES("
+			} else {
+				command = "KEYS("
+			}
+
+			// String together args
+			for ii, vv := range(v) {
+				arg += vv
+				if ii != len(v)-1 {
+					arg += ","
+				}
+			}
+
 			goto Found
 		}
 	}
 
-	// Look for mains
 	if e.Base != "" {
-		v, ok := QMKLookup[e.Base]
+		v, ok := QMKLookup[e.Base] 
 		if ok {
-			for i, vv := range v {
-				end += fmt.Sprintf("SEND(%v)", vv)
-				if i != len(v)-1 {
-					end += ";"
+			// Determine way to send key
+			if len(v) == 1 {
+				command = "PRES("
+			} else {
+				command = "KEYS("
+			}
+
+			// String together args
+			for ii, vv := range(v) {
+				arg += vv
+				if ii != len(v)-1 {
+					arg += ","
 				}
 			}
+
 			goto Found
 		} else {
 			fmt.Printf("couldn't find: '%v':%v", e.Base, []byte(e.Base))
 			panic("Nonempty base")
 		}
-	}  
+	}
 
 	// Parse out word info
-
 	if wordInfo.LRank == 0 && wordInfo.RRank == 0 {
 		goto Blank
 	}
@@ -131,14 +153,17 @@ func (e Entry) toKeymap(prefix string) (string) {
 		} else {
 			word = wordInfo.RWord
 		}
-		end += fmt.Sprintf("SEND_STRING(\"%v \") ", word)
+
+		command = "SUBS("
+		arg = fmt.Sprintf("\"%v\"", word)
 		goto Found
 	}
 
 	//panic(e.String())
 
 	Found:
-	return fmt.Sprintf("%-60v%v);\n", start, end)
+	chord += ","
+	return fmt.Sprintf("%v%-60v%v)\n", command, chord, arg)
 
 	Blank:
 	return ""
@@ -217,9 +242,9 @@ var QMKLookup = map[string][]string {
 "z":[]string{"KC_Z"},
 
 //specials
-"bksp":[]string{"SEND(KC_BSPC)"},
-"enter":[]string{"SEND(KC_ENT)"},
-"numsym":[]string{"SET_STICKY(NUM)"},
+"bksp":[]string{"KC_BSPC"},
+"enter":[]string{"KC_ENT"},
+//"numsym":[]string{"NUM)"}, //TODO: Sticky
 "LETTERS":[]string{"KC_SPC"},
 
 //symbols

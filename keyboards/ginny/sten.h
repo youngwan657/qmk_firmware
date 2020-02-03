@@ -21,6 +21,10 @@
 #include <stdio.h>
 #include "wait.h"
 
+// Maximum values for combos
+#define COMBO_MAX 4
+#define COMBO_END 0x00
+
 // In memory chord datatypes
 struct funcEntry {
 	uint16_t	chord;
@@ -34,8 +38,8 @@ struct stringEntry {
 
 struct comboEntry {
 	uint16_t	chord;
-	uint8_t*	keys;
-} keyEntry_t;
+	uint8_t		keys[COMBO_MAX];
+} comboEntry_t;
 
 struct keyEntry {
 	uint16_t	chord;
@@ -69,12 +73,12 @@ void 			CLICK_MOUSE(uint8_t);
 // Keymap helpers
 // New Approach, multiple structures
 #define P_KEYMAP(chord, keycode)	 			{chord, keycode},
-#define K_KEYMAP(chord, keycodes) 			{chord, keycodes},
-#define S_KEYMAP(chord, string) 				{chord, string}
-#define X_KEYMAP(chord, name, func)			{chord, name},
-
-#define X_ACTION(chord, name, func)			
-#define BLANK	
+#define K_KEYMAP(chord, ...)						{chord, {__VA_ARGS__},
+#define S_KEYMAP(chord, string) 				{chord, string},
+#define X_KEYMAP(chord, name, func)			{chord, &name},
+#define X_ACTION(chord, name, func)			void name(void) {func}
+#define TEST_COLLISION(chord,...)				case chord: break;
+#define BLANK(...)
 
 // Shift to internal representation
 // i.e) S(teno)R(ight)F

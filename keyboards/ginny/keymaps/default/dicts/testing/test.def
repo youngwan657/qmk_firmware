@@ -1,19 +1,20 @@
+/*
+
 //#include QMK_KEYBOARD_H
 //#include "sten.h"
 
 // Thumb Keys
-//PRES(AL,														KC_LSFT);
 PRES(AR,														KC_SPC)
+KEYS(AL,														KC_SPC, KC_SPC)
+SUBS(AR | AL,												"asdf")
+EXEC(AA, 														do_nothing,					return;)
 
-PRES(0,														0)
-
-/*	
 // Layer Switches 
 // To Number
-PRES(			AA | AT | AN | AP,																SET_STICKY(NUM));
-PRES(NUM | AA | AT | AN | AP,																SET_STICKY(0));
-PRES(CMD | AA | AT | AN | AP,																SET_STICKY(NUM));
-PRES(USR | AA | AT | AN | AP,																SET_STICKY(NUM));
+EXEC(			AA | AT | AN | AP,																SET_STICKY(NUM));
+EXEC(NUM | AA | AT | AN | AP,																SET_STICKY(0));
+EXEC(CMD | AA | AT | AN | AP,																SET_STICKY(NUM));
+EXEC(USR | AA | AT | AN | AP,																SET_STICKY(NUM));
 
 // To Command
 PRES(			AS | AE | AI | AO,																SET_STICKY(CMD));
@@ -25,4 +26,4 @@ PRES(USR | AS | AE | AI | AO,																SET_STICKY(CMD));
 PRES(	AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,			SET_STICKY(USR));
 PRES(NUM | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR));
 PRES(CMD | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SET_STICKY(USR));
-PRES(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SET_STICKY(0));*/
+PRES(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SET_STICKY(0));*/ 

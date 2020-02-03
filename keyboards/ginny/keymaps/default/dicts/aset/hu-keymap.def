@@ -1,240 +1,240 @@
-P(AO,                                                       SEND(KC_O));
-P(AP,                                                       SEND(KC_P));
-P(AA,                                                       SEND(KC_A));
-P(AT,                                                       SEND(KC_T));
-P(AN,                                                       SEND(KC_N));
-P(AE,                                                       SEND(KC_E));
-P(AS,                                                       SEND(KC_S));
-P(AI,                                                       SEND(KC_I));
-P(AS | AO,                                                  SEND(KC_DOT));
-P(AA | AP,                                                  SEND(KC_QUOT));
-P(AI | AP,                                                  SEND(KC_LSFT);SEND(KC_1));
-P(AN | AO,                                                  SEND(KC_U));
-P(AA | AN,                                                  SEND(KC_Q));
-P(AT | AN,                                                  SEND(KC_B));
-P(AT | AP,                                                  SEND(KC_BSPC));
-P(AS | AE,                                                  SEND(KC_D));
-P(AA | AS,                                                  SEND(KC_W));
-P(AT | AO,                                                  SEND(KC_G));
-P(AS | AN,                                                  SEND(KC_J));
-P(AO | AP,                                                  SEND(KC_SCLN));
-P(AE | AP,                                                  SEND(KC_QUOT));
-P(AA | AO,                                                  SEND(KC_LSFT);SEND(KC_9));
-P(AI | AO,                                                  SEND(KC_L));
-P(AA | AE,                                                  SEND(KC_X));
-P(AE | AO,                                                  SEND(KC_MINS));
-P(AE | AT,                                                  SEND(KC_R));
-P(AS | AP,                                                  SEND(KC_LSFT);SEND(KC_0));
-P(AA | AT,                                                  SEND(KC_F));
-P(AS | AT,                                                  SEND(KC_C));
-P(AS | AI,                                                  SEND(KC_K));
-P(AA | AI,                                                  SEND(KC_Z));
-P(AE | AI,                                                  SEND(KC_COMM));
-P(AE | AN,                                                  SEND(KC_Y));
-P(AT | AI,                                                  SEND(KC_V));
-P(AN | AP,                                                  SEND(KC_M));
-P(AN | AI,                                                  SEND(KC_H));
-P(AS | AN | AI,                                             SEND_STRING("his ") );
-P(AA | AE | AP,                                             SEND_STRING("a' ") );
-P(AN | AO | AP,                                             SEND_STRING("up ") );
-P(AA | AN | AP,                                             SEND_STRING("ma ") );
-P(AS | AE | AO,                                             SEND_STRING("eso ") );
-P(AA | AT | AI,                                             SEND_STRING("azt ") );
-P(AE | AT | AI,                                             SEND_STRING("vette ") );
-P(AA | AT | AO,                                             SEND_STRING("of ") );
-P(AE | AO | AP,                                             SEND_STRING("pope ") );
-P(AN | AI | AP,                                             SEND_STRING("mi ") );
-P(AA | AT | AN,                                             SEND_STRING("abban ") );
-P(AS | AT | AI,                                             SEND_STRING("kit ") );
-P(AA | AS | AN,                                             SEND_STRING("jaj ") );
-P(AA | AN | AO,                                             SEND_STRING("onnan ") );
-P(AN | AI | AO,                                             SEND_STRING("hol ") );
-P(AE | AN | AO,                                             SEND_STRING("one ") );
-P(AA | AE | AO,                                             SEND_STRING("-a ") );
-P(AS | AN | AO,                                             SEND_STRING("jo ") );
-P(AA | AI | AP,                                             SEND_STRING("papi ") );
-P(AT | AN | AO,                                             SEND_STRING("not ") );
-P(AA | AS | AP,                                             SEND_STRING("pas ") );
-P(AA | AI | AO,                                             SEND_STRING("all ") );
-P(AS | AT | AO,                                             SEND_STRING("sot ") );
-P(AT | AN | AP,                                             SEND_STRING("bp ") );
-P(AA | AE | AT,                                             SEND_STRING("arra ") );
-P(AE | AN | AP,                                             SEND_STRING("nem ") );
-P(AA | AS | AT,                                             SEND_STRING("fact ") );
-P(AS | AE | AP,                                             SEND_STRING("'s ") );
-P(AA | AE | AI,                                             SEND_STRING("ez ") );
-P(AA | AT | AP,                                             SEND_STRING("apat ") );
-P(AS | AT | AN,                                             SEND_STRING("stb ") );
-P(AE | AT | AO,                                             SEND_STRING("oreg ") );
-P(AA | AE | AN,                                             SEND_STRING("any ") );
-P(AS | AE | AT,                                             SEND_STRING("este ") );
-P(AE | AN | AI,                                             SEND_STRING("he ") );
-P(AS | AE | AN,                                             SEND_STRING("ej ") );
-P(AA | AS | AI,                                             SEND_STRING("aki ") );
-P(AE | AI | AO,                                             SEND_STRING("el ") );
-P(AS | AI | AO,                                             SEND_STRING("sok ") );
-P(AE | AT | AP,                                             SEND_STRING("peter ") );
-P(AE | AT | AN,                                             SEND_STRING("be ") );
-P(AS | AE | AI,                                             SEND_STRING("ide ") );
-P(AT | AN | AI,                                             SEND_STRING("th ") );
-P(AA | AN | AI,                                             SEND_STRING("ha ") );
-P(AI | AO | AP,                                             SEND_STRING("pl ") );
-P(AS | AI | AP,                                             SEND_STRING("sip ") );
-P(AA | AS | AE,                                             SEND_STRING("we ") );
-P(AT | AI | AO,                                             SEND_STRING("volt ") );
-P(AS | AN | AO | AP,                                        SEND_STRING("mos ") );
-P(AE | AT | AO | AP,                                        SEND_STRING("gep ") );
-P(AA | AN | AI | AO,                                        SEND_STRING("hozza ") );
-P(AA | AT | AN | AI,                                        SEND_STRING("van ") );
-P(AS | AN | AI | AP,                                        SEND_STRING("mik ") );
-P(AA | AE | AN | AI,                                        SEND_STRING("ezen ") );
-P(AA | AT | AI | AP,                                        SEND_STRING("pava ") );
-P(AS | AT | AN | AO,                                        SEND_STRING("jott ") );
-P(AS | AE | AN | AP,                                        SEND_STRING("sem ") );
-P(AA | AT | AO | AP,                                        SEND_STRING("papot ") );
-P(AS | AT | AO | AP,                                        SEND_STRING("csopp ") );
-P(AA | AT | AI | AO,                                        SEND_STRING("alatt ") );
-P(AA | AS | AE | AI,                                        SEND_STRING("ezek ") );
-P(AS | AE | AT | AP,                                        SEND_STRING("pest ") );
-P(AA | AE | AT | AN,                                        SEND_STRING("bar ") );
-P(AE | AI | AO | AP,                                        SEND_STRING("people ") );
-P(AA | AT | AN | AO,                                        SEND_STRING("utan ") );
-P(AA | AE | AT | AI,                                        SEND_STRING("ezt ") );
-P(AT | AN | AI | AP,                                        SEND_STRING("mint ") );
-P(AA | AE | AT | AP,                                        SEND_STRING("par ") );
-P(AS | AT | AN | AP,                                        SEND_STRING("cm ") );
-P(AA | AE | AT | AO,                                        SEND_STRING("for ") );
-P(AS | AE | AI | AP,                                        SEND_STRING("kepes ") );
-P(AE | AT | AI | AO,                                        SEND_STRING("lett ") );
-P(AE | AN | AI | AO,                                        SEND_STRING("oly ") );
-P(AA | AS | AE | AT,                                        SEND_STRING("were ") );
-P(AA | AN | AI | AP,                                        SEND_STRING("ami ") );
-P(AE | AN | AI | AP,                                        SEND_STRING("menni ") );
-P(AA | AE | AN | AP,                                        SEND_STRING("anyam ") );
-P(AA | AS | AN | AP,                                        SEND_STRING("mas ") );
-P(AT | AI | AO | AP,                                        SEND_STRING("lopott ") );
-P(AA | AS | AT | AN,                                        SEND_STRING("sajat ") );
-P(AS | AE | AT | AN,                                        SEND_STRING("esetben ") );
-P(AS | AE | AN | AO,                                        SEND_STRING("du ") );
-P(AA | AS | AE | AP,                                        SEND_STRING("apad ") );
-P(AS | AT | AN | AI,                                        SEND_STRING("nincs ") );
-P(AA | AS | AT | AI,                                        SEND_STRING("csak ") );
-P(AA | AI | AO | AP,                                        SEND_STRING("pal ") );
-P(AE | AT | AN | AP,                                        SEND_STRING("mert ") );
-P(AS | AE | AN | AI,                                        SEND_STRING("neki ") );
-P(AT | AN | AO | AP,                                        SEND_STRING("mogott ") );
-P(AS | AE | AI | AO,                                        SEND_STRING("kell ") );
-P(AA | AS | AN | AI,                                        SEND_STRING("annak ") );
-P(AA | AS | AE | AN,                                        SEND_STRING("and ") );
-P(AS | AN | AI | AO,                                        SEND_STRING("jol ") );
-P(AA | AS | AN | AO,                                        SEND_STRING("janos ") );
-P(AS | AE | AT | AO,                                        SEND_STRING("eros ") );
-P(AS | AE | AT | AI,                                        SEND_STRING("ket ") );
-P(AA | AS | AI | AO,                                        SEND_STRING("azok ") );
-P(AA | AS | AT | AP,                                        SEND_STRING("csapat ") );
-P(AA | AS | AE | AO,                                        SEND_STRING("oda ") );
-P(AA | AE | AN | AO,                                        SEND_STRING("que ") );
-P(AA | AE | AI | AO,                                        SEND_STRING("ezzel ") );
-P(AT | AN | AI | AO,                                        SEND_STRING("tobbi ") );
-P(AS | AT | AI | AO,                                        SEND_STRING("kolto ") );
-P(AA | AS | AI | AP,                                        SEND_STRING("kap ") );
-P(AA | AN | AO | AP,                                        SEND_STRING("napon ") );
-P(AE | AT | AN | AI,                                        SEND_STRING("the ") );
-P(AS | AI | AO | AP,                                        SEND_STRING("pokol ") );
-P(AE | AN | AO | AP,                                        SEND_STRING("unnep ") );
-P(AE | AT | AI | AP,                                        SEND_STRING("epitett ") );
-P(AE | AT | AN | AO,                                        SEND_STRING("egy ") );
-P(AA | AS | AT | AO,                                        SEND_STRING("two ") );
-P(AA | AT | AN | AP,                                        SET_STICKY(NUM));
-P(AN | AI | AO | AP,                                        SEND(KC_ENT));
-P(AA | AS | AN | AI | AO,                                   SEND_STRING("soha ") );
-P(AA | AE | AT | AI | AP,                                   SEND_STRING("ipari ") );
-P(AS | AN | AI | AO | AP,                                   SEND_STRING("miklos ") );
-P(AA | AS | AE | AT | AO,                                   SEND_STRING("adott ") );
-P(AE | AT | AN | AI | AO,                                   SEND_STRING("hogy ") );
-P(AE | AT | AN | AI | AP,                                   SEND_STRING("them ") );
-P(AA | AS | AE | AI | AP,                                   SEND_STRING("szep ") );
-P(AA | AS | AT | AN | AI,                                   SEND_STRING("with ") );
-P(AA | AS | AT | AI | AP,                                   SEND_STRING("kapta ") );
-P(AS | AE | AN | AI | AO,                                   SEND_STRING("nelkul ") );
-P(AS | AE | AT | AO | AP,                                   SEND_STRING("troops ") );
-P(AS | AE | AN | AO | AP,                                   SEND_STRING("modon ") );
-P(AS | AT | AN | AO | AP,                                   SEND_STRING("most ") );
-P(AA | AE | AT | AN | AO,                                   SEND_STRING("nagy ") );
-P(AA | AE | AT | AN | AP,                                   SEND_STRING("mar ") );
-P(AS | AT | AN | AI | AP,                                   SEND_STRING("cim ") );
-P(AA | AE | AN | AO | AP,                                   SEND_STRING("nyoman ") );
-P(AA | AS | AT | AN | AO,                                   SEND_STRING("jobban ") );
-P(AS | AE | AN | AI | AP,                                   SEND_STRING("minden ") );
-P(AA | AE | AT | AO | AP,                                   SEND_STRING("apro ") );
-P(AA | AS | AN | AI | AP,                                   SEND_STRING("masik ") );
-P(AA | AS | AE | AT | AI,                                   SEND_STRING("akar ") );
-P(AA | AT | AN | AI | AO,                                   SEND_STRING("volna ") );
-P(AE | AT | AN | AO | AP,                                   SEND_STRING("meg ") );
-P(AA | AE | AT | AI | AO,                                   SEND_STRING("fel ") );
-P(AA | AS | AE | AN | AP,                                   SEND_STRING("majd ") );
-P(AA | AS | AT | AI | AO,                                   SEND_STRING("voltak ") );
-P(AA | AT | AI | AO | AP,                                   SEND_STRING("palota ") );
-P(AA | AS | AE | AN | AO,                                   SEND_STRING("adjon ") );
-P(AA | AS | AE | AN | AI,                                   SEND_STRING("had ") );
-P(AA | AS | AE | AT | AP,                                   SEND_STRING("arpad ") );
-P(AA | AS | AE | AT | AN,                                   SEND_STRING("rajta ") );
-P(AA | AT | AN | AI | AP,                                   SEND_STRING("mintha ") );
-P(AE | AT | AI | AO | AP,                                   SEND_STRING("lepett ") );
-P(AT | AN | AI | AO | AP,                                   SEND_STRING("mig ") );
-P(AA | AN | AI | AO | AP,                                   SEND_STRING("hozzam ") );
-P(AA | AE | AN | AI | AP,                                   SEND_STRING("hanem ") );
-P(AS | AT | AI | AO | AP,                                   SEND_STRING("topic ") );
-P(AA | AT | AN | AO | AP,                                   SEND_STRING("maga ") );
-P(AS | AE | AT | AN | AI,                                   SEND_STRING("isten ") );
-P(AS | AE | AT | AI | AP,                                   SEND_STRING("kepet ") );
-P(AA | AS | AE | AI | AO,                                   SEND_STRING("lesz ") );
-P(AS | AT | AN | AI | AO,                                   SEND_STRING("king ") );
-P(AA | AS | AI | AO | AP,                                   SEND_STRING("papok ") );
-P(AS | AE | AI | AO | AP,                                   SEND_STRING("peoples ") );
-P(AA | AE | AN | AI | AO,                                   SEND_STRING("olyan ") );
-P(AS | AE | AT | AI | AO,                                   SEND_STRING("kellett ") );
-P(AS | AE | AT | AN | AO,                                   SEND_STRING("tudott ") );
-P(AE | AN | AI | AO | AP,                                   SEND_STRING("mely ") );
-P(AA | AS | AT | AO | AP,                                   SEND_STRING("csapott ") );
-P(AA | AE | AT | AN | AI,                                   SEND_STRING("tehat ") );
-P(AS | AE | AT | AN | AP,                                   SEND_STRING("mester ") );
-P(AA | AS | AN | AO | AP,                                   SEND_STRING("pompas ") );
-P(AA | AS | AT | AN | AP,                                   SEND_STRING("mast ") );
-P(AA | AS | AE | AT | AN | AI,                              SEND_STRING("szerint ") );
-P(AA | AS | AE | AN | AI | AP,                              SEND_STRING("szepen ") );
-P(AS | AE | AT | AI | AO | AP,                              SEND_STRING("pedig ") );
-P(AA | AS | AE | AT | AO | AP,                              SEND_STRING("power ") );
-P(AA | AS | AE | AT | AI | AP,                              SEND_STRING("persze ") );
-P(AA | AS | AE | AT | AI | AO,                              SEND_STRING("akkor ") );
-P(AS | AE | AT | AN | AI | AO,                              SEND_STRING("egyik ") );
-P(AA | AE | AT | AN | AI | AO,                              SEND_STRING("vagy ") );
-P(AA | AE | AT | AN | AI | AP,                              SEND_STRING("nemzeti ") );
-P(AA | AS | AT | AI | AO | AP,                              SEND_STRING("kapott ") );
-P(AA | AS | AE | AT | AN | AP,                              SEND_STRING("matyas ") );
-P(AS | AT | AN | AI | AO | AP,                              SEND_STRING("cimu ") );
-P(AA | AE | AT | AN | AO | AP,                              SEND_STRING("magyar ") );
-P(AA | AS | AT | AN | AO | AP,                              SEND_STRING("csupan ") );
-P(AS | AE | AN | AI | AO | AP,                              SEND_STRING("midon ") );
-P(AA | AS | AE | AN | AI | AO,                              SEND_STRING("asszony ") );
-P(AA | AS | AN | AI | AO | AP,                              SEND_STRING("munka ") );
-P(AA | AS | AT | AN | AI | AO,                              SEND_STRING("ifju ") );
-P(AA | AE | AN | AI | AO | AP,                              SEND_STRING("amely ") );
-P(AA | AS | AE | AT | AN | AO,                              SEND_STRING("tudja ") );
-P(AS | AE | AT | AN | AO | AP,                              SEND_STRING("tudom ") );
-P(AA | AS | AE | AN | AO | AP,                              SEND_STRING("mondja ") );
-P(AA | AT | AN | AI | AO | AP,                              SEND_STRING("valami ") );
-P(AA | AS | AE | AI | AO | AP,                              SEND_STRING("kozepso ") );
-P(AS | AE | AT | AN | AI | AP,                              SEND_STRING("mindent ") );
-P(AA | AS | AT | AN | AI | AP,                              SEND_STRING("masikat ") );
-P(AA | AE | AT | AI | AO | AP,                              SEND_STRING("polgari ") );
-P(AE | AT | AN | AI | AO | AP,                              SEND_STRING("mellett ") );
-P(AA | AE | AT | AN | AI | AO | AP,                         SEND_STRING("harom ") );
-P(AA | AS | AE | AT | AN | AI | AP,                         SEND_STRING("mindjart ") );
-P(AA | AS | AE | AT | AN | AO | AP,                         SEND_STRING("mondta ") );
-P(AA | AS | AE | AT | AI | AO | AP,                         SEND_STRING("co-operative ") );
-P(AS | AE | AT | AN | AI | AO | AP,                         SEND_STRING("mikor ") );
-P(AA | AS | AE | AN | AI | AO | AP,                         SEND_STRING("masodik ") );
-P(AA | AS | AE | AT | AN | AI | AO,                         SEND_STRING("kiraly ") );
-P(AA | AS | AT | AN | AI | AO | AP,                         SEND_STRING("maganak ") );
-P(AA | AS | AE | AT | AN | AI | AO | AP,                    SEND_STRING("amikor ") );
+PRES(AE,                                                         KC_E)
+PRES(AS,                                                         KC_S)
+PRES(AI,                                                         KC_I)
+PRES(AN,                                                         KC_N)
+PRES(AT,                                                         KC_T)
+PRES(AP,                                                         KC_P)
+PRES(AO,                                                         KC_O)
+PRES(AA,                                                         KC_A)
+PRES(AS | AT,                                                    KC_C)
+PRES(AA | AS,                                                    KC_W)
+PRES(AS | AO,                                                    KC_DOT)
+PRES(AS | AI,                                                    KC_K)
+PRES(AT | AP,                                                    KC_BSPC)
+PRES(AE | AP,                                                    KC_QUOT)
+PRES(AA | AI,                                                    KC_Z)
+PRES(AE | AO,                                                    KC_MINS)
+PRES(AS | AN,                                                    KC_J)
+PRES(AA | AN,                                                    KC_Q)
+KEYS(AS | AP,                                                    KC_LSFT,KC_0)
+PRES(AE | AI,                                                    KC_COMM)
+PRES(AA | AP,                                                    KC_QUOT)
+KEYS(AA | AO,                                                    KC_LSFT,KC_9)
+PRES(AO | AP,                                                    KC_SCLN)
+PRES(AN | AP,                                                    KC_M)
+PRES(AE | AN,                                                    KC_Y)
+PRES(AT | AO,                                                    KC_G)
+PRES(AA | AT,                                                    KC_F)
+KEYS(AI | AP,                                                    KC_LSFT,KC_1)
+PRES(AE | AT,                                                    KC_R)
+PRES(AI | AO,                                                    KC_L)
+PRES(AT | AN,                                                    KC_B)
+PRES(AN | AO,                                                    KC_U)
+PRES(AT | AI,                                                    KC_V)
+PRES(AN | AI,                                                    KC_H)
+PRES(AS | AE,                                                    KC_D)
+PRES(AA | AE,                                                    KC_X)
+SUBS(AA | AN | AI,                                               "ha")
+SUBS(AA | AE | AT,                                               "arra")
+SUBS(AS | AT | AI,                                               "kit")
+SUBS(AS | AN | AI,                                               "his")
+SUBS(AA | AS | AE,                                               "we")
+SUBS(AE | AT | AP,                                               "peter")
+SUBS(AE | AT | AI,                                               "vette")
+SUBS(AA | AS | AI,                                               "aki")
+SUBS(AE | AN | AI,                                               "he")
+SUBS(AE | AO | AP,                                               "pope")
+SUBS(AA | AT | AN,                                               "abban")
+SUBS(AS | AN | AO,                                               "jo")
+SUBS(AE | AT | AO,                                               "oreg")
+SUBS(AN | AO | AP,                                               "up")
+SUBS(AA | AN | AO,                                               "onnan")
+SUBS(AT | AN | AP,                                               "bp")
+SUBS(AA | AT | AP,                                               "apat")
+SUBS(AS | AE | AO,                                               "eso")
+SUBS(AS | AI | AO,                                               "sok")
+SUBS(AA | AE | AP,                                               "a'")
+SUBS(AA | AI | AO,                                               "all")
+SUBS(AE | AI | AO,                                               "el")
+SUBS(AS | AE | AP,                                               "'s")
+SUBS(AA | AE | AI,                                               "ez")
+SUBS(AS | AT | AN,                                               "stb")
+SUBS(AT | AN | AI,                                               "th")
+SUBS(AN | AI | AO,                                               "hol")
+SUBS(AA | AS | AT,                                               "fact")
+SUBS(AI | AO | AP,                                               "pl")
+SUBS(AA | AN | AP,                                               "ma")
+SUBS(AS | AI | AP,                                               "sip")
+SUBS(AA | AT | AO,                                               "of")
+SUBS(AE | AN | AP,                                               "nem")
+SUBS(AA | AE | AO,                                               "-a")
+SUBS(AA | AS | AP,                                               "pas")
+SUBS(AA | AS | AN,                                               "jaj")
+SUBS(AA | AE | AN,                                               "any")
+SUBS(AT | AN | AO,                                               "not")
+SUBS(AS | AE | AI,                                               "ide")
+SUBS(AS | AE | AN,                                               "ej")
+SUBS(AN | AI | AP,                                               "mi")
+SUBS(AA | AI | AP,                                               "papi")
+SUBS(AA | AT | AI,                                               "azt")
+SUBS(AE | AT | AN,                                               "be")
+SUBS(AS | AT | AO,                                               "sot")
+SUBS(AT | AI | AO,                                               "volt")
+SUBS(AS | AE | AT,                                               "este")
+SUBS(AE | AN | AO,                                               "one")
+PRES(AN | AI | AO | AP,                                          KC_ENT)
+SUBS(AE | AT | AN | AP,                                          "mert")
+SUBS(AS | AE | AI | AO,                                          "kell")
+SUBS(AT | AN | AI | AO,                                          "tobbi")
+SUBS(AA | AT | AO | AP,                                          "papot")
+SUBS(AS | AE | AT | AP,                                          "pest")
+SUBS(AA | AS | AT | AI,                                          "csak")
+SUBS(AA | AS | AE | AP,                                          "apad")
+SUBS(AE | AN | AI | AP,                                          "menni")
+SUBS(AA | AS | AI | AO,                                          "azok")
+SUBS(AE | AT | AI | AP,                                          "epitett")
+SUBS(AS | AE | AN | AO,                                          "du")
+SUBS(AE | AT | AN | AI,                                          "the")
+SUBS(AS | AN | AI | AP,                                          "mik")
+SUBS(AA | AN | AO | AP,                                          "napon")
+SUBS(AS | AI | AO | AP,                                          "pokol")
+SUBS(AA | AS | AN | AP,                                          "mas")
+SUBS(AS | AE | AT | AN,                                          "esetben")
+SUBS(AA | AN | AI | AP,                                          "ami")
+SUBS(AS | AT | AN | AP,                                          "cm")
+SUBS(AA | AE | AN | AI,                                          "ezen")
+SUBS(AE | AT | AI | AO,                                          "lett")
+SUBS(AA | AI | AO | AP,                                          "pal")
+SUBS(AT | AN | AI | AP,                                          "mint")
+SUBS(AE | AI | AO | AP,                                          "people")
+SUBS(AS | AE | AT | AO,                                          "eros")
+SUBS(AE | AT | AN | AO,                                          "egy")
+SUBS(AA | AS | AE | AN,                                          "and")
+SUBS(AA | AE | AN | AP,                                          "anyam")
+SUBS(AA | AT | AN | AP,                                          "babam")
+SUBS(AA | AE | AN | AO,                                          "que")
+SUBS(AA | AT | AI | AP,                                          "pava")
+SUBS(AA | AT | AN | AI,                                          "van")
+SUBS(AA | AE | AT | AP,                                          "par")
+SUBS(AA | AS | AE | AI,                                          "ezek")
+SUBS(AA | AT | AI | AO,                                          "alatt")
+SUBS(AA | AE | AI | AO,                                          "ezzel")
+SUBS(AS | AE | AI | AP,                                          "kepes")
+SUBS(AS | AE | AN | AP,                                          "sem")
+SUBS(AA | AS | AT | AN,                                          "sajat")
+SUBS(AS | AN | AO | AP,                                          "mos")
+SUBS(AA | AE | AT | AN,                                          "bar")
+SUBS(AT | AN | AO | AP,                                          "mogott")
+SUBS(AA | AE | AT | AI,                                          "ezt")
+SUBS(AS | AT | AI | AO,                                          "kolto")
+SUBS(AS | AE | AN | AI,                                          "neki")
+SUBS(AA | AS | AT | AP,                                          "csapat")
+SUBS(AA | AS | AN | AO,                                          "janos")
+SUBS(AS | AT | AN | AI,                                          "nincs")
+SUBS(AA | AE | AT | AO,                                          "for")
+SUBS(AA | AS | AT | AO,                                          "two")
+SUBS(AA | AT | AN | AO,                                          "utan")
+SUBS(AS | AT | AO | AP,                                          "csopp")
+SUBS(AA | AS | AE | AO,                                          "oda")
+SUBS(AT | AI | AO | AP,                                          "lopott")
+SUBS(AS | AT | AN | AO,                                          "jott")
+SUBS(AS | AE | AT | AI,                                          "ket")
+SUBS(AA | AS | AI | AP,                                          "kap")
+SUBS(AE | AN | AI | AO,                                          "oly")
+SUBS(AA | AS | AN | AI,                                          "annak")
+SUBS(AA | AN | AI | AO,                                          "hozza")
+SUBS(AE | AN | AO | AP,                                          "unnep")
+SUBS(AE | AT | AO | AP,                                          "gep")
+SUBS(AS | AN | AI | AO,                                          "jol")
+SUBS(AA | AS | AE | AT,                                          "were")
+SUBS(AA | AS | AE | AT | AP,                                     "arpad")
+SUBS(AA | AS | AE | AI | AP,                                     "szep")
+SUBS(AS | AT | AN | AI | AO,                                     "king")
+SUBS(AA | AS | AT | AN | AI,                                     "with")
+SUBS(AS | AE | AN | AI | AO,                                     "nelkul")
+SUBS(AS | AE | AT | AN | AI,                                     "isten")
+SUBS(AA | AE | AT | AI | AO,                                     "fel")
+SUBS(AT | AN | AI | AO | AP,                                     "mig")
+SUBS(AS | AT | AN | AO | AP,                                     "most")
+SUBS(AA | AS | AE | AN | AO,                                     "adjon")
+SUBS(AA | AE | AT | AN | AO,                                     "nagy")
+SUBS(AA | AS | AI | AO | AP,                                     "papok")
+SUBS(AA | AE | AN | AO | AP,                                     "nyoman")
+SUBS(AA | AS | AT | AI | AP,                                     "kapta")
+SUBS(AA | AS | AN | AO | AP,                                     "pompas")
+SUBS(AA | AE | AN | AI | AO,                                     "olyan")
+SUBS(AE | AT | AN | AI | AP,                                     "them")
+SUBS(AS | AE | AN | AI | AP,                                     "minden")
+SUBS(AA | AS | AT | AO | AP,                                     "csapott")
+SUBS(AA | AE | AT | AI | AP,                                     "ipari")
+SUBS(AA | AS | AE | AT | AO,                                     "adott")
+SUBS(AA | AN | AI | AO | AP,                                     "hozzam")
+SUBS(AS | AT | AI | AO | AP,                                     "topic")
+SUBS(AS | AE | AT | AI | AO,                                     "kellett")
+SUBS(AA | AS | AN | AI | AO,                                     "soha")
+SUBS(AE | AN | AI | AO | AP,                                     "mely")
+SUBS(AA | AE | AN | AI | AP,                                     "hanem")
+SUBS(AA | AT | AN | AI | AP,                                     "mintha")
+SUBS(AA | AS | AT | AN | AO,                                     "jobban")
+SUBS(AA | AS | AT | AN | AP,                                     "mast")
+SUBS(AS | AE | AT | AN | AP,                                     "mester")
+SUBS(AA | AE | AT | AO | AP,                                     "apro")
+SUBS(AA | AS | AE | AN | AI,                                     "had")
+SUBS(AA | AT | AN | AI | AO,                                     "volna")
+SUBS(AA | AS | AN | AI | AP,                                     "masik")
+SUBS(AE | AT | AI | AO | AP,                                     "lepett")
+SUBS(AA | AE | AT | AN | AI,                                     "tehat")
+SUBS(AA | AS | AE | AT | AI,                                     "akar")
+SUBS(AS | AE | AT | AI | AP,                                     "kepet")
+SUBS(AA | AS | AE | AN | AP,                                     "majd")
+SUBS(AS | AE | AT | AN | AO,                                     "tudott")
+SUBS(AA | AE | AT | AN | AP,                                     "mar")
+SUBS(AA | AT | AN | AO | AP,                                     "maga")
+SUBS(AA | AS | AE | AI | AO,                                     "lesz")
+SUBS(AS | AE | AT | AO | AP,                                     "troops")
+SUBS(AS | AE | AI | AO | AP,                                     "peoples")
+SUBS(AS | AE | AN | AO | AP,                                     "modon")
+SUBS(AA | AS | AT | AI | AO,                                     "voltak")
+SUBS(AA | AT | AI | AO | AP,                                     "palota")
+SUBS(AE | AT | AN | AI | AO,                                     "hogy")
+SUBS(AS | AT | AN | AI | AP,                                     "cim")
+SUBS(AE | AT | AN | AO | AP,                                     "meg")
+SUBS(AS | AN | AI | AO | AP,                                     "miklos")
+SUBS(AA | AS | AE | AT | AN,                                     "rajta")
+SUBS(AS | AE | AT | AN | AI | AP,                                "mindent")
+SUBS(AA | AE | AT | AI | AO | AP,                                "polgari")
+SUBS(AS | AE | AT | AN | AI | AO,                                "egyik")
+SUBS(AA | AS | AT | AN | AI | AP,                                "masikat")
+SUBS(AS | AT | AN | AI | AO | AP,                                "cimu")
+SUBS(AA | AS | AE | AT | AO | AP,                                "power")
+SUBS(AA | AS | AE | AI | AO | AP,                                "kozepso")
+SUBS(AA | AS | AT | AI | AO | AP,                                "kapott")
+SUBS(AA | AE | AN | AI | AO | AP,                                "amely")
+SUBS(AA | AS | AT | AN | AI | AO,                                "ifju")
+SUBS(AA | AE | AT | AN | AO | AP,                                "magyar")
+SUBS(AA | AE | AT | AN | AI | AO,                                "vagy")
+SUBS(AA | AS | AN | AI | AO | AP,                                "munka")
+SUBS(AA | AS | AE | AN | AI | AP,                                "szepen")
+SUBS(AA | AS | AE | AT | AI | AP,                                "persze")
+SUBS(AS | AE | AN | AI | AO | AP,                                "midon")
+SUBS(AS | AE | AT | AI | AO | AP,                                "pedig")
+SUBS(AS | AE | AT | AN | AO | AP,                                "tudom")
+SUBS(AE | AT | AN | AI | AO | AP,                                "mellett")
+SUBS(AA | AS | AE | AN | AI | AO,                                "asszony")
+SUBS(AA | AS | AE | AN | AO | AP,                                "mondja")
+SUBS(AA | AS | AT | AN | AO | AP,                                "csupan")
+SUBS(AA | AS | AE | AT | AI | AO,                                "akkor")
+SUBS(AA | AS | AE | AT | AN | AI,                                "szerint")
+SUBS(AA | AT | AN | AI | AO | AP,                                "valami")
+SUBS(AA | AS | AE | AT | AN | AP,                                "matyas")
+SUBS(AA | AE | AT | AN | AI | AP,                                "nemzeti")
+SUBS(AA | AS | AE | AT | AN | AO,                                "tudja")
+SUBS(AA | AS | AE | AN | AI | AO | AP,                           "masodik")
+SUBS(AA | AS | AE | AT | AN | AI | AP,                           "mindjart")
+SUBS(AA | AS | AT | AN | AI | AO | AP,                           "maganak")
+SUBS(AS | AE | AT | AN | AI | AO | AP,                           "mikor")
+SUBS(AA | AS | AE | AT | AI | AO | AP,                           "co-operative")
+SUBS(AA | AE | AT | AN | AI | AO | AP,                           "harom")
+SUBS(AA | AS | AE | AT | AN | AI | AO,                           "kiraly")
+SUBS(AA | AS | AE | AT | AN | AO | AP,                           "mondta")
+SUBS(AA | AS | AE | AT | AN | AI | AO | AP,                      "amikor")

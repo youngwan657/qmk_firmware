@@ -1,243 +1,243 @@
-P(AS,                                                       SEND(KC_S));
-P(AO,                                                       SEND(KC_O));
-P(AE,                                                       SEND(KC_E));
-P(AN,                                                       SEND(KC_N));
-P(AI,                                                       SEND(KC_I));
-P(AA,                                                       SEND(KC_A));
-P(AP,                                                       SEND(KC_P));
-P(AT,                                                       SEND(KC_T));
-P(AA | AN,                                                  SEND(KC_Q));
-P(AA | AI,                                                  SEND(KC_Z));
-P(AT | AI,                                                  SEND(KC_V));
-P(AA | AO,                                                  SEND(KC_LSFT);SEND(KC_9));
-P(AE | AT,                                                  SEND(KC_R));
-P(AE | AN,                                                  SEND(KC_Y));
-P(AN | AP,                                                  SEND(KC_M));
-P(AA | AT,                                                  SEND(KC_F));
-P(AE | AP,                                                  SEND(KC_QUOT));
-P(AA | AS,                                                  SEND(KC_W));
-P(AE | AO,                                                  SEND(KC_MINS));
-P(AI | AO,                                                  SEND(KC_L));
-P(AS | AI,                                                  SEND(KC_K));
-P(AA | AP,                                                  SEND(KC_QUOT));
-P(AO | AP,                                                  SEND(KC_SCLN));
-P(AT | AO,                                                  SEND(KC_G));
-P(AS | AO,                                                  SEND(KC_DOT));
-P(AA | AE,                                                  SEND(KC_X));
-P(AS | AE,                                                  SEND(KC_D));
-P(AN | AI,                                                  SEND(KC_H));
-P(AN | AO,                                                  SEND(KC_U));
-P(AT | AP,                                                  SEND(KC_BSPC));
-P(AI | AP,                                                  SEND(KC_LSFT);SEND(KC_1));
-P(AE | AI,                                                  SEND(KC_COMM));
-P(AS | AT,                                                  SEND(KC_C));
-P(AS | AN,                                                  SEND(KC_J));
-P(AS | AP,                                                  SEND(KC_LSFT);SEND(KC_0));
-P(AT | AN,                                                  SEND(KC_B));
-P(AT | AI | AP,                                             SEND_STRING("tip ") );
-P(AS | AE | AI,                                             SEND_STRING("desi ") );
-P(AE | AT | AI,                                             SEND_STRING("trei ") );
-P(AA | AE | AN,                                             SEND_STRING("anne ") );
-P(AE | AT | AO,                                             SEND_STRING("rog ") );
-P(AA | AN | AP,                                             SEND_STRING("am ") );
-P(AA | AE | AP,                                             SEND_STRING("ape ") );
-P(AN | AO | AP,                                             SEND_STRING("om ") );
-P(AA | AT | AP,                                             SEND_STRING("fapt ") );
-P(AA | AS | AE,                                             SEND_STRING("da ") );
-P(AS | AN | AO,                                             SEND_STRING("jos ") );
-P(AN | AI | AP,                                             SEND_STRING("imi ") );
-P(AA | AN | AO,                                             SEND_STRING("au ") );
-P(AA | AE | AO,                                             SEND_STRING("-a ") );
-P(AA | AN | AI,                                             SEND_STRING("ani ") );
-P(AI | AO | AP,                                             SEND_STRING("lipi ") );
-P(AE | AN | AO,                                             SEND_STRING("eu ") );
-P(AS | AE | AT,                                             SEND_STRING("ce ") );
-P(AA | AS | AI,                                             SEND_STRING("zis ") );
-P(AT | AN | AI,                                             SEND_STRING("vin ") );
-P(AT | AN | AO,                                             SEND_STRING("tu ") );
-P(AT | AO | AP,                                             SEND_STRING("pot ") );
-P(AE | AO | AP,                                             SEND_STRING("pe-o ") );
-P(AA | AT | AN,                                             SEND_STRING("ba ") );
-P(AA | AT | AO,                                             SEND_STRING("toata ") );
-P(AA | AS | AT,                                             SEND_STRING("ca ") );
-P(AE | AN | AI,                                             SEND_STRING("hei ") );
-P(AA | AT | AI,                                             SEND_STRING("fi ") );
-P(AE | AI | AO,                                             SEND_STRING("el ") );
-P(AS | AI | AO,                                             SEND_STRING("sol ") );
-P(AA | AS | AP,                                             SEND_STRING("pas ") );
-P(AT | AI | AO,                                             SEND_STRING("voi ") );
-P(AS | AE | AP,                                             SEND_STRING("spe ") );
-P(AN | AI | AO,                                             SEND_STRING("lui ") );
-P(AA | AS | AN,                                             SEND_STRING("sansa ") );
-P(AE | AN | AP,                                             SEND_STRING("pen ") );
-P(AS | AT | AI,                                             SEND_STRING("ci ") );
-P(AA | AI | AP,                                             SEND_STRING("pai ") );
-P(AS | AN | AI,                                             SEND_STRING("jh ") );
-P(AE | AT | AP,                                             SEND_STRING("perete ") );
-P(AA | AE | AT,                                             SEND_STRING("era ") );
-P(AA | AE | AI,                                             SEND_STRING("izea ") );
-P(AE | AT | AN,                                             SEND_STRING("brett ") );
-P(AS | AE | AN,                                             SEND_STRING("sens ") );
-P(AS | AT | AO,                                             SEND_STRING("scos ") );
-P(AS | AE | AO,                                             SEND_STRING("s-o ") );
-P(AA | AI | AO,                                             SEND_STRING("la ") );
-P(AA | AS | AN | AP,                                        SEND_STRING("masa ") );
-P(AS | AE | AT | AN,                                        SEND_STRING("recent ") );
-P(AE | AN | AI | AO,                                        SEND_STRING("nu-i ") );
-P(AA | AS | AT | AP,                                        SEND_STRING("cap ") );
-P(AA | AE | AT | AO,                                        SEND_STRING("toate ") );
-P(AA | AT | AN | AO,                                        SEND_STRING("buna ") );
-P(AA | AS | AN | AI,                                        SEND_STRING("insa ") );
-P(AA | AN | AO | AP,                                        SEND_STRING("puna ") );
-P(AS | AT | AI | AP,                                        SEND_STRING("pic ") );
-P(AS | AN | AI | AP,                                        SEND_STRING("nisip ") );
-P(AT | AI | AO | AP,                                        SEND_STRING("poti ") );
-P(AS | AE | AT | AO,                                        SEND_STRING("rost ") );
-P(AA | AS | AE | AT,                                        SEND_STRING("care ") );
-P(AT | AN | AI | AP,                                        SEND_STRING("timp ") );
-P(AA | AE | AT | AP,                                        SEND_STRING("prea ") );
-P(AA | AS | AE | AI,                                        SEND_STRING("zise ") );
-P(AE | AI | AO | AP,                                        SEND_STRING("piele ") );
-P(AA | AS | AI | AO,                                        SEND_STRING("lasa ") );
-P(AA | AS | AE | AO,                                        SEND_STRING("s-a ") );
-P(AA | AE | AI | AP,                                        SEND_STRING("apei ") );
-P(AE | AN | AI | AP,                                        SEND_STRING("mine ") );
-P(AA | AI | AO | AP,                                        SEND_STRING("apoi ") );
-P(AS | AI | AO | AP,                                        SEND_STRING("lipsi ") );
-P(AS | AE | AI | AO,                                        SEND_STRING("doi ") );
-P(AA | AE | AN | AP,                                        SEND_STRING("mea ") );
-P(AS | AE | AN | AO,                                        SEND_STRING("unde ") );
-P(AE | AT | AN | AO,                                        SEND_STRING("greu ") );
-P(AS | AT | AN | AI,                                        SEND_STRING("nici ") );
-P(AS | AN | AI | AO,                                        SEND_STRING("insusi ") );
-P(AA | AS | AN | AO,                                        SEND_STRING("sau ") );
-P(AT | AN | AO | AP,                                        SEND_STRING("putut ") );
-P(AE | AT | AN | AP,                                        SEND_STRING("tem ") );
-P(AS | AE | AN | AI,                                        SEND_STRING("din ") );
-P(AA | AS | AT | AO,                                        SEND_STRING("fost ") );
-P(AA | AT | AO | AP,                                        SEND_STRING("poata ") );
-P(AA | AE | AT | AN,                                        SEND_STRING("barbat ") );
-P(AS | AT | AO | AP,                                        SEND_STRING("scop ") );
-P(AE | AN | AO | AP,                                        SEND_STRING("meu ") );
-P(AA | AE | AN | AO,                                        SEND_STRING("n-a ") );
-P(AA | AS | AT | AN,                                        SEND_STRING("banca ") );
-P(AS | AE | AN | AP,                                        SEND_STRING("semn ") );
-P(AA | AN | AI | AO,                                        SEND_STRING("lua ") );
-P(AE | AT | AI | AP,                                        SEND_STRING("privi ") );
-P(AS | AE | AT | AI,                                        SEND_STRING("cei ") );
-P(AS | AT | AN | AO,                                        SEND_STRING("cu ") );
-P(AA | AS | AI | AP,                                        SEND_STRING("pasi ") );
-P(AA | AN | AI | AP,                                        SEND_STRING("mai ") );
-P(AA | AE | AN | AI,                                        SEND_STRING("haine ") );
-P(AA | AS | AE | AN,                                        SEND_STRING("deja ") );
-P(AE | AT | AO | AP,                                        SEND_STRING("pro ") );
-P(AA | AS | AE | AP,                                        SEND_STRING("da' ") );
-P(AS | AN | AO | AP,                                        SEND_STRING("spus ") );
-P(AA | AT | AN | AI,                                        SEND_STRING("abia ") );
-P(AA | AE | AI | AO,                                        SEND_STRING("ale ") );
-P(AE | AT | AN | AI,                                        SEND_STRING("bine ") );
-P(AA | AS | AT | AI,                                        SEND_STRING("aici ") );
-P(AS | AE | AO | AP,                                        SEND_STRING("pod ") );
-P(AA | AT | AI | AO,                                        SEND_STRING("afla ") );
-P(AS | AT | AI | AO,                                        SEND_STRING("loc ") );
-P(AE | AT | AI | AO,                                        SEND_STRING("lor ") );
-P(AA | AE | AT | AI,                                        SEND_STRING("iar ") );
-P(AS | AE | AT | AP,                                        SEND_STRING("spre ") );
-P(AS | AE | AI | AP,                                        SEND_STRING("piese ") );
-P(AT | AN | AI | AO,                                        SEND_STRING("totul ") );
-P(AA | AT | AI | AP,                                        SEND_STRING("piata ") );
-P(AN | AI | AO | AP,                                        SEND(KC_ENT));
-P(AA | AT | AN | AP,                                        SET_STICKY(NUM));
-P(AA | AS | AE | AT | AN,                                   SEND_STRING("cand ") );
-P(AA | AS | AE | AT | AP,                                   SEND_STRING("departe ") );
-P(AA | AS | AT | AN | AI,                                   SEND_STRING("inca ") );
-P(AA | AT | AN | AI | AO,                                   SEND_STRING("langa ") );
-P(AA | AS | AE | AN | AP,                                   SEND_STRING("seama ") );
-P(AA | AE | AT | AN | AO,                                   SEND_STRING("erau ") );
-P(AS | AE | AT | AN | AI,                                   SEND_STRING("dintre ") );
-P(AS | AE | AT | AN | AO,                                   SEND_STRING("usor ") );
-P(AA | AS | AE | AT | AO,                                   SEND_STRING("doar ") );
-P(AA | AS | AE | AN | AI,                                   SEND_STRING("jake ") );
-P(AS | AE | AT | AI | AP,                                   SEND_STRING("priveste ") );
-P(AA | AS | AT | AN | AO,                                   SEND_STRING("facut ") );
-P(AA | AS | AE | AO | AP,                                   SEND_STRING("podea ") );
-P(AA | AS | AT | AI | AO,                                   SEND_STRING("acolo ") );
-P(AA | AE | AT | AO | AP,                                   SEND_STRING("poate ") );
-P(AA | AN | AI | AO | AP,                                   SEND_STRING("numai ") );
-P(AA | AE | AT | AN | AP,                                   SEND_STRING("mare ") );
-P(AE | AT | AI | AO | AP,                                   SEND_STRING("opri ") );
-P(AA | AE | AT | AI | AP,                                   SEND_STRING("privirea ") );
-P(AA | AT | AN | AI | AP,                                   SEND_STRING("zambi ") );
-P(AS | AN | AI | AO | AP,                                   SEND_STRING("simplu ") );
-P(AA | AS | AE | AT | AI,                                   SEND_STRING("ceva ") );
-P(AE | AN | AI | AO | AP,                                   SEND_STRING("mele ") );
-P(AS | AE | AN | AO | AP,                                   SEND_STRING("spuse ") );
-P(AA | AS | AT | AO | AP,                                   SEND_STRING("ostap ") );
-P(AS | AT | AN | AO | AP,                                   SEND_STRING("cum ") );
-P(AE | AT | AN | AI | AO,                                   SEND_STRING("trebuie ") );
-P(AA | AS | AT | AI | AP,                                   SEND_STRING("twisp ") );
-P(AS | AE | AN | AI | AO,                                   SEND_STRING("nu-si ") );
-P(AA | AS | AE | AI | AO,                                   SEND_STRING("sa-i ") );
-P(AA | AS | AI | AO | AP,                                   SEND_STRING("lipsa ") );
-P(AS | AT | AN | AI | AO,                                   SEND_STRING("ochii ") );
-P(AA | AT | AI | AO | AP,                                   SEND_STRING("pozitia ") );
-P(AA | AS | AE | AN | AO,                                   SEND_STRING("doua ") );
-P(AE | AT | AN | AO | AP,                                   SEND_STRING("pentru ") );
-P(AT | AN | AI | AO | AP,                                   SEND_STRING("mult ") );
-P(AS | AE | AT | AN | AP,                                   SEND_STRING("mers ") );
-P(AA | AT | AN | AO | AP,                                   SEND_STRING("fum ") );
-P(AA | AE | AN | AI | AO,                                   SEND_STRING("n-ai ") );
-P(AA | AS | AE | AI | AP,                                   SEND_STRING("zapada ") );
-P(AA | AE | AI | AO | AP,                                   SEND_STRING("pielea ") );
-P(AE | AT | AN | AI | AP,                                   SEND_STRING("prin ") );
-P(AA | AS | AN | AI | AO,                                   SEND_STRING("nasul ") );
-P(AA | AE | AT | AN | AI,                                   SEND_STRING("inainte ") );
-P(AS | AE | AN | AI | AP,                                   SEND_STRING("mesei ") );
-P(AA | AE | AN | AO | AP,                                   SEND_STRING("m-am ") );
-P(AA | AE | AT | AI | AO,                                   SEND_STRING("fel ") );
-P(AS | AE | AT | AO | AP,                                   SEND_STRING("prost ") );
-P(AS | AE | AI | AO | AP,                                   SEND_STRING("leopold ") );
-P(AS | AT | AI | AO | AP,                                   SEND_STRING("copii ") );
-P(AA | AS | AT | AN | AP,                                   SEND_STRING("cam ") );
-P(AS | AE | AT | AI | AO,                                   SEND_STRING("cel ") );
-P(AA | AE | AN | AI | AP,                                   SEND_STRING("maine ") );
-P(AS | AT | AN | AI | AP,                                   SEND_STRING("nimic ") );
-P(AA | AS | AN | AI | AP,                                   SEND_STRING("masina ") );
-P(AA | AS | AN | AO | AP,                                   SEND_STRING("spuna ") );
-P(AA | AS | AE | AI | AO | AP,                              SEND_STRING("pilda ") );
-P(AA | AS | AE | AT | AN | AO,                              SEND_STRING("fusese ") );
-P(AA | AS | AT | AN | AO | AP,                              SEND_STRING("acum ") );
-P(AA | AE | AT | AN | AI | AP,                              SEND_STRING("prima ") );
-P(AA | AS | AE | AN | AI | AP,                              SEND_STRING("inseamna ") );
-P(AS | AE | AT | AI | AO | AP,                              SEND_STRING("plece ") );
-P(AA | AS | AT | AN | AI | AP,                              SEND_STRING("mica ") );
-P(AA | AE | AT | AI | AO | AP,                              SEND_STRING("apropie ") );
-P(AS | AE | AN | AI | AO | AP,                              SEND_STRING("domnule ") );
-P(AE | AT | AN | AI | AO | AP,                              SEND_STRING("multe ") );
-P(AS | AE | AT | AN | AO | AP,                              SEND_STRING("drum ") );
-P(AA | AS | AT | AN | AI | AO,                              SEND_STRING("atunci ") );
-P(AA | AS | AE | AN | AO | AP,                              SEND_STRING("dupa ") );
-P(AA | AS | AE | AT | AO | AP,                              SEND_STRING("castorp ") );
-P(AA | AE | AT | AN | AO | AP,                              SEND_STRING("putea ") );
-P(AA | AE | AN | AI | AO | AP,                              SEND_STRING("oameni ") );
-P(AA | AS | AE | AN | AI | AO,                              SEND_STRING("indoiala ") );
-P(AA | AS | AN | AI | AO | AP,                              SEND_STRING("simpla ") );
-P(AS | AE | AT | AN | AI | AO,                              SEND_STRING("lucru ") );
-P(AA | AS | AE | AT | AN | AI,                              SEND_STRING("chiar ") );
-P(AA | AS | AE | AT | AN | AP,                              SEND_STRING("camera ") );
-P(AA | AS | AE | AT | AI | AO,                              SEND_STRING("astfel ") );
-P(AA | AE | AT | AN | AI | AO,                              SEND_STRING("vorba ") );
-P(AA | AS | AE | AT | AI | AP,                              SEND_STRING("paris ") );
-P(AA | AT | AN | AI | AO | AP,                              SEND_STRING("multa ") );
-P(AS | AT | AN | AI | AO | AP,                              SEND_STRING("chipul ") );
-P(AS | AE | AT | AN | AI | AP,                              SEND_STRING("incepe ") );
-P(AA | AS | AT | AI | AO | AP,                              SEND_STRING("clipa ") );
-P(AA | AS | AE | AN | AI | AO | AP,                         SEND_STRING("sa-mi ") );
-P(AA | AS | AE | AT | AN | AI | AO,                         SEND_STRING("niciodata ") );
-P(AA | AS | AE | AT | AN | AO | AP,                         SEND_STRING("asupra ") );
-P(AA | AS | AT | AN | AI | AO | AP,                         SEND_STRING("capul ") );
-P(AS | AE | AT | AN | AI | AO | AP,                         SEND_STRING("sigmund ") );
-P(AA | AE | AT | AN | AI | AO | AP,                         SEND_STRING("probabil ") );
-P(AA | AS | AE | AT | AN | AI | AP,                         SEND_STRING("imediat ") );
-P(AA | AS | AE | AT | AI | AO | AP,                         SEND_STRING("picioare ") );
-P(AA | AS | AE | AT | AN | AI | AO | AP,                    SEND_STRING("dumneavoastra ") );
+PRES(AP,                                                         KC_P)
+PRES(AE,                                                         KC_E)
+PRES(AN,                                                         KC_N)
+PRES(AO,                                                         KC_O)
+PRES(AS,                                                         KC_S)
+PRES(AA,                                                         KC_A)
+PRES(AT,                                                         KC_T)
+PRES(AI,                                                         KC_I)
+PRES(AE | AO,                                                    KC_MINS)
+PRES(AA | AT,                                                    KC_F)
+KEYS(AS | AP,                                                    KC_LSFT,KC_0)
+PRES(AE | AN,                                                    KC_Y)
+KEYS(AA | AO,                                                    KC_LSFT,KC_9)
+PRES(AE | AT,                                                    KC_R)
+PRES(AA | AS,                                                    KC_W)
+PRES(AS | AN,                                                    KC_J)
+PRES(AA | AN,                                                    KC_Q)
+PRES(AS | AI,                                                    KC_K)
+PRES(AT | AO,                                                    KC_G)
+PRES(AA | AE,                                                    KC_X)
+PRES(AS | AO,                                                    KC_DOT)
+PRES(AS | AT,                                                    KC_C)
+PRES(AN | AI,                                                    KC_H)
+PRES(AO | AP,                                                    KC_SCLN)
+PRES(AT | AP,                                                    KC_BSPC)
+PRES(AE | AI,                                                    KC_COMM)
+PRES(AT | AN,                                                    KC_B)
+PRES(AS | AE,                                                    KC_D)
+PRES(AA | AI,                                                    KC_Z)
+KEYS(AI | AP,                                                    KC_LSFT,KC_1)
+PRES(AA | AP,                                                    KC_QUOT)
+PRES(AN | AP,                                                    KC_M)
+PRES(AT | AI,                                                    KC_V)
+PRES(AI | AO,                                                    KC_L)
+PRES(AN | AO,                                                    KC_U)
+PRES(AE | AP,                                                    KC_QUOT)
+SUBS(AT | AN | AI,                                               "vin")
+SUBS(AN | AI | AP,                                               "imi")
+SUBS(AS | AE | AO,                                               "s-o")
+SUBS(AS | AN | AI,                                               "jh")
+SUBS(AS | AE | AI,                                               "desi")
+SUBS(AA | AN | AI,                                               "ani")
+SUBS(AT | AI | AP,                                               "tip")
+SUBS(AT | AO | AP,                                               "pot")
+SUBS(AA | AI | AO,                                               "la")
+SUBS(AA | AE | AN,                                               "anne")
+SUBS(AS | AT | AO,                                               "scos")
+SUBS(AA | AN | AP,                                               "am")
+SUBS(AA | AS | AT,                                               "ca")
+SUBS(AA | AT | AP,                                               "fapt")
+SUBS(AE | AT | AP,                                               "perete")
+SUBS(AE | AI | AO,                                               "el")
+SUBS(AE | AO | AP,                                               "pe-o")
+SUBS(AA | AE | AT,                                               "era")
+SUBS(AN | AI | AO,                                               "lui")
+SUBS(AA | AT | AN,                                               "ba")
+SUBS(AT | AI | AO,                                               "voi")
+SUBS(AA | AS | AE,                                               "da")
+SUBS(AA | AN | AO,                                               "au")
+SUBS(AS | AE | AN,                                               "sens")
+SUBS(AA | AT | AO,                                               "toata")
+SUBS(AA | AE | AO,                                               "-a")
+SUBS(AT | AN | AO,                                               "tu")
+SUBS(AS | AE | AT,                                               "ce")
+SUBS(AA | AS | AI,                                               "zis")
+SUBS(AI | AO | AP,                                               "lipi")
+SUBS(AS | AN | AO,                                               "jos")
+SUBS(AA | AS | AN,                                               "sansa")
+SUBS(AA | AI | AP,                                               "pai")
+SUBS(AE | AT | AI,                                               "trei")
+SUBS(AS | AT | AI,                                               "ci")
+SUBS(AS | AE | AP,                                               "spe")
+SUBS(AE | AN | AO,                                               "eu")
+SUBS(AA | AT | AI,                                               "fi")
+SUBS(AE | AT | AN,                                               "brett")
+SUBS(AE | AN | AI,                                               "hei")
+SUBS(AN | AO | AP,                                               "om")
+SUBS(AE | AT | AO,                                               "rog")
+SUBS(AS | AI | AO,                                               "sol")
+SUBS(AE | AN | AP,                                               "pen")
+SUBS(AA | AE | AP,                                               "ape")
+SUBS(AA | AS | AP,                                               "pas")
+SUBS(AA | AE | AI,                                               "izea")
+SUBS(AA | AE | AN | AI,                                          "haine")
+SUBS(AS | AE | AN | AP,                                          "semn")
+SUBS(AS | AT | AN | AO,                                          "cu")
+SUBS(AT | AN | AI | AO,                                          "totul")
+SUBS(AA | AE | AI | AP,                                          "apei")
+SUBS(AA | AS | AN | AO,                                          "sau")
+SUBS(AA | AS | AE | AT,                                          "care")
+SUBS(AA | AE | AN | AO,                                          "n-a")
+SUBS(AA | AS | AT | AI,                                          "aici")
+SUBS(AT | AI | AO | AP,                                          "poti")
+SUBS(AA | AE | AN | AP,                                          "mea")
+SUBS(AA | AS | AE | AP,                                          "da'")
+SUBS(AS | AE | AT | AN,                                          "recent")
+SUBS(AT | AN | AI | AP,                                          "timp")
+SUBS(AA | AS | AE | AN,                                          "deja")
+SUBS(AE | AN | AI | AP,                                          "mine")
+SUBS(AE | AI | AO | AP,                                          "piele")
+SUBS(AS | AI | AO | AP,                                          "lipsi")
+SUBS(AS | AE | AT | AO,                                          "rost")
+SUBS(AA | AE | AT | AN,                                          "barbat")
+SUBS(AS | AE | AN | AO,                                          "unde")
+SUBS(AA | AS | AI | AP,                                          "pasi")
+SUBS(AA | AN | AO | AP,                                          "puna")
+SUBS(AE | AT | AN | AI,                                          "bine")
+SUBS(AS | AE | AI | AO,                                          "doi")
+SUBS(AS | AE | AT | AP,                                          "spre")
+SUBS(AS | AN | AO | AP,                                          "spus")
+SUBS(AS | AE | AO | AP,                                          "pod")
+SUBS(AA | AT | AI | AP,                                          "piata")
+SUBS(AS | AN | AI | AO,                                          "insusi")
+SUBS(AA | AT | AN | AO,                                          "buna")
+SUBS(AA | AE | AT | AP,                                          "prea")
+SUBS(AA | AT | AN | AP,                                          "pamant")
+SUBS(AA | AS | AN | AP,                                          "masa")
+SUBS(AA | AT | AO | AP,                                          "poata")
+SUBS(AA | AS | AT | AO,                                          "fost")
+SUBS(AE | AN | AO | AP,                                          "meu")
+SUBS(AA | AS | AN | AI,                                          "insa")
+SUBS(AA | AT | AI | AO,                                          "afla")
+SUBS(AA | AE | AT | AO,                                          "toate")
+SUBS(AA | AS | AI | AO,                                          "lasa")
+SUBS(AE | AT | AI | AP,                                          "privi")
+SUBS(AS | AE | AT | AI,                                          "cei")
+SUBS(AS | AT | AI | AO,                                          "loc")
+SUBS(AE | AT | AI | AO,                                          "lor")
+SUBS(AT | AN | AO | AP,                                          "putut")
+SUBS(AA | AI | AO | AP,                                          "apoi")
+SUBS(AA | AE | AT | AI,                                          "iar")
+SUBS(AE | AT | AN | AP,                                          "tem")
+SUBS(AS | AN | AI | AP,                                          "nisip")
+SUBS(AA | AT | AN | AI,                                          "abia")
+SUBS(AA | AN | AI | AO,                                          "lua")
+SUBS(AE | AN | AI | AO,                                          "nu-i")
+SUBS(AS | AE | AI | AP,                                          "piese")
+SUBS(AE | AT | AN | AO,                                          "greu")
+SUBS(AS | AT | AO | AP,                                          "scop")
+SUBS(AA | AN | AI | AP,                                          "mai")
+SUBS(AA | AS | AT | AN,                                          "banca")
+SUBS(AE | AT | AO | AP,                                          "pro")
+SUBS(AA | AS | AT | AP,                                          "cap")
+SUBS(AS | AT | AN | AI,                                          "nici")
+PRES(AN | AI | AO | AP,                                          KC_ENT)
+SUBS(AS | AE | AN | AI,                                          "din")
+SUBS(AS | AT | AI | AP,                                          "pic")
+SUBS(AA | AS | AE | AI,                                          "zise")
+SUBS(AA | AS | AE | AO,                                          "s-a")
+SUBS(AA | AE | AI | AO,                                          "ale")
+SUBS(AA | AS | AE | AT | AI,                                     "ceva")
+SUBS(AA | AE | AT | AN | AI,                                     "inainte")
+SUBS(AA | AS | AE | AT | AO,                                     "doar")
+SUBS(AS | AE | AN | AO | AP,                                     "spuse")
+SUBS(AA | AS | AI | AO | AP,                                     "lipsa")
+SUBS(AS | AT | AI | AO | AP,                                     "copii")
+SUBS(AA | AE | AN | AO | AP,                                     "m-am")
+SUBS(AS | AE | AN | AI | AO,                                     "nu-si")
+SUBS(AA | AS | AE | AN | AI,                                     "jake")
+SUBS(AA | AS | AE | AN | AO,                                     "doua")
+SUBS(AS | AE | AT | AN | AP,                                     "mers")
+SUBS(AA | AS | AN | AI | AO,                                     "nasul")
+SUBS(AE | AT | AN | AO | AP,                                     "pentru")
+SUBS(AS | AE | AT | AN | AO,                                     "usor")
+SUBS(AA | AS | AT | AN | AO,                                     "facut")
+SUBS(AS | AE | AT | AI | AO,                                     "cel")
+SUBS(AA | AS | AT | AN | AP,                                     "cam")
+SUBS(AA | AE | AT | AN | AO,                                     "erau")
+SUBS(AA | AS | AN | AI | AP,                                     "masina")
+SUBS(AA | AS | AE | AT | AP,                                     "departe")
+SUBS(AS | AE | AT | AN | AI,                                     "dintre")
+SUBS(AA | AT | AN | AI | AP,                                     "zambi")
+SUBS(AA | AT | AN | AI | AO,                                     "langa")
+SUBS(AE | AT | AI | AO | AP,                                     "opri")
+SUBS(AS | AT | AN | AI | AO,                                     "ochii")
+SUBS(AE | AT | AN | AI | AP,                                     "prin")
+SUBS(AA | AS | AE | AT | AN,                                     "cand")
+SUBS(AS | AT | AN | AI | AP,                                     "nimic")
+SUBS(AS | AT | AN | AO | AP,                                     "cum")
+SUBS(AA | AS | AE | AI | AO,                                     "sa-i")
+SUBS(AT | AN | AI | AO | AP,                                     "mult")
+SUBS(AA | AN | AI | AO | AP,                                     "numai")
+SUBS(AS | AE | AT | AI | AP,                                     "priveste")
+SUBS(AA | AE | AN | AI | AO,                                     "n-ai")
+SUBS(AS | AE | AT | AO | AP,                                     "prost")
+SUBS(AA | AS | AE | AO | AP,                                     "podea")
+SUBS(AA | AS | AE | AN | AP,                                     "seama")
+SUBS(AA | AS | AT | AN | AI,                                     "inca")
+SUBS(AA | AE | AI | AO | AP,                                     "pielea")
+SUBS(AA | AT | AN | AO | AP,                                     "fum")
+SUBS(AS | AE | AN | AI | AP,                                     "mesei")
+SUBS(AE | AT | AN | AI | AO,                                     "trebuie")
+SUBS(AE | AN | AI | AO | AP,                                     "mele")
+SUBS(AA | AE | AT | AN | AP,                                     "mare")
+SUBS(AA | AS | AE | AI | AP,                                     "zapada")
+SUBS(AS | AN | AI | AO | AP,                                     "simplu")
+SUBS(AA | AS | AT | AI | AP,                                     "twisp")
+SUBS(AA | AS | AT | AO | AP,                                     "ostap")
+SUBS(AA | AT | AI | AO | AP,                                     "pozitia")
+SUBS(AA | AS | AN | AO | AP,                                     "spuna")
+SUBS(AA | AE | AT | AO | AP,                                     "poate")
+SUBS(AA | AE | AN | AI | AP,                                     "maine")
+SUBS(AA | AE | AT | AI | AO,                                     "fel")
+SUBS(AA | AE | AT | AI | AP,                                     "privirea")
+SUBS(AA | AS | AT | AI | AO,                                     "acolo")
+SUBS(AS | AE | AI | AO | AP,                                     "leopold")
+SUBS(AA | AE | AN | AI | AO | AP,                                "oameni")
+SUBS(AA | AS | AE | AN | AO | AP,                                "dupa")
+SUBS(AA | AS | AE | AT | AI | AO,                                "astfel")
+SUBS(AS | AE | AT | AN | AI | AO,                                "lucru")
+SUBS(AA | AS | AE | AT | AO | AP,                                "castorp")
+SUBS(AA | AE | AT | AN | AO | AP,                                "putea")
+SUBS(AA | AS | AE | AT | AI | AP,                                "paris")
+SUBS(AA | AE | AT | AN | AI | AP,                                "prima")
+SUBS(AA | AE | AT | AN | AI | AO,                                "vorba")
+SUBS(AA | AS | AE | AT | AN | AP,                                "camera")
+SUBS(AA | AS | AT | AN | AI | AO,                                "atunci")
+SUBS(AA | AS | AE | AN | AI | AO,                                "indoiala")
+SUBS(AS | AE | AT | AN | AO | AP,                                "drum")
+SUBS(AS | AT | AN | AI | AO | AP,                                "chipul")
+SUBS(AA | AS | AN | AI | AO | AP,                                "simpla")
+SUBS(AA | AS | AT | AI | AO | AP,                                "clipa")
+SUBS(AS | AE | AN | AI | AO | AP,                                "domnule")
+SUBS(AA | AS | AE | AN | AI | AP,                                "inseamna")
+SUBS(AS | AE | AT | AN | AI | AP,                                "incepe")
+SUBS(AS | AE | AT | AI | AO | AP,                                "plece")
+SUBS(AA | AS | AT | AN | AI | AP,                                "mica")
+SUBS(AA | AS | AE | AT | AN | AI,                                "chiar")
+SUBS(AE | AT | AN | AI | AO | AP,                                "multe")
+SUBS(AA | AE | AT | AI | AO | AP,                                "apropie")
+SUBS(AA | AS | AT | AN | AO | AP,                                "acum")
+SUBS(AA | AS | AE | AI | AO | AP,                                "pilda")
+SUBS(AA | AT | AN | AI | AO | AP,                                "multa")
+SUBS(AA | AS | AE | AT | AN | AO,                                "fusese")
+SUBS(AA | AS | AE | AT | AN | AO | AP,                           "asupra")
+SUBS(AA | AS | AE | AT | AN | AI | AP,                           "imediat")
+SUBS(AA | AE | AT | AN | AI | AO | AP,                           "probabil")
+SUBS(AS | AE | AT | AN | AI | AO | AP,                           "sigmund")
+SUBS(AA | AS | AE | AT | AN | AI | AO,                           "niciodata")
+SUBS(AA | AS | AE | AN | AI | AO | AP,                           "sa-mi")
+SUBS(AA | AS | AT | AN | AI | AO | AP,                           "capul")
+SUBS(AA | AS | AE | AT | AI | AO | AP,                           "picioare")
+SUBS(AA | AS | AE | AT | AN | AI | AO | AP,                      "dumneavoastra")

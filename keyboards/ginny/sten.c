@@ -20,8 +20,13 @@ uint16_t 	pChordState[32];				// Previous chord sate
 
 // Key Dicts
 extern struct keyEntry		keyDict[];
+extern size_t keyLen;
+extern struct comboEntry	cmbDict[];
+extern size_t comboLen; 
 extern struct funcEntry 	funDict[];
+extern size_t funcsLen;
 extern struct stringEntry	strDict[];
+extern size_t stringLen; 
 
 // Mode state
 enum MODE { STENO = 0, QWERTY, COMMAND };
@@ -149,6 +154,51 @@ void matrix_scan_user(void) {
 #endif
 };
 
+// Try and match cChord
+uint16_t	processQwerty(bool lookup) {
+	// search through all four dicts
+	// run if lookup is false
+	
+	// Single key chords
+	for (int i = 0; i < keyLen/sizeof(keyDict[0]); i++) {
+		if (keyDict[i].chord == cChord) {
+			if (!lookup) 
+				register_code(keyDict[i].key);
+			return cChord;
+		}
+	}
+	
+	// combos
+	for (int i = 0; i < comboLen/sizeof(cmbDict[0]); i++) {
+		if (cmbDict[i].chord == cChord) {
+			if (!lookup) {
+				for (int j = 0; (j < COMBO_MAX) && (cmbDict[i].keys[j] != COMBO_END); i++) {
+					register_code(cmbDict[i].keys[j]);
+				}
+			}
+			return cChord;
+		}
+	}
+
+	// strings
+	for (int i = 0; i < stringLen/sizeof(strDict[0]); i++) {
+		if (strDict[i].chord == cChord) {
+			//if (!lookup) SEND_STRING("asdf");
+			if (!lookup) send_string(strDict[i].str);
+			return cChord;
+		}
+	}
+
+	// functions
+	for (int i = 0; i < funcsLen/sizeof(funDict[0]); i++) {
+		if (funDict[i].chord == cChord) {
+			if (!lookup) funDict[i].act();
+			return cChord;
+		}
+	}
+
+	return 0;
+}
 // Traverse the chord history to a given point
 // Returns the mask to use
 void processChord(void) {

@@ -1,35 +1,35 @@
-P(NUM | AS,                                                 SEND(KC_2));
-P(NUM | AT,                                                 SEND(KC_4));
-P(NUM | AN,                                                 SEND(KC_7));
-P(NUM | AA,                                                 SEND(KC_1));
-P(NUM | AO,                                                 SEND(KC_9));
-P(NUM | AI,                                                 SEND(KC_8));
-P(NUM | AE,                                                 SEND(KC_3));
-P(NUM | AP,                                                 SEND(KC_0));
-P(NUM | AS | AE,                                            SEND(KC_MINS));
-P(NUM | AN | AP,                                            SEND(KC_RBRC));
-P(NUM | AA | AO,                                            SEND(KC_LSFT);SEND(KC_9));
-P(NUM | AN | AO,                                            SEND(KC_NO));
-P(NUM | AA | AP,                                            SEND(KC_QUOT));
-P(NUM | AA | AI,                                            SEND(KC_LSFT);SEND(KC_1));
-P(NUM | AA | AT,                                            SEND(KC_LBRC));
-P(NUM | AS | AI,                                            SEND(KC_EQL));
-P(NUM | AS | AN,                                            SEND(KC_END));
-P(NUM | AE | AP,                                            SEND(KC_QUOT));
-P(NUM | AA | AN,                                            SEND(KC_SPC));
-P(NUM | AE | AO,                                            SEND(KC_MINS));
-P(NUM | AT | AP,                                            SEND(KC_BSPC));
-P(NUM | AO | AP,                                            SEND(KC_SCLN));
-P(NUM | AE | AN,                                            SEND(KC_HOME));
-P(NUM | AN | AI,                                            SEND(KC_6));
-P(NUM | AS | AO,                                            SEND(KC_DOT));
-P(NUM | AI | AO,                                            SEND(KC_EQL));
-P(NUM | AS | AP,                                            SEND(KC_LSFT);SEND(KC_0));
-P(NUM | AA | AE,                                            SEND(KC_GRV));
-P(NUM | AE | AT,                                            SEND(KC_5));
-P(NUM | AS | AT,                                            SEND(KC_NO));
-P(NUM | AE | AI,                                            SEND(KC_COMM));
-P(NUM | AA | AS,                                            SEND(KC_SPC));
-P(NUM | AA | AT | AN | AP,                                  SEND(KC_SPC));
-P(NUM | AN | AI | AO | AP,                                  SEND(KC_TAB));
-P(NUM | AA | AS | AE | AT | AN | AI | AO | AP,              SEND(KC_SPC));
+PRES(NUM | AS,                                                   KC_2)
+PRES(NUM | AE,                                                   KC_3)
+PRES(NUM | AA,                                                   KC_1)
+PRES(NUM | AO,                                                   KC_9)
+PRES(NUM | AN,                                                   KC_7)
+PRES(NUM | AT,                                                   KC_4)
+PRES(NUM | AP,                                                   KC_0)
+PRES(NUM | AI,                                                   KC_8)
+KEYS(NUM | AS | AP,                                              KC_LSFT,KC_0)
+PRES(NUM | AA | AN,                                              KC_SPC)
+PRES(NUM | AE | AI,                                              KC_COMM)
+PRES(NUM | AS | AO,                                              KC_DOT)
+PRES(NUM | AN | AP,                                              KC_RBRC)
+PRES(NUM | AI | AO,                                              KC_EQL)
+PRES(NUM | AS | AI,                                              KC_EQL)
+KEYS(NUM | AA | AI,                                              KC_LSFT,KC_1)
+PRES(NUM | AS | AT,                                              KC_NO)
+PRES(NUM | AE | AN,                                              KC_HOME)
+PRES(NUM | AE | AT,                                              KC_5)
+PRES(NUM | AO | AP,                                              KC_SCLN)
+PRES(NUM | AE | AO,                                              KC_MINS)
+PRES(NUM | AN | AI,                                              KC_6)
+PRES(NUM | AA | AS,                                              KC_SPC)
+PRES(NUM | AT | AP,                                              KC_BSPC)
+PRES(NUM | AA | AP,                                              KC_QUOT)
+PRES(NUM | AA | AE,                                              KC_GRV)
+KEYS(NUM | AA | AO,                                              KC_LSFT,KC_9)
+PRES(NUM | AA | AT,                                              KC_LBRC)
+PRES(NUM | AN | AO,                                              KC_NO)
+PRES(NUM | AE | AP,                                              KC_QUOT)
+PRES(NUM | AS | AN,                                              KC_END)
+PRES(NUM | AS | AE,                                              KC_MINS)
+PRES(NUM | AN | AI | AO | AP,                                    KC_TAB)
+PRES(NUM | AA | AT | AN | AP,                                    KC_SPC)
+PRES(NUM | AA | AS | AE | AT | AN | AI | AO | AP,                KC_SPC)

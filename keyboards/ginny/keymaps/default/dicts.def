@@ -8,9 +8,11 @@
 // ASETNIOP supports various languages, define the one you wish to include here
 // da, de, en, en-colemak, en-dvorak, es, fn, fr, hu, it, nl, nw, pl, pt, ro, sv, tr
 
-#include "dicts/testing/test.def"
 //#include "dicts/aset/layer-keymap.def"
-//#include "dicts/aset/cmd-keymap.def"
-//#include "dicts/aset/num-keymap.def"
-//#include "dicts/aset/en-keymap.def"
-//#include "user.def"
+#include "dicts/aset/cmd-keymap.def"
+#include "dicts/aset/num-keymap.def"
+#include "dicts/aset/en-keymap.def"
+#include "user.def"
+
+// For Debugging
+//#include "dicts/testing/test.def"

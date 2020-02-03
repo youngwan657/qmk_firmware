@@ -1,22 +1,24 @@
 	// Thumb Keys
-	P(AL,														SEND(KC_LSFT));
-	P(AR,														SEND(KC_SPC));
+	PRES(AL,														KC_LSFT)
+	PRES(AR,														KC_SPC)
 	
+// TODO: THIS
+/*
 	// Layer Switches 
 	// To Number
-	P(			AA | AT | AN | AP,																SET_STICKY(NUM));
-	P(NUM | AA | AT | AN | AP,																SET_STICKY(0));
-	P(CMD | AA | AT | AN | AP,																SET_STICKY(NUM));
-	P(USR | AA | AT | AN | AP,																SET_STICKY(NUM));
+	PRES(			AA | AT | AN | AP,																SET_STICKY(NUM)
+	PRES(NUM | AA | AT | AN | AP,																SET_STICKY(0)
+	PRES(CMD | AA | AT | AN | AP,																SET_STICKY(NUM)
+	PRES(USR | AA | AT | AN | AP,																SET_STICKY(NUM)
 	
 	// To Command
-	P(			AS | AE | AI | AO,																SET_STICKY(CMD));
-	P(NUM | AS | AE | AI | AO,																SET_STICKY(CMD));
-	P(CMD | AS | AE | AI | AO,																SET_STICKY(0));
-	P(USR | AS | AE | AI | AO,																SET_STICKY(CMD));
+	PRES(			AS | AE | AI | AO,																SET_STICKY(CMD)
+	PRES(NUM | AS | AE | AI | AO,																SET_STICKY(CMD)
+	PRES(CMD | AS | AE | AI | AO,																SET_STICKY(0)
+	PRES(USR | AS | AE | AI | AO,																SET_STICKY(CMD)
 
 	// To User
-	P(			AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR));
-	P(NUM | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR));
-	P(CMD | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,  SET_STICKY(USR));
-	P(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,  SET_STICKY(0));
+	PRES(			AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR)
+	PRES(NUM | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR)
+	PRES(CMD | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,  SET_STICKY(USR)
+	PRES(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,  SET_STICKY(0)*/

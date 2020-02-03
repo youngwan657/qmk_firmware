@@ -27,22 +27,22 @@
 // NUM, USR and CMD are also avalible
 
 // User defs
-P(USR | AA,											SEND_STRING("undefined User "));
-P(USR | AS,											SEND_STRING("undefined User "));
-P(USR | AE,											SEND_STRING("undefined User "));
-P(USR | AT,											SEND_STRING("undefined User "));
-P(USR | AN,											SEND_STRING("undefined User "));
-P(USR | AI,											SEND_STRING("undefined User "));
-P(USR | AO,											SEND_STRING("undefined User "));
-P(USR | AP,											SEND_STRING("undefined User "));
-P(USR | AR,											SEND_STRING("undefined User "));
-P(USR | AL,											SEND_STRING("undefined User "));
+SUBS(USR | AA,											"undefined User ")
+SUBS(USR | AS,											"undefined User ")
+SUBS(USR | AE,											"undefined User ")
+SUBS(USR | AT,											"undefined User ")
+SUBS(USR | AN,											"undefined User ")
+SUBS(USR | AI,											"undefined User ")
+SUBS(USR | AO,											"undefined User ")
+SUBS(USR | AP,											"undefined User ")
+SUBS(USR | AR,											"undefined User ")
+SUBS(USR | AL,											"undefined User ")
 
 // Quick Fires
-P(AR | AA | AS,									SEND_STRING("Undefined Quick Fire"));
-P(AR | AS | AE,									SEND_STRING("Undefined Quick Fire"));
-P(AR | AE | AT,									SEND_STRING("Undefined Quick Fire"));
-P(AR | AT | AN,									SEND_STRING("Undefined Quick Fire"));
-P(AR | AN | AI,									SEND_STRING("Undefined Quick Fire"));
-P(AR | AI | AO,									SEND_STRING("Undefined Quick Fire"));
-P(AR | AO | AP,									SEND_STRING("Undefined Quick Fire"));
+SUBS(AR | AA | AS,									"Undefined Quick Fire")
+SUBS(AR | AS | AE,									"Undefined Quick Fire")
+SUBS(AR | AE | AT,									"Undefined Quick Fire")
+SUBS(AR | AT | AN,									"Undefined Quick Fire")
+SUBS(AR | AN | AI,									"Undefined Quick Fire")
+SUBS(AR | AI | AO,									"Undefined Quick Fire")
+SUBS(AR | AO | AP,									"Undefined Quick Fire")

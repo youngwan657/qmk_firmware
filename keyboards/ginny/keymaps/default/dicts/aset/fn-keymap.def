@@ -1,231 +1,231 @@
-P(AA,                                                       SEND(KC_A));
-P(AO,                                                       SEND(KC_O));
-P(AN,                                                       SEND(KC_N));
-P(AE,                                                       SEND(KC_E));
-P(AP,                                                       SEND(KC_P));
-P(AT,                                                       SEND(KC_T));
-P(AS,                                                       SEND(KC_S));
-P(AI,                                                       SEND(KC_I));
-P(AE | AO,                                                  SEND(KC_MINS));
-P(AS | AN,                                                  SEND(KC_J));
-P(AI | AO,                                                  SEND(KC_L));
-P(AN | AP,                                                  SEND(KC_M));
-P(AT | AI,                                                  SEND(KC_V));
-P(AE | AI,                                                  SEND(KC_COMM));
-P(AS | AT,                                                  SEND(KC_C));
-P(AN | AI,                                                  SEND(KC_H));
-P(AE | AT,                                                  SEND(KC_R));
-P(AO | AP,                                                  SEND(KC_SCLN));
-P(AA | AT,                                                  SEND(KC_F));
-P(AS | AE,                                                  SEND(KC_D));
-P(AE | AP,                                                  SEND(KC_QUOT));
-P(AA | AE,                                                  SEND(KC_X));
-P(AA | AN,                                                  SEND(KC_Q));
-P(AA | AP,                                                  SEND(KC_QUOT));
-P(AT | AO,                                                  SEND(KC_G));
-P(AA | AO,                                                  SEND(KC_LSFT);SEND(KC_9));
-P(AS | AO,                                                  SEND(KC_DOT));
-P(AA | AS,                                                  SEND(KC_W));
-P(AT | AN,                                                  SEND(KC_B));
-P(AT | AP,                                                  SEND(KC_BSPC));
-P(AS | AP,                                                  SEND(KC_LSFT);SEND(KC_0));
-P(AA | AI,                                                  SEND(KC_Z));
-P(AE | AN,                                                  SEND(KC_Y));
-P(AN | AO,                                                  SEND(KC_U));
-P(AS | AI,                                                  SEND(KC_K));
-P(AI | AP,                                                  SEND(KC_LSFT);SEND(KC_1));
-P(AA | AS | AT,                                             SEND_STRING("taas ") );
-P(AA | AI | AO,                                             SEND_STRING("olla ") );
-P(AS | AE | AI,                                             SEND_STRING("keksi ") );
-P(AE | AN | AI,                                             SEND_STRING("he ") );
-P(AA | AE | AN,                                             SEND_STRING("enaa ") );
-P(AA | AE | AT,                                             SEND_STRING("etta ") );
-P(AA | AS | AI,                                             SEND_STRING("kaikki ") );
-P(AT | AI | AP,                                             SEND_STRING("piti ") );
-P(AA | AT | AI,                                             SEND_STRING("tai ") );
-P(AA | AN | AP,                                             SEND_STRING("nama ") );
-P(AE | AT | AI,                                             SEND_STRING("ettei ") );
-P(AN | AI | AO,                                             SEND_STRING("olin ") );
-P(AS | AE | AN,                                             SEND_STRING("sen ") );
-P(AI | AO | AP,                                             SEND_STRING("oppi ") );
-P(AN | AO | AP,                                             SEND_STRING("muu ") );
-P(AS | AE | AT,                                             SEND_STRING("ester ") );
-P(AA | AS | AN,                                             SEND_STRING("ja ") );
-P(AE | AT | AN,                                             SEND_STRING("nyt ") );
-P(AE | AT | AO,                                             SEND_STRING("eero ") );
-P(AT | AI | AO,                                             SEND_STRING("voi ") );
-P(AE | AT | AP,                                             SEND_STRING("ett' ") );
-P(AA | AT | AO,                                             SEND_STRING("ottaa ") );
-P(AA | AI | AP,                                             SEND_STRING("pappi ") );
-P(AS | AT | AI,                                             SEND_STRING("viisi ") );
-P(AE | AN | AO,                                             SEND_STRING("yon ") );
-P(AT | AN | AO,                                             SEND_STRING("tuo ") );
-P(AA | AT | AP,                                             SEND_STRING("paata ") );
-P(AS | AI | AO,                                             SEND_STRING("olisi ") );
-P(AT | AN | AI,                                             SEND_STRING("nti ") );
-P(AA | AS | AO,                                             SEND_STRING("osaa ") );
-P(AA | AE | AP,                                             SEND_STRING("aape ") );
-P(AE | AI | AO,                                             SEND_STRING("ole ") );
-P(AA | AT | AN,                                             SEND_STRING("antaa ") );
-P(AE | AN | AP,                                             SEND_STRING("me ") );
-P(AN | AI | AP,                                             SEND_STRING("mihin ") );
-P(AS | AN | AO,                                             SEND_STRING("jos ") );
-P(AS | AN | AI,                                             SEND_STRING("kiinni ") );
-P(AA | AS | AE,                                             SEND_STRING("saada ") );
-P(AA | AS | AP,                                             SEND_STRING("paassa ") );
-P(AA | AN | AI,                                             SEND_STRING("han ") );
-P(AA | AE | AI,                                             SEND_STRING("xii ") );
-P(AE | AN | AI | AP,                                        SEND_STRING("meni ") );
-P(AS | AE | AN | AO,                                        SEND_STRING("uuden ") );
-P(AE | AN | AO | AP,                                        SEND_STRING("monen ") );
-P(AA | AN | AI | AP,                                        SEND_STRING("mina ") );
-P(AT | AN | AI | AO,                                        SEND_STRING("ollut ") );
-P(AS | AT | AN | AI,                                        SEND_STRING("kiinnitti ") );
-P(AS | AN | AI | AO,                                        SEND_STRING("kuin ") );
-P(AS | AT | AI | AP,                                        SEND_STRING("pisti ") );
-P(AT | AI | AO | AP,                                        SEND_STRING("ippolit ") );
-P(AA | AT | AN | AI,                                        SEND_STRING("hanta ") );
-P(AA | AE | AN | AO,                                        SEND_STRING("yona ") );
-P(AA | AE | AN | AP,                                        SEND_STRING("enemman ") );
-P(AE | AT | AN | AO,                                        SEND_STRING("tytto ") );
-P(AA | AE | AT | AI,                                        SEND_STRING("eivat ") );
-P(AA | AT | AI | AO,                                        SEND_STRING("olivat ") );
-P(AE | AT | AN | AI,                                        SEND_STRING("hyvin ") );
-P(AE | AI | AO | AP,                                        SEND_STRING("ell'ei ") );
-P(AS | AE | AI | AP,                                        SEND_STRING("kiipesi ") );
-P(AA | AS | AE | AO,                                        SEND_STRING("sodassa ") );
-P(AS | AI | AO | AP,                                        SEND_STRING("pois ") );
-P(AA | AI | AO | AP,                                        SEND_STRING("lapi ") );
-P(AA | AS | AI | AP,                                        SEND_STRING("paasi ") );
-P(AS | AT | AI | AO,                                        SEND_STRING("voisi ") );
-P(AS | AE | AI | AO,                                        SEND_STRING("eiko ") );
-P(AA | AE | AN | AI,                                        SEND_STRING("hanen ") );
-P(AA | AS | AT | AO,                                        SEND_STRING("sota ") );
-P(AA | AS | AE | AI,                                        SEND_STRING("eika ") );
-P(AS | AN | AO | AP,                                        SEND_STRING("suom ") );
-P(AA | AT | AN | AO,                                        SEND_STRING("tuota ") );
-P(AA | AN | AI | AO,                                        SEND_STRING("liian ") );
-P(AS | AT | AN | AO,                                        SEND_STRING("joutunut ") );
-P(AS | AE | AT | AO,                                        SEND_STRING("god ") );
-P(AA | AE | AT | AN,                                        SEND_STRING("taytyy ") );
-P(AE | AT | AO | AP,                                        SEND_STRING("peto ") );
-P(AA | AS | AT | AI,                                        SEND_STRING("sita ") );
-P(AS | AN | AI | AP,                                        SEND_STRING("miksi ") );
-P(AA | AS | AN | AI,                                        SEND_STRING("sina ") );
-P(AT | AN | AI | AP,                                        SEND_STRING("nimitti ") );
-P(AE | AT | AN | AP,                                        SEND_STRING("mr ") );
-P(AA | AE | AT | AP,                                        SEND_STRING("paeta ") );
-P(AA | AT | AI | AP,                                        SEND_STRING("pitaa ") );
-P(AA | AS | AN | AP,                                        SEND_STRING("samassa ") );
-P(AA | AS | AT | AN,                                        SEND_STRING("sanat ") );
-P(AA | AS | AE | AN,                                        SEND_STRING("sydan ") );
-P(AE | AT | AI | AP,                                        SEND_STRING("ett'ei ") );
-P(AA | AN | AO | AP,                                        SEND_STRING("oman ") );
-P(AA | AE | AI | AO,                                        SEND_STRING("elaa ") );
-P(AA | AE | AT | AO,                                        SEND_STRING("erottaa ") );
-P(AT | AN | AO | AP,                                        SEND_STRING("muut ") );
-P(AA | AS | AE | AT,                                        SEND_STRING("eras ") );
-P(AS | AE | AT | AN,                                        SEND_STRING("syntynyt ") );
-P(AA | AS | AI | AO,                                        SEND_STRING("silla ") );
-P(AS | AE | AN | AP,                                        SEND_STRING("pysyy ") );
-P(AE | AT | AI | AO,                                        SEND_STRING("olet ") );
-P(AA | AS | AN | AO,                                        SEND_STRING("jossa ") );
-P(AS | AE | AN | AI,                                        SEND_STRING("siihen ") );
-P(AA | AS | AE | AP,                                        SEND_STRING("paase ") );
-P(AA | AS | AT | AP,                                        SEND_STRING("paasta ") );
-P(AE | AN | AI | AO,                                        SEND_STRING("olen ") );
-P(AS | AE | AT | AI,                                        SEND_STRING("itse ") );
-P(AA | AE | AI | AP,                                        SEND_STRING("eipa ") );
-P(AA | AT | AN | AP,                                        SET_STICKY(NUM));
-P(AN | AI | AO | AP,                                        SEND(KC_ENT));
-P(AS | AT | AN | AI | AP,                                   SEND_STRING("pitkin ") );
-P(AS | AE | AN | AI | AO,                                   SEND_STRING("oikein ") );
-P(AA | AT | AN | AI | AP,                                   SEND_STRING("mita ") );
-P(AA | AE | AN | AO | AP,                                   SEND_STRING("myonnan ") );
-P(AA | AE | AT | AO | AP,                                   SEND_STRING("opettaa ") );
-P(AS | AE | AN | AO | AP,                                   SEND_STRING("myos ") );
-P(AA | AS | AN | AI | AP,                                   SEND_STRING("mika ") );
-P(AE | AN | AI | AO | AP,                                   SEND_STRING("minulle ") );
-P(AE | AT | AN | AO | AP,                                   SEND_STRING("muuten ") );
-P(AA | AE | AT | AI | AO,                                   SEND_STRING("viela ") );
-P(AA | AS | AE | AN | AI,                                   SEND_STRING("heidan ") );
-P(AA | AS | AE | AI | AP,                                   SEND_STRING("pida ") );
-P(AA | AS | AE | AT | AP,                                   SEND_STRING("perasta ") );
-P(AS | AE | AT | AN | AO,                                   SEND_STRING("suuren ") );
-P(AA | AE | AT | AN | AP,                                   SEND_STRING("emanta ") );
-P(AA | AE | AT | AI | AP,                                   SEND_STRING("pari ") );
-P(AA | AS | AT | AN | AO,                                   SEND_STRING("jota ") );
-P(AT | AN | AI | AO | AP,                                   SEND_STRING("minut ") );
-P(AA | AE | AT | AN | AI,                                   SEND_STRING("hanet ") );
-P(AE | AT | AI | AO | AP,                                   SEND_STRING("perille ") );
-P(AS | AT | AI | AO | AP,                                   SEND_STRING("potki ") );
-P(AE | AT | AN | AI | AO,                                   SEND_STRING("tulee ") );
-P(AA | AE | AI | AO | AP,                                   SEND_STRING("paalle ") );
-P(AS | AE | AN | AI | AP,                                   SEND_STRING("mies ") );
-P(AA | AE | AN | AI | AP,                                   SEND_STRING("miehia ") );
-P(AA | AS | AT | AO | AP,                                   SEND_STRING("paatos ") );
-P(AA | AS | AE | AN | AO,                                   SEND_STRING("sanoen ") );
-P(AS | AT | AN | AI | AO,                                   SEND_STRING("tunsi ") );
-P(AA | AT | AI | AO | AP,                                   SEND_STRING("palata ") );
-P(AS | AE | AT | AI | AO,                                   SEND_STRING("toiset ") );
-P(AA | AS | AN | AO | AP,                                   SEND_STRING("pojan ") );
-P(AA | AS | AN | AI | AO,                                   SEND_STRING("joka ") );
-P(AA | AS | AE | AT | AO,                                   SEND_STRING("odottaa ") );
-P(AA | AS | AE | AT | AN,                                   SEND_STRING("sentaan ") );
-P(AA | AS | AT | AN | AP,                                   SEND_STRING("maasta ") );
-P(AA | AS | AT | AI | AP,                                   SEND_STRING("pitaisi ") );
-P(AS | AT | AN | AO | AP,                                   SEND_STRING("muutos ") );
-P(AS | AN | AI | AO | AP,                                   SEND_STRING("pikku ") );
-P(AA | AT | AN | AI | AO,                                   SEND_STRING("tulla ") );
-P(AA | AT | AN | AO | AP,                                   SEND_STRING("mutta ") );
-P(AA | AS | AE | AI | AO,                                   SEND_STRING("siella ") );
-P(AS | AE | AI | AO | AP,                                   SEND_STRING("pelko ") );
-P(AA | AN | AI | AO | AP,                                   SEND_STRING("minua ") );
-P(AA | AS | AT | AI | AO,                                   SEND_STRING("katsoi ") );
-P(AA | AS | AT | AN | AI,                                   SEND_STRING("vastaan ") );
-P(AA | AE | AN | AI | AO,                                   SEND_STRING("hanelle ") );
-P(AA | AS | AI | AO | AP,                                   SEND_STRING("poika ") );
-P(AS | AE | AT | AI | AP,                                   SEND_STRING("sit' ") );
-P(AA | AS | AE | AN | AP,                                   SEND_STRING("sydamensa ") );
-P(AS | AE | AT | AN | AP,                                   SEND_STRING("mrs ") );
-P(AE | AT | AN | AI | AP,                                   SEND_STRING("miten ") );
-P(AS | AE | AT | AN | AI,                                   SEND_STRING("sitten ") );
-P(AA | AS | AE | AT | AI,                                   SEND_STRING("kertaa ") );
-P(AA | AE | AT | AN | AO,                                   SEND_STRING("tyota ") );
-P(AA | AS | AE | AT | AI | AO,                              SEND_STRING("sielta ") );
-P(AA | AT | AN | AI | AO | AP,                              SEND_STRING("muutamia ") );
-P(AA | AE | AT | AN | AI | AO,                              SEND_STRING("rouva ") );
-P(AS | AE | AT | AN | AI | AP,                              SEND_STRING("ihmiset ") );
-P(AE | AT | AN | AI | AO | AP,                              SEND_STRING("toimeen ") );
-P(AA | AE | AT | AN | AI | AP,                              SEND_STRING("meita ") );
-P(AA | AS | AE | AT | AI | AP,                              SEND_STRING("tarpeeksi ") );
-P(AA | AS | AE | AN | AO | AP,                              SEND_STRING("poydan ") );
-P(AS | AE | AN | AI | AO | AP,                              SEND_STRING("myoskin ") );
-P(AA | AS | AT | AN | AI | AP,                              SEND_STRING("mista ") );
-P(AA | AS | AE | AI | AO | AP,                              SEND_STRING("pelkaa ") );
-P(AA | AS | AT | AN | AI | AO,                              SEND_STRING("jotka ") );
-P(AA | AS | AE | AT | AN | AP,                              SEND_STRING("paassyt ") );
-P(AS | AE | AT | AN | AI | AO,                              SEND_STRING("kuitenkin ") );
-P(AA | AS | AN | AI | AO | AP,                              SEND_STRING("paljon ") );
-P(AA | AS | AT | AN | AO | AP,                              SEND_STRING("pojat ") );
-P(AA | AS | AE | AT | AN | AI,                              SEND_STRING("kerran ") );
-P(AS | AT | AN | AI | AO | AP,                              SEND_STRING("muutkin ") );
-P(AA | AS | AE | AT | AN | AO,                              SEND_STRING("suurta ") );
-P(AA | AS | AE | AT | AO | AP,                              SEND_STRING("petosta ") );
-P(AA | AS | AT | AI | AO | AP,                              SEND_STRING("palasivat ") );
-P(AA | AE | AT | AI | AO | AP,                              SEND_STRING("vielapa ") );
-P(AA | AS | AE | AN | AI | AP,                              SEND_STRING("meidan ") );
-P(AS | AE | AT | AN | AO | AP,                              SEND_STRING("prudence ") );
-P(AA | AE | AN | AI | AO | AP,                              SEND_STRING("meilla ") );
-P(AS | AE | AT | AI | AO | AP,                              SEND_STRING("posket ") );
-P(AA | AS | AE | AN | AI | AO,                              SEND_STRING("kylla ") );
-P(AA | AE | AT | AN | AO | AP,                              SEND_STRING("tuntemaan ") );
-P(AA | AS | AT | AN | AI | AO | AP,                         SEND_STRING("silmat ") );
-P(AA | AS | AE | AT | AI | AO | AP,                         SEND_STRING("lapset ") );
-P(AA | AS | AE | AN | AI | AO | AP,                         SEND_STRING("kallem ") );
-P(AA | AS | AE | AT | AN | AI | AO,                         SEND_STRING("kuitenkaan ") );
-P(AA | AS | AE | AT | AN | AI | AP,                         SEND_STRING("miesta ") );
-P(AA | AE | AT | AN | AI | AO | AP,                         SEND_STRING("molemmat ") );
-P(AS | AE | AT | AN | AI | AO | AP,                         SEND_STRING("rupesi ") );
-P(AA | AS | AE | AT | AN | AO | AP,                         SEND_STRING("opettaja ") );
-P(AA | AS | AE | AT | AN | AI | AO | AP,                    SEND_STRING("puolesta ") );
+PRES(AO,                                                         KC_O)
+PRES(AE,                                                         KC_E)
+PRES(AT,                                                         KC_T)
+PRES(AI,                                                         KC_I)
+PRES(AP,                                                         KC_P)
+PRES(AS,                                                         KC_S)
+PRES(AN,                                                         KC_N)
+PRES(AA,                                                         KC_A)
+PRES(AA | AI,                                                    KC_Z)
+PRES(AN | AP,                                                    KC_M)
+PRES(AE | AI,                                                    KC_COMM)
+KEYS(AS | AP,                                                    KC_LSFT,KC_0)
+PRES(AA | AT,                                                    KC_F)
+PRES(AT | AN,                                                    KC_B)
+PRES(AT | AO,                                                    KC_G)
+PRES(AE | AO,                                                    KC_MINS)
+PRES(AT | AI,                                                    KC_V)
+PRES(AA | AP,                                                    KC_QUOT)
+PRES(AA | AS,                                                    KC_W)
+PRES(AN | AO,                                                    KC_U)
+PRES(AA | AE,                                                    KC_X)
+PRES(AS | AE,                                                    KC_D)
+PRES(AE | AP,                                                    KC_QUOT)
+PRES(AI | AO,                                                    KC_L)
+PRES(AE | AN,                                                    KC_Y)
+PRES(AE | AT,                                                    KC_R)
+PRES(AN | AI,                                                    KC_H)
+KEYS(AI | AP,                                                    KC_LSFT,KC_1)
+PRES(AT | AP,                                                    KC_BSPC)
+PRES(AA | AN,                                                    KC_Q)
+KEYS(AA | AO,                                                    KC_LSFT,KC_9)
+PRES(AO | AP,                                                    KC_SCLN)
+PRES(AS | AN,                                                    KC_J)
+PRES(AS | AO,                                                    KC_DOT)
+PRES(AS | AI,                                                    KC_K)
+PRES(AS | AT,                                                    KC_C)
+SUBS(AS | AN | AO,                                               "jos")
+SUBS(AE | AT | AO,                                               "eero")
+SUBS(AA | AS | AP,                                               "paassa")
+SUBS(AI | AO | AP,                                               "oppi")
+SUBS(AA | AS | AO,                                               "osaa")
+SUBS(AS | AE | AI,                                               "keksi")
+SUBS(AS | AN | AI,                                               "kiinni")
+SUBS(AE | AN | AO,                                               "yon")
+SUBS(AA | AE | AN,                                               "enaa")
+SUBS(AE | AT | AN,                                               "nyt")
+SUBS(AS | AE | AT,                                               "ester")
+SUBS(AE | AI | AO,                                               "ole")
+SUBS(AT | AI | AP,                                               "piti")
+SUBS(AA | AN | AI,                                               "han")
+SUBS(AA | AS | AE,                                               "saada")
+SUBS(AA | AT | AN,                                               "antaa")
+SUBS(AE | AT | AI,                                               "ettei")
+SUBS(AN | AI | AO,                                               "olin")
+SUBS(AA | AE | AI,                                               "xii")
+SUBS(AS | AE | AN,                                               "sen")
+SUBS(AN | AO | AP,                                               "muu")
+SUBS(AT | AI | AO,                                               "voi")
+SUBS(AA | AS | AN,                                               "ja")
+SUBS(AT | AN | AO,                                               "tuo")
+SUBS(AE | AT | AP,                                               "ett'")
+SUBS(AT | AN | AI,                                               "nti")
+SUBS(AA | AE | AP,                                               "aape")
+SUBS(AA | AS | AI,                                               "kaikki")
+SUBS(AA | AS | AT,                                               "taas")
+SUBS(AA | AT | AO,                                               "ottaa")
+SUBS(AA | AI | AP,                                               "pappi")
+SUBS(AA | AT | AP,                                               "paata")
+SUBS(AA | AI | AO,                                               "olla")
+SUBS(AA | AN | AP,                                               "nama")
+SUBS(AE | AN | AP,                                               "me")
+SUBS(AS | AI | AO,                                               "olisi")
+SUBS(AS | AT | AI,                                               "viisi")
+SUBS(AE | AN | AI,                                               "he")
+SUBS(AA | AT | AI,                                               "tai")
+SUBS(AA | AE | AT,                                               "etta")
+SUBS(AN | AI | AP,                                               "mihin")
+SUBS(AA | AE | AT | AI,                                          "eivat")
+SUBS(AT | AI | AO | AP,                                          "ippolit")
+SUBS(AS | AI | AO | AP,                                          "pois")
+SUBS(AS | AE | AT | AI,                                          "itse")
+SUBS(AE | AT | AN | AI,                                          "hyvin")
+SUBS(AS | AT | AN | AI,                                          "kiinnitti")
+SUBS(AA | AS | AT | AP,                                          "paasta")
+SUBS(AA | AE | AT | AO,                                          "erottaa")
+SUBS(AA | AN | AO | AP,                                          "oman")
+SUBS(AS | AE | AI | AP,                                          "kiipesi")
+SUBS(AA | AS | AI | AP,                                          "paasi")
+SUBS(AA | AS | AI | AO,                                          "silla")
+SUBS(AS | AE | AN | AP,                                          "pysyy")
+SUBS(AS | AE | AT | AO,                                          "god")
+SUBS(AA | AE | AN | AP,                                          "enemman")
+SUBS(AA | AI | AO | AP,                                          "lapi")
+SUBS(AT | AN | AI | AO,                                          "ollut")
+SUBS(AE | AN | AO | AP,                                          "monen")
+SUBS(AA | AE | AI | AO,                                          "elaa")
+SUBS(AE | AT | AI | AO,                                          "olet")
+SUBS(AE | AN | AI | AO,                                          "olen")
+SUBS(AS | AE | AN | AI,                                          "siihen")
+SUBS(AA | AE | AN | AI,                                          "hanen")
+SUBS(AA | AT | AN | AP,                                          "tama")
+SUBS(AE | AT | AO | AP,                                          "peto")
+SUBS(AA | AN | AI | AP,                                          "mina")
+SUBS(AA | AT | AN | AO,                                          "tuota")
+SUBS(AA | AT | AI | AP,                                          "pitaa")
+SUBS(AS | AE | AN | AO,                                          "uuden")
+SUBS(AE | AT | AN | AP,                                          "mr")
+SUBS(AA | AS | AT | AO,                                          "sota")
+SUBS(AS | AE | AT | AN,                                          "syntynyt")
+SUBS(AA | AE | AT | AP,                                          "paeta")
+SUBS(AA | AS | AE | AT,                                          "eras")
+SUBS(AA | AS | AT | AI,                                          "sita")
+SUBS(AS | AN | AI | AO,                                          "kuin")
+SUBS(AA | AN | AI | AO,                                          "liian")
+SUBS(AA | AT | AI | AO,                                          "olivat")
+SUBS(AE | AT | AN | AO,                                          "tytto")
+SUBS(AA | AE | AT | AN,                                          "taytyy")
+SUBS(AT | AN | AO | AP,                                          "muut")
+SUBS(AA | AS | AE | AO,                                          "sodassa")
+SUBS(AA | AS | AE | AN,                                          "sydan")
+SUBS(AA | AS | AN | AI,                                          "sina")
+SUBS(AS | AT | AN | AO,                                          "joutunut")
+SUBS(AA | AS | AE | AP,                                          "paase")
+SUBS(AA | AS | AE | AI,                                          "eika")
+SUBS(AA | AS | AT | AN,                                          "sanat")
+SUBS(AE | AN | AI | AP,                                          "meni")
+SUBS(AT | AN | AI | AP,                                          "nimitti")
+SUBS(AE | AI | AO | AP,                                          "ell'ei")
+SUBS(AS | AN | AI | AP,                                          "miksi")
+SUBS(AS | AT | AI | AP,                                          "pisti")
+SUBS(AE | AT | AI | AP,                                          "ett'ei")
+SUBS(AS | AE | AI | AO,                                          "eiko")
+PRES(AN | AI | AO | AP,                                          KC_ENT)
+SUBS(AA | AS | AN | AO,                                          "jossa")
+SUBS(AA | AS | AN | AP,                                          "samassa")
+SUBS(AS | AT | AI | AO,                                          "voisi")
+SUBS(AA | AE | AN | AO,                                          "yona")
+SUBS(AS | AN | AO | AP,                                          "suom")
+SUBS(AA | AT | AN | AI,                                          "hanta")
+SUBS(AA | AE | AI | AP,                                          "eipa")
+SUBS(AA | AS | AE | AT | AP,                                     "perasta")
+SUBS(AA | AS | AE | AN | AO,                                     "sanoen")
+SUBS(AS | AE | AN | AI | AO,                                     "oikein")
+SUBS(AA | AS | AE | AT | AO,                                     "odottaa")
+SUBS(AA | AS | AE | AN | AP,                                     "sydamensa")
+SUBS(AA | AS | AT | AN | AP,                                     "maasta")
+SUBS(AS | AT | AN | AO | AP,                                     "muutos")
+SUBS(AA | AE | AT | AN | AP,                                     "emanta")
+SUBS(AS | AE | AN | AO | AP,                                     "myos")
+SUBS(AE | AN | AI | AO | AP,                                     "minulle")
+SUBS(AA | AS | AT | AN | AO,                                     "jota")
+SUBS(AA | AS | AT | AI | AO,                                     "katsoi")
+SUBS(AA | AS | AT | AI | AP,                                     "pitaisi")
+SUBS(AA | AT | AN | AO | AP,                                     "mutta")
+SUBS(AA | AE | AI | AO | AP,                                     "paalle")
+SUBS(AA | AS | AE | AN | AI,                                     "heidan")
+SUBS(AE | AT | AN | AI | AO,                                     "tulee")
+SUBS(AE | AT | AN | AI | AP,                                     "miten")
+SUBS(AA | AE | AT | AN | AO,                                     "tyota")
+SUBS(AS | AE | AT | AN | AI,                                     "sitten")
+SUBS(AA | AS | AI | AO | AP,                                     "poika")
+SUBS(AS | AT | AI | AO | AP,                                     "potki")
+SUBS(AS | AE | AT | AI | AO,                                     "toiset")
+SUBS(AA | AE | AT | AO | AP,                                     "opettaa")
+SUBS(AA | AT | AN | AI | AP,                                     "mita")
+SUBS(AS | AE | AT | AN | AO,                                     "suuren")
+SUBS(AA | AE | AT | AI | AO,                                     "viela")
+SUBS(AE | AT | AI | AO | AP,                                     "perille")
+SUBS(AA | AS | AN | AI | AO,                                     "joka")
+SUBS(AA | AS | AT | AO | AP,                                     "paatos")
+SUBS(AS | AE | AN | AI | AP,                                     "mies")
+SUBS(AS | AE | AT | AI | AP,                                     "sit'")
+SUBS(AS | AT | AN | AI | AO,                                     "tunsi")
+SUBS(AA | AN | AI | AO | AP,                                     "minua")
+SUBS(AA | AS | AN | AI | AP,                                     "mika")
+SUBS(AA | AS | AT | AN | AI,                                     "vastaan")
+SUBS(AA | AT | AN | AI | AO,                                     "tulla")
+SUBS(AS | AE | AT | AN | AP,                                     "mrs")
+SUBS(AA | AE | AN | AI | AO,                                     "hanelle")
+SUBS(AT | AN | AI | AO | AP,                                     "minut")
+SUBS(AE | AT | AN | AO | AP,                                     "muuten")
+SUBS(AS | AT | AN | AI | AP,                                     "pitkin")
+SUBS(AA | AE | AN | AI | AP,                                     "miehia")
+SUBS(AA | AS | AE | AI | AP,                                     "pida")
+SUBS(AA | AS | AE | AT | AN,                                     "sentaan")
+SUBS(AS | AN | AI | AO | AP,                                     "pikku")
+SUBS(AA | AE | AT | AI | AP,                                     "pari")
+SUBS(AA | AS | AE | AT | AI,                                     "kertaa")
+SUBS(AA | AE | AN | AO | AP,                                     "myonnan")
+SUBS(AS | AE | AI | AO | AP,                                     "pelko")
+SUBS(AA | AT | AI | AO | AP,                                     "palata")
+SUBS(AA | AS | AE | AI | AO,                                     "siella")
+SUBS(AA | AE | AT | AN | AI,                                     "hanet")
+SUBS(AA | AS | AN | AO | AP,                                     "pojan")
+SUBS(AA | AS | AE | AN | AO | AP,                                "poydan")
+SUBS(AA | AS | AT | AN | AI | AO,                                "jotka")
+SUBS(AA | AT | AN | AI | AO | AP,                                "muutamia")
+SUBS(AS | AE | AT | AN | AO | AP,                                "prudence")
+SUBS(AA | AS | AE | AT | AO | AP,                                "petosta")
+SUBS(AA | AS | AN | AI | AO | AP,                                "paljon")
+SUBS(AS | AE | AT | AN | AI | AO,                                "kuitenkin")
+SUBS(AS | AE | AT | AN | AI | AP,                                "ihmiset")
+SUBS(AA | AE | AT | AN | AO | AP,                                "tuntemaan")
+SUBS(AA | AE | AT | AI | AO | AP,                                "vielapa")
+SUBS(AA | AS | AE | AT | AN | AI,                                "kerran")
+SUBS(AS | AE | AN | AI | AO | AP,                                "myoskin")
+SUBS(AA | AS | AT | AI | AO | AP,                                "palasivat")
+SUBS(AA | AE | AT | AN | AI | AO,                                "rouva")
+SUBS(AA | AE | AN | AI | AO | AP,                                "meilla")
+SUBS(AA | AS | AE | AT | AN | AP,                                "paassyt")
+SUBS(AE | AT | AN | AI | AO | AP,                                "toimeen")
+SUBS(AA | AE | AT | AN | AI | AP,                                "meita")
+SUBS(AA | AS | AE | AI | AO | AP,                                "pelkaa")
+SUBS(AA | AS | AE | AT | AI | AO,                                "sielta")
+SUBS(AS | AE | AT | AI | AO | AP,                                "posket")
+SUBS(AS | AT | AN | AI | AO | AP,                                "muutkin")
+SUBS(AA | AS | AE | AT | AN | AO,                                "suurta")
+SUBS(AA | AS | AE | AN | AI | AP,                                "meidan")
+SUBS(AA | AS | AE | AT | AI | AP,                                "tarpeeksi")
+SUBS(AA | AS | AT | AN | AI | AP,                                "mista")
+SUBS(AA | AS | AT | AN | AO | AP,                                "pojat")
+SUBS(AA | AS | AE | AN | AI | AO,                                "kylla")
+SUBS(AA | AE | AT | AN | AI | AO | AP,                           "molemmat")
+SUBS(AA | AS | AT | AN | AI | AO | AP,                           "silmat")
+SUBS(AA | AS | AE | AT | AN | AI | AP,                           "miesta")
+SUBS(AA | AS | AE | AT | AN | AO | AP,                           "opettaja")
+SUBS(AA | AS | AE | AT | AI | AO | AP,                           "lapset")
+SUBS(AS | AE | AT | AN | AI | AO | AP,                           "rupesi")
+SUBS(AA | AS | AE | AN | AI | AO | AP,                           "kallem")
+SUBS(AA | AS | AE | AT | AN | AI | AO,                           "kuitenkaan")
+SUBS(AA | AS | AE | AT | AN | AI | AO | AP,                      "puolesta")

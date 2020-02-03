@@ -1,28 +1,28 @@
-P(CMD | AA,											SEND(KC_LCTL));
-P(CMD | AS,											SEND(KC_LSFT));
-P(CMD | AE,											SEND(KC_LALT));
-P(CMD | AT,											SEND(KC_LGUI));
-P(CMD | AN,											SEND(KC_LEFT));
-P(CMD | AI,											SEND(KC_DOWN));
-P(CMD | AO,											SEND(KC_UP));
-P(CMD | AP,											SEND(KC_RIGHT));
-P(CMD | AR,											SEND(KC_PGUP));
-P(CMD | AL,											SEND(KC_PGDN));
+PRES(CMD | AA,											KC_LCTL)
+PRES(CMD | AS,											KC_LSFT)
+PRES(CMD | AE,											KC_LALT)
+PRES(CMD | AT,											KC_LGUI)
+PRES(CMD | AN,											KC_LEFT)
+PRES(CMD | AI,											KC_DOWN)
+PRES(CMD | AO,											KC_UP)
+PRES(CMD | AP,											KC_RIGHT)
+PRES(CMD | AR,											KC_PGUP)
+PRES(CMD | AL,											KC_PGDN)
 
-P(CMD | AA | AP,								SEND(KC_F1));
-P(CMD | AA | AO,								SEND(KC_F2));
-P(CMD | AA | AO | AP,						SEND(KC_F3));
-P(CMD | AA | AI,								SEND(KC_F4));
-P(CMD | AA | AI | AP,						SEND(KC_F5));
-P(CMD | AA | AI | AO,						SEND(KC_F6));
-P(CMD | AA | AI | AO | AP,			SEND(KC_F7));
-P(CMD | AA | AN,								SEND(KC_F8));
-P(CMD | AA | AN | AP,						SEND(KC_F9));
-P(CMD | AA | AN | AO,						SEND(KC_F10));
-P(CMD | AA | AN | AO | AP,			SEND(KC_F11));
-P(CMD | AA | AN | AI,						SEND(KC_F12));
+PRES(CMD | AA | AP,									KC_F1)
+PRES(CMD | AA | AO,									KC_F2)
+PRES(CMD | AA | AO | AP,						KC_F3)
+PRES(CMD | AA | AI,									KC_F4)
+PRES(CMD | AA | AI | AP,						KC_F5)
+PRES(CMD | AA | AI | AO,						KC_F6)
+PRES(CMD | AA | AI | AO | AP,				KC_F7)
+PRES(CMD | AA | AN,									KC_F8)
+PRES(CMD | AA | AN | AP,						KC_F9)
+PRES(CMD | AA | AN | AO,						KC_F10)
+PRES(CMD | AA | AN | AO | AP,				KC_F11)
+PRES(CMD | AA | AN | AI,						KC_F12)
 
-P(CMD | AS | AN,								SEND(KC_HOME));
-P(CMD | AS | AP,								SEND(KC_END));
-P(CMD | AS | AI,								SEND(KC_INS));
-P(CMD | AS | AO,								SEND(KC_DEL));
+PRES(CMD | AS | AN,									KC_HOME)
+PRES(CMD | AS | AP,									KC_END)
+PRES(CMD | AS | AI,									KC_INS)
+PRES(CMD | AS | AO,									KC_DEL)
