@@ -22,10 +22,21 @@
 #include <stdio.h>
 #include "wait.h"
 
-struct dictEntry {
+// In memory chord datatypes
+struct funcEntry {
 	uint16_t	chord;
 	void 			(*act)(void);
 } dictEntry_t;
+
+struct stringEntry {
+	uint16_t	chord;
+	char			str[];
+} stringEntry_t;
+
+struct keyEntry {
+	uint16_t	chord;
+	uint8_t		keys[];
+} keyEntry_t;
 
 extern struct 	dictEntry test[];
 extern uint16_t cChord;				// Current Chord
@@ -63,6 +74,14 @@ void 			CLICK_MOUSE(uint8_t);
 // Keymap helper
 //#define P(chord, act) if (cChord == (chord)) { if (!lookup) {act;} return chord;}*/
 #define REBOOT() wdt_enable(WDTO_250MS); for (;;) ;
+
+// New Approach, multiple structures
+P_KEYMAP(chord, keycode) 
+M_KEYMAP(chord, keycodes) 
+S_KEYMAP(chord, string)
+F_KEYMAP(chord, name, func)
+F_ACTION(chord, name, func)
+
 
 // Shift to internal representation
 // i.e) S(teno)R(ight)F
