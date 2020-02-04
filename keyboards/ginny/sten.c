@@ -158,9 +158,9 @@ void matrix_scan_user(void) {
 uint16_t	processQwerty(bool lookup) {
 	// search through all four dicts
 	// run if lookup is false
-	
 	// Single key chords
-	for (int i = 0; i < keyLen/sizeof(keyDict[0]); i++) {
+	uprintf("Trying to match keys\n");
+	for (int i = 0; i < keyLen; i++) {
 		if (keyDict[i].chord == cChord) {
 			if (!lookup) 
 				register_code(keyDict[i].key);
@@ -168,8 +168,9 @@ uint16_t	processQwerty(bool lookup) {
 		}
 	}
 	
+	uprintf("Trying to match combos\n");
 	// combos
-	for (int i = 0; i < comboLen/sizeof(cmbDict[0]); i++) {
+	for (int i = 0; i < comboLen; i++) {
 		if (cmbDict[i].chord == cChord) {
 			if (!lookup) {
 				for (int j = 0; (j < COMBO_MAX) && (cmbDict[i].keys[j] != COMBO_END); i++) {
@@ -181,16 +182,20 @@ uint16_t	processQwerty(bool lookup) {
 	}
 
 	// strings
-	for (int i = 0; i < stringLen/sizeof(strDict[0]); i++) {
-		if (strDict[i].chord == cChord) {
+	uprintf("%d\n", stringLen);
+	for (uint16_t i = 0; i < stringLen; i++) {
+		//uprintf("testing: %d", &strDict);
+		//uprintf("testing: %i", i);
+		/*if (strDict[i].chord == cChord) {
 			//if (!lookup) SEND_STRING("asdf");
-			if (!lookup) send_string(strDict[i].str);
+			//if (!lookup) send_string(strDict[i].str);
 			return cChord;
-		}
+		}*/
 	}
 
 	// functions
-	for (int i = 0; i < funcsLen/sizeof(funDict[0]); i++) {
+	uprintf("Trying to match funcs\n");
+	for (int i = 0; i < funcsLen; i++) {
 		if (funDict[i].chord == cChord) {
 			if (!lookup) funDict[i].act();
 			return cChord;

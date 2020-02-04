@@ -12,7 +12,7 @@ DEBOUNCE_TYPE			= eager_pr
 # Lets try and save some space eh?
 MOUSEKEY_ENABLE   = no
 EXTRAKEY_ENABLE   = no
-CONSOLE_ENABLE		= no
+CONSOLE_ENABLE		= yes
 COMMAND_ENABLE		= no
 
 SRC							+= matrix.c sten.c
