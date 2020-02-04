@@ -158,6 +158,14 @@ void matrix_scan_user(void) {
 uint16_t	processQwerty(bool lookup) {
 	// search through all four dicts
 	// run if lookup is false
+	
+	// Single key chords
+	for (int i = 0; i < keyLen; i++) { 
+		/*if (keyDict[i].chord == cChord) {
+			if (!lookup) SEND(keyDict[i].key);
+			return cChord;
+		}*/
+	}
 
 	// strings
 	for (int i = 0; i < stringLen; i++) {
@@ -188,14 +196,6 @@ uint16_t	processQwerty(bool lookup) {
 		}
 	}
 
-	// Single key chords
-	uprintf("Trying to match keys\n");
-	for (int i = 0; i < keyLen; i++) { 
-		if (keyDict[i].chord == cChord) {
-			if (!lookup) SEND(keyDict[i].key);
-			return cChord;
-		}
-	}
 
 	uprintf("Reached end\n");
 	return 0;

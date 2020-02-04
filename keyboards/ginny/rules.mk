@@ -18,4 +18,4 @@ COMMAND_ENABLE		= no
 SRC							+= matrix.c sten.c
 QUANTUM_LIB_SRC += i2c_master.c
 OPT_DEFS				+= -DONLYQWERTY -DDEBUG_MATRIX -save-temps -c
-LTO_ENABLE = yes
+#LTO_ENABLE = yes
