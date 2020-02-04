@@ -30,7 +30,7 @@
 // Process single key pushes
 #undef 	PRES
 #define PRES P_KEYMAP			
-struct keyEntry keyDict[] = {
+const struct keyEntry keyDict[] = {
 	#include "dicts.def"
 };
 #undef 	PRES
@@ -39,7 +39,7 @@ struct keyEntry keyDict[] = {
 // Process Combos
 #undef 	KEYS
 #define KEYS BLANK
-struct comboEntry cmbDict[] = {
+const struct comboEntry cmbDict[] = {
 	#include "dicts.def"
 };
 #undef 	KEYS
@@ -48,7 +48,7 @@ struct comboEntry cmbDict[] = {
 // Process String subs
 #undef  SUBS
 #define SUBS S_KEYMAP
-struct stringEntry strDict[] = {
+const struct stringEntry strDict[] = {
 	#include "dicts.def"
 };
 #undef 	SUBS
@@ -64,7 +64,7 @@ struct stringEntry strDict[] = {
 // Process the function structure
 #undef 	EXEC
 #define EXEC X_KEYMAP
-struct funcEntry funDict[] = {
+const struct funcEntry funDict[] = {
 	#include "dicts.def"
 };
 #undef EXEC

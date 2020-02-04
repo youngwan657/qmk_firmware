@@ -19,13 +19,13 @@ int		 		pChordIndex		= 0;			// Keys in previousachord
 uint16_t 	pChordState[32];				// Previous chord sate 
 
 // Key Dicts
-extern struct keyEntry		keyDict[];
+extern const struct keyEntry		keyDict[];
 extern size_t keyLen;
-extern struct comboEntry	cmbDict[];
+extern const struct comboEntry	cmbDict[];
 extern size_t comboLen; 
-extern struct funcEntry 	funDict[];
+extern const struct funcEntry 	funDict[];
 extern size_t funcsLen;
-extern struct stringEntry	strDict[];
+extern const struct stringEntry	strDict[];
 extern size_t stringLen; 
 
 // Mode state
@@ -158,41 +158,27 @@ void matrix_scan_user(void) {
 uint16_t	processQwerty(bool lookup) {
 	// search through all four dicts
 	// run if lookup is false
-	// Single key chords
-	uprintf("Trying to match keys\n");
-	for (int i = 0; i < keyLen; i++) {
-		if (keyDict[i].chord == cChord) {
-			if (!lookup) 
-				register_code(keyDict[i].key);
+
+	// strings
+	for (int i = 0; i < stringLen; i++) {
+		if (strDict[i].chord == cChord) {
+			if (!lookup) send_string(strDict[i].str);
 			return cChord;
 		}
 	}
 	
-	uprintf("Trying to match combos\n");
 	// combos
 	for (int i = 0; i < comboLen; i++) {
 		if (cmbDict[i].chord == cChord) {
 			if (!lookup) {
 				for (int j = 0; (j < COMBO_MAX) && (cmbDict[i].keys[j] != COMBO_END); i++) {
-					register_code(cmbDict[i].keys[j]);
+					SEND(cmbDict[i].keys[j]);
 				}
 			}
 			return cChord;
 		}
 	}
-
-	// strings
-	uprintf("%d\n", stringLen);
-	for (uint16_t i = 0; i < stringLen; i++) {
-		//uprintf("testing: %d", &strDict);
-		//uprintf("testing: %i", i);
-		/*if (strDict[i].chord == cChord) {
-			//if (!lookup) SEND_STRING("asdf");
-			//if (!lookup) send_string(strDict[i].str);
-			return cChord;
-		}*/
-	}
-
+	
 	// functions
 	uprintf("Trying to match funcs\n");
 	for (int i = 0; i < funcsLen; i++) {
@@ -202,6 +188,16 @@ uint16_t	processQwerty(bool lookup) {
 		}
 	}
 
+	// Single key chords
+	uprintf("Trying to match keys\n");
+	for (int i = 0; i < keyLen; i++) { 
+		if (keyDict[i].chord == cChord) {
+			if (!lookup) SEND(keyDict[i].key);
+			return cChord;
+		}
+	}
+
+	uprintf("Reached end\n");
 	return 0;
 }
 // Traverse the chord history to a given point
