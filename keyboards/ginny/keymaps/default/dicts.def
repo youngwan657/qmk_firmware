@@ -12,7 +12,8 @@
 #include "dicts/aset/cmd-keymap.def"
 #include "dicts/aset/num-keymap.def"
 #include "dicts/aset/en-keymap.def"
+#include "dicts/aset/layer-keymap.def"
 #include "user.def"
 
 // For Debugging
-//#include "dicts/testing/test.def"
+#include "dicts/testing/test.def"

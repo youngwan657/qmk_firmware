@@ -1,13 +1,11 @@
-/*
+EXEC(AA|AS|AL, 									do_nothing,					SEND_STRING("yeet");)
 
-//#include QMK_KEYBOARD_H
-//#include "sten.h"
+/*
 
 // Thumb Keys
 PRES(AR,														KC_SPC)
 KEYS(AL,														KC_SPC, KC_SPC)
 SUBS(AR | AL,												"asdf")
-EXEC(AA, 														do_nothing,					return;)
 
 // Layer Switches 
 // To Number

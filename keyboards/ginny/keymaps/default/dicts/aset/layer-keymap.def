@@ -1,24 +1,22 @@
-	// Thumb Keys
-	PRES(AL,														KC_LSFT)
-	PRES(AR,														KC_SPC)
+// Thumb Keys
+PRES(AL,																																		KC_LSFT)
+PRES(AR,																																		KC_SPC)
 	
-// TODO: THIS
-/*
-	// Layer Switches 
-	// To Number
-	PRES(			AA | AT | AN | AP,																SET_STICKY(NUM)
-	PRES(NUM | AA | AT | AN | AP,																SET_STICKY(0)
-	PRES(CMD | AA | AT | AN | AP,																SET_STICKY(NUM)
-	PRES(USR | AA | AT | AN | AP,																SET_STICKY(NUM)
-	
-	// To Command
-	PRES(			AS | AE | AI | AO,																SET_STICKY(CMD)
-	PRES(NUM | AS | AE | AI | AO,																SET_STICKY(CMD)
-	PRES(CMD | AS | AE | AI | AO,																SET_STICKY(0)
-	PRES(USR | AS | AE | AI | AO,																SET_STICKY(CMD)
+// Layer Switches 
+// To Number
+SPEC(	 		 AR	| AA | AT | AN | AP,													SPEC_STICKY, 		NUM)
+SPEC(NUM | AR | AA | AT | AN | AP,													SPEC_STICKY, 		0)
+SPEC(CMD | AR | AA | AT | AN | AP,													SPEC_STICKY, 		NUM)
+SPEC(USR | AR | AA | AT | AN | AP,													SPEC_STICKY,		NUM)
 
-	// To User
-	PRES(			AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR)
-	PRES(NUM | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SET_STICKY(USR)
-	PRES(CMD | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,  SET_STICKY(USR)
-	PRES(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,  SET_STICKY(0)*/
+// To Command
+SPEC(AR	 | AS | AE | AI | AO,																SPEC_STICKY,		CMD)
+SPEC(NUM | AS | AE | AI | AO,																SPEC_STICKY,		CMD)
+SPEC(CMD | AS | AE | AI | AO,																SPEC_STICKY,		0)
+SPEC(USR | AS | AE | AI | AO,																SPEC_STICKY,		CMD)
+
+// To User
+SPEC(			 AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SPEC_STICKY,		USR)
+SPEC(NUM | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SPEC_STICKY,		USR)
+SPEC(CMD | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SPEC_STICKY,		USR)
+SPEC(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SPEC_STICKY,		0)

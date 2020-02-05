@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"sort"
+	"hash/crc64"
+	//"encoding/base64"
 )
 
 func main() {
@@ -47,7 +49,7 @@ func main() {
 			// Special handling for numbermap
 			var entry string
 			if strings.Contains(fname, "num") {
-				entry = v.toKeymap("NUM | ")
+				entry = v.toKeymap("NUM|")
 			} else {
 				entry = v.toKeymap("")
 			}
@@ -57,12 +59,36 @@ func main() {
 			}
 		}
 
-		// Sort by number of whitespace lol
+		// Sort by length, then amount of whitespace lol
 		sort.Slice(output, func (i,j int) bool {
+			var maxLen int
+			if len(output[i]) > len(output[j]) { 
+				maxLen = len(output[i])
+			} else {
+				maxLen = len(output[j])
+			}
+
+			if maxLen-strings.Count(output[i], " ") > maxLen-strings.Count(output[j], " ") {
+				return false
+			}
+			return true
+			/*
+			if output[i][:4] != output [j][:4] {
+				return output[i][:4] < output [j][:4]
+			}
+
+
+			// Sort by length
+			if (len(output[i]) != len(output[j])) && (len(output[i]) > len(output[j])) {
+				return true
+			}
+
+			// Amount of whitespace
 			if strings.Count(output[i], " ") > strings.Count(output[j], " ") { 
 				return true 
 			} 
 			return false
+			*/
 		})
 		
 		// Write all data out
@@ -89,56 +115,56 @@ func (e Entry) toKeymap(prefix string) (string) {
 		chord += keys[v-1]
 
 		if i != len(e.Input)-1 {
-			chord += " | "
+			chord += "|"
 		}
 	}
 
-	// Handle specials first
+	// Handle specials/base first
+	var ok bool
+	var v  []string
+
 	if e.Special != "" {
-		v, ok := QMKLookup[e.Special] 
-		if ok {
-			// Determine way to send key
-			if len(v) == 1 {
-				command = "PRES("
-			} else {
-				command = "KEYS("
-			}
+		v, ok = QMKLookup[e.Special] 
+	}
+	if !ok && e.Base != "" {
+		v, ok = QMKLookup[e.Base] 
+	}
 
-			// String together args
-			for ii, vv := range(v) {
-				arg += vv
-				if ii != len(v)-1 {
-					arg += ","
-				}
-			}
-
-			goto Found
+	if ok {
+		// Determine way to send key
+		if len(v) == 1 {
+			command = "PRES("
+		} else {
+			command = "KEYS("
 		}
 	}
 
-	if e.Base != "" {
-		v, ok := QMKLookup[e.Base] 
-		if ok {
-			// Determine way to send key
-			if len(v) == 1 {
-				command = "PRES("
-			} else {
-				command = "KEYS("
-			}
-
-			// String together args
-			for ii, vv := range(v) {
-				arg += vv
-				if ii != len(v)-1 {
-					arg += ","
-				}
-			}
-
-			goto Found
-		} else {
-			fmt.Printf("couldn't find: '%v':%v", e.Base, []byte(e.Base))
-			panic("Nonempty base")
+	if ok {
+		if len(v) > 1 {
+			arg += "{"
 		}
+
+		// String together args
+		for ii, vv := range(v) {
+			arg += vv
+			if ii == len(v)-1 && len(v) > 1 {
+				arg += ", COMBO_END}"
+			} else if ii != len(v)-1 {
+				arg += ", "
+			}
+		}
+
+		
+		hash := crc64.Checksum([]byte(fmt.Sprintf("%v%v", arg, chord)), crc64.MakeTable(crc64.ECMA))
+		hashStr := fmt.Sprintf("cmb_%x", hash)
+		wordSpacer := strings.Repeat(" ", 42-len(arg))
+		if command == "KEYS(" {
+			arg = fmt.Sprintf("%v, %v %v", hashStr, wordSpacer, arg)
+		} else {
+			arg = fmt.Sprintf("%65v", arg)
+		}
+			
+		goto Found
 	}
 
 	// Parse out word info
@@ -154,16 +180,20 @@ func (e Entry) toKeymap(prefix string) (string) {
 			word = wordInfo.RWord
 		}
 
+		// generate function name
+		hash := crc64.Checksum([]byte(word), crc64.MakeTable(crc64.ECMA))
+		hashStr := fmt.Sprintf("str_%x", hash)
 		command = "SUBS("
-		arg = fmt.Sprintf("\"%v\"", word)
+		wordSpacer := strings.Repeat(" ", 40-len(word))
+		arg = fmt.Sprintf("%v, %v \"%v \"", hashStr, wordSpacer, word)
 		goto Found
 	}
 
-	//panic(e.String())
+	panic(e.String())
 
 	Found:
 	chord += ","
-	return fmt.Sprintf("%v%-60v%v)\n", command, chord, arg)
+	return fmt.Sprintf("%v%-35v%v)\n", command, chord, arg)
 
 	Blank:
 	return ""

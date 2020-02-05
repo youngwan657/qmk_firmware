@@ -13,124 +13,88 @@
 		the Georgi engine instead!
 */
 
+#pragma once
 #include QMK_KEYBOARD_H
-#include "keymap_steno.h"
 #include "keymap.h"
 #include <string.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "config_steno.h"
+#include <avr/pgmspace.h>
 #include "wait.h"
 
 // Maximum values for combos
-#define COMBO_MAX 4
 #define COMBO_END 0x00
 
 // In memory chord datatypes
+enum specialActions {
+	SPEC_STICKY,
+	SPEC_REPEAT,
+	SPEC_CLICK,
+	SPEC_SWITCH,
+};
 struct funcEntry {
-	uint16_t	chord;
+	C_SIZE 		chord;
 	void 			(*act)(void);
 } funcEntry_t;
-
 struct stringEntry {
-	uint16_t	chord;
-	char*			str;
+	C_SIZE			chord;
+	PGM_P				str;
 } stringEntry_t;
-
 struct comboEntry {
-	uint16_t	chord;
-	uint8_t		keys[COMBO_MAX];
+	C_SIZE		chord;
+	PGM_P			keys;
 } comboEntry_t;
-
 struct keyEntry {
-	uint16_t	chord;
+	C_SIZE		chord;
 	uint8_t		key;
 } keyEntry_t;
+struct specialEntry {
+	C_SIZE									chord;
+	enum specialActions			action;
+	uint16_t								arg;
+} specialEntry_t;
 
 
 // Chord Temps
-extern uint16_t cChord;			
-extern uint16_t test;			
+extern C_SIZE cChord;			
+extern C_SIZE test;			
 
 // Function defs
+void			processKeysUp(void);
 void 			processChord(void);
-uint16_t	processQwerty(bool lookup);
-uint16_t 	processFakeSteno(bool lookup);
-void 			saveState(uint16_t cChord);
+C_SIZE		processQwerty(bool lookup);
+C_SIZE		processFakeSteno(bool lookup);
+void 			saveState(C_SIZE cChord);
 void 			restoreState(void);
 
 // Macros for use in keymap.c
 void 			SEND(uint8_t kc);
 void 			REPEAT(void);
-void 			SET_STICKY(uint16_t);
+void 			SET_STICKY(C_SIZE);
 void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
-
-#define PASTER(x,y) x ## _ ## y
-#define EVALUATOR(x,y)  PASTER(x,y)
-#define NAME(arg) EVALUATOR(fn, arg)
-#define REBOOT() wdt_enable(WDTO_250MS); for (;;) ;
 
 // Keymap helpers
 // New Approach, multiple structures
 #define P_KEYMAP(chord, keycode)	 			{chord, keycode},
-#define K_KEYMAP(chord, ...)						{chord, {__VA_ARGS__},
-#define S_KEYMAP(chord, string) 				{chord, string},
-#define X_KEYMAP(chord, name, func)			{chord, &name},
+
+#define K_KEYMAP(chord, name, ...)			{chord, (PGM_P)&name},
+#define K_ACTION(chord, name, ...)			const uint8_t	name[] PROGMEM = __VA_ARGS__;
+
+#define S_KEYMAP(chord, name, string) 	{chord, (PGM_P)&name},
+#define S_ACTION(chord, name, string)		const char name[] PROGMEM = string;
+
+#define X_KEYMAP(chord, name, func)			{chord, name},
 #define X_ACTION(chord, name, func)			void name(void) {func}
+
+#define Z_KEYMAP(chord, act, arg)				{chord, act, arg},
+
 #define TEST_COLLISION(chord,...)				case chord: break;
 #define BLANK(...)
 
 // Shift to internal representation
 // i.e) S(teno)R(ight)F
-#define STN(n) (1u<<n)
-enum ORDER { 
-		SLSU= 0, SLSD, SLT, SLK, SLP, SLW, SLH, SLR, SST1, SST2,
-		SRES1, SRES2, SST3, SST4
-};
-
-// Ginny Define
-#define GLP STN(SLSU)
-#define GLR STN(SLSD)
-#define GLM STN(SLT)
-#define GLI STN(SLK)
-#define GLT STN(SLP)
-
-#define GRT STN(SLW)
-#define GRI STN(SLH)
-#define GRM STN(SLR)
-#define GRR STN(SST1)
-#define GRP STN(SST2)
-#define RES1 STN(SRES1) // Use reserved for sticky state
-#define RES2 STN(SRES2)
-#define RES3 STN(SRES3)
-
-// Original 32bit version
-#define LSU STN(SLSU)
-#define LSD STN(SLSD)
-#define LFT STN(SLT)  	
-#define LK  STN(SLK)
-#define LP  STN(SLP)
-#define LW  STN(SLW)
-#define LH  STN(SLH)
-#define LR  STN(SLR)
-#define ST1 STN(SST1)
-#define ST2 STN(SST2)
-#define ST3 STN(SST3)
-#define ST4 STN(SST4)
-
-// Asetniop aliases, to Ginny Fingers
-#define AA		GLP
-#define AS		GLR
-#define AE		GLM
-#define AT		GLI
-#define AN		GRI
-#define AI		GRM
-#define AO		GRR
-#define AP		GRP
-
-#define AL		GLT							// Left/Right thumbs
-#define AR		GRT
-
-#define NUM		RES1						// Sticky Layer 1
-#define USR   RES2						// Sticky Layer 2
-#define CMD		RES2 | RES1			// Sticky Layer 3
+#define STN(n) ((C_SIZE)1<<n)
+//#define ENGINE_HOOK(keycode, chord)	case keycode: pr ? (cChord |= (chord)): (cChord &= ~(chord)); break;
+#define ENGINE_HOOK(keycode, chord)	case keycode: cChord |= (chord); break;
