@@ -4,7 +4,7 @@
  *
  *	Do not use this on anything other then Ginny if you want to be sane
  */
-#include "engine.h"
+#include "sten.h"
 
 // Chord state
 C_SIZE		cChord				= 0;			// Current Chord
