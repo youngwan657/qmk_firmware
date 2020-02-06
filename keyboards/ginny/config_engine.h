@@ -20,9 +20,12 @@
 #define NUM     STN(10)                 // Sticky Layer 1
 #define USR     STN(11)                 // Sticky Layer 2
 #define CMD     STN(12)                 // Sticky Layer 3
+#define RGT     STN(13)                 // Right Hand chord
+#define LFT     STN(14)                 // Left Hand chord
 
 // Chord to start buffering strokes
 #define COMMAND_MODE    (AI | AN | AT | AE)
+#define IN_CHORD_MASK (0xFFFF ^ (AL))      // Special keys that are used for mods
 
 // Mapping of QMK Keycodes to chord positions
 #define ENGINE_CONFIG               \
@@ -37,4 +40,3 @@
         ENGINE_HOOK(KC_L, AL)       \
         ENGINE_HOOK(KC_R, AR)       
 
-#define IN_CHORD_MASK (0xFFFF ^ AL)

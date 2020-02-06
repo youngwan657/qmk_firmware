@@ -6,15 +6,12 @@
  		Amen.
 
 		This is a stripped down version of the Georgi engine meant for use with
- 		Ginni. As such serial-Steno features are disabled, chords are 16bits and
+ 		. As such serial-Steno features are disabled, chords are 16bits and
  		crap is removed where possible
- 
- 		Do not use this on anything other then Ginny if you want to be sane. Modify
-		the Georgi engine instead!
 */
 
-#pragma once
 #include QMK_KEYBOARD_H
+#pragma once
 #include "keymap.h"
 #include <string.h>
 #include <stdint.h>
@@ -67,6 +64,7 @@ C_SIZE		processQwerty(bool lookup);
 C_SIZE		processFakeSteno(bool lookup);
 void 			saveState(C_SIZE cChord);
 void 			restoreState(void);
+uint8_t   bitpop_v(C_SIZE val);
 
 // Macros for use in keymap.c
 void 			SEND(uint8_t kc);
@@ -74,6 +72,7 @@ void 			REPEAT(void);
 void 			SET_STICKY(C_SIZE);
 void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
+C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record);
 
 // Keymap helpers
 // New Approach, multiple structures

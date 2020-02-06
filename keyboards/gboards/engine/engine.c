@@ -109,6 +109,9 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     default: return true;
   }
 
+  // Handle any postprocessing
+  cChord = process_engine_post(cChord, keycode, record);
+
   // All keys up, send it!
   if (inChord && !pr && (pressed & IN_CHORD_MASK) == 0) {
     processKeysUp();
@@ -243,16 +246,16 @@ C_SIZE mapKeys(C_SIZE chord, bool lookup) {
     }
   }
 
-    if ((chord & IN_CHORD_MASK) != chord && mapKeys((chord & IN_CHORD_MASK), true) == (chord & IN_CHORD_MASK)) {
+  if ((chord & IN_CHORD_MASK) != chord && mapKeys((chord & IN_CHORD_MASK), true) == (chord & IN_CHORD_MASK)) {
 #ifndef NO_DEBUG
-      uprintf("Try with ignore mask\n");
+    uprintf("Try with ignore mask\n");
 #endif
-      mapKeys((chord & ~IN_CHORD_MASK), lookup);
-      mapKeys((chord & IN_CHORD_MASK), lookup);
-      return chord;
-    }
+    mapKeys((chord & ~IN_CHORD_MASK), lookup);
+    mapKeys((chord & IN_CHORD_MASK), lookup);
+    return chord;
+  }
 #ifndef NO_DEBUG
-    uprintf("Reached end\n");
+  uprintf("Reached end\n");
 #endif
     return 0;
 }
@@ -398,4 +401,46 @@ void SWITCH_LAYER(int layer) {
   if (keymapsCount >= layer) 
     layer_on(layer);
 #endif
+}
+uint8_t bitpop_v(C_SIZE val) {
+#if C_SIZE == uint8_t
+  return bitpop(val);
+#elif C_SIZE == uint16_t
+  return bitpop16(val);
+#elif C_SIZE == uint32_t
+  return bitpop32(val);
+#elif C_SIZE == uint64_t
+    uint8_t n = 0;
+    if (bits >> 32) {
+        bits >>= 32;
+        n += 32;
+    }
+    if (bits >> 16) {
+        bits >>= 16;
+        n += 16;
+    }
+    if (bits >> 8) {
+        bits >>= 8;
+        n += 8;
+    }
+    if (bits >> 4) {
+        bits >>= 4;
+        n += 4;
+    }
+    if (bits >> 2) {
+        bits >>= 2;
+        n += 2;
+    }
+    if (bits >> 1) {
+        bits >>= 1;
+        n += 1;
+    }
+    return n;
+#else
+  #error unsupported C_SIZE
+#endif
+}
+__attribute__((weak)) 
+C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record) {
+  return cur_chord;
 }

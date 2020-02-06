@@ -1,7 +1,7 @@
 // Thumb Keys
-PRES(AL,											         KC_LSFT)
-PRES(AR,											          KC_SPC)
-	
+PRES(AL,                                KC_LSFT)
+PRES(AR,                                KC_SPC)
+  
 // Layer Switches 
 // To Number
 SPEC(      AA | AT | AN | AP,                       SPEC_STICKY, NUM)
@@ -11,7 +11,7 @@ SPEC(USR | AA | AT | AN | AP,                       SPEC_STICKY, NUM)
 
 // To Command
 SPEC(      AS | AE | AI | AO,                       SPEC_STICKY, CMD)
-SPEC(NUM | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
+//SPEC(NUM | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
 SPEC(CMD | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
 SPEC(USR | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
 
