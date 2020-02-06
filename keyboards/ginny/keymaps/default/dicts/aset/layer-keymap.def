@@ -1,22 +1,22 @@
 // Thumb Keys
-PRES(AL,																																		KC_LSFT)
-PRES(AR,																																		KC_SPC)
+PRES(AL,											         KC_LSFT)
+PRES(AR,											          KC_SPC)
 	
 // Layer Switches 
 // To Number
-SPEC(	 		 AR	| AA | AT | AN | AP,													SPEC_STICKY, 		NUM)
-SPEC(NUM | AR | AA | AT | AN | AP,													SPEC_STICKY, 		NUM)
-SPEC(CMD | AR | AA | AT | AN | AP,													SPEC_STICKY, 		NUM)
-SPEC(USR | AR | AA | AT | AN | AP,													SPEC_STICKY,		NUM)
+SPEC(      AA | AT | AN | AP,                       SPEC_STICKY, NUM)
+SPEC(NUM | AA | AT | AN | AP,                       SPEC_STICKY, NUM)
+SPEC(CMD | AA | AT | AN | AP,                       SPEC_STICKY, NUM)
+SPEC(USR | AA | AT | AN | AP,                       SPEC_STICKY, NUM)
 
 // To Command
-SPEC(			 AR	 | AS | AE | AI | AO,													SPEC_STICKY,		CMD)
-SPEC(NUM | AR  | AS | AE | AI | AO,													SPEC_STICKY,		CMD)
-SPEC(CMD | AR  | AE | AI | AO,															SPEC_STICKY,		NUM)
-SPEC(USR | AR  | AE | AI | AO,															SPEC_STICKY,		CMD)
+SPEC(      AS | AE | AI | AO,                       SPEC_STICKY, CMD)
+SPEC(NUM | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
+SPEC(CMD | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
+SPEC(USR | AS | AE | AI | AO,                       SPEC_STICKY, CMD)
 
 // To User
-SPEC(			 AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SPEC_STICKY,		USR)
-SPEC(NUM | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR,	SPEC_STICKY,		USR)
-SPEC(CMD | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SPEC_STICKY,		USR)
-SPEC(USR | AA | AS | AE | AT | AN | AI | AO | AP | AL | AR, SPEC_STICKY,		USR)
+SPEC(      AA | AS | AE | AT | AN | AI | AO | AP,   SPEC_STICKY, USR)
+SPEC(NUM | AA | AS | AE | AT | AN | AI | AO | AP,   SPEC_STICKY, USR)
+SPEC(CMD | AA | AS | AE | AT | AN | AI | AO | AP,   SPEC_STICKY, USR)
+SPEC(USR | AA | AS | AE | AT | AN | AI | AO | AP,   SPEC_STICKY, USR)

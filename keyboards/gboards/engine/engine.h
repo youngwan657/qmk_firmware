@@ -96,5 +96,4 @@ void 			CLICK_MOUSE(uint8_t);
 // Shift to internal representation
 // i.e) S(teno)R(ight)F
 #define STN(n) ((C_SIZE)1<<n)
-//#define ENGINE_HOOK(keycode, chord)	case keycode: pr ? (cChord |= (chord)): (cChord &= ~(chord)); break;
-#define ENGINE_HOOK(keycode, chord)	case keycode: cChord |= (chord); break;
+#define ENGINE_HOOK(keycode, chord)	case keycode: pr ? (pressed |= (chord)): (pressed &= ~(chord)); break;
