@@ -1,0 +1,18 @@
+// Horizontal Local Chords
+PRES(GW | GE,         										KC_ESC)
+PRES(GS | GD,         					 					KC_BSPC)
+PRES(GD | GF,         										KC_TAB)
+PRES(GX | GC,         										KC_MINS)
+PRES(GC | GV,         										KC_ENT)
+PRES(GO | GP,         										KC_BSLS)
+PRES(GU | GI,         										KC_ESC)
+KEYS(GH | GJ,         				cmb_lt,			{KC_LSFT, KC_COMM, COMBO_END})
+KEYS(GJ | GK,         				cmb_cln,		{KC_LSFT, KC_SCLN, COMBO_END})
+KEYS(GK | GL,        					cmb_gt,			{KC_LSFT, KC_DOT, COMBO_END})
+KEYS(GM | GLT,         				cmb_unds,		{KC_LSFT, KC_MINS, COMBO_END})
+PRES(GN | GM,         										KC_QUOT)
+
+// Vertical Local Chords
+PRES(GH | GN,         				KC_ENT)
+SPEC(GG | GB,									SPEC_CLICK, 		KC_BTN1)
+SPEC(GF | GV,									SPEC_CLICK, 		KC_BTN2)
