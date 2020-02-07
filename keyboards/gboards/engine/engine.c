@@ -246,7 +246,7 @@ C_SIZE mapKeys(C_SIZE chord, bool lookup) {
     }
   }
 
-  if ((chord & IN_CHORD_MASK) != chord && mapKeys((chord & IN_CHORD_MASK), true) == (chord & IN_CHORD_MASK)) {
+  if ((chord & IN_CHORD_MASK) && (chord & IN_CHORD_MASK) != chord && mapKeys((chord & IN_CHORD_MASK), true) == (chord & IN_CHORD_MASK)) {
 #ifndef NO_DEBUG
     uprintf("Try with ignore mask:%u\n", (chord & IN_CHORD_MASK));
 #endif
