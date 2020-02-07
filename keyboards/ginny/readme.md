@@ -5,8 +5,10 @@
 Quite possibly the smallest, most feature-filled board you can fit in your pocket.
 
 With multi-language onboard ASETNIOP and all sorts of fun shenanigans.
+da, de, en, en-colemak, en-dvorak, es, fn, fr, hu, it, nl, nw, pl, pt, ro, sv, tr
+More lanugages more fun, look at dicts.def for the language config :)
 
-This board is more than a novelty, it's an ergonomic wonder!
+This board is more than a novelty, it's an ergonomic wonder! 
 
 ---
 
