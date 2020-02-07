@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
-#include "engine.h"
-#include "keymap_engine.h"
+#include "engine/engine.h"
+#include "engine/keymap_engine.h"
 
 /* Note: Don't edit this file! 
  *

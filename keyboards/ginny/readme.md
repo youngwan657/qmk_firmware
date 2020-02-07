@@ -5,8 +5,10 @@
 Quite possibly the smallest, most feature-filled board you can fit in your pocket.
 
 With multi-language onboard ASETNIOP and all sorts of fun shenanigans.
+da, de, en, en-colemak, en-dvorak, es, fn, fr, hu, it, nl, nw, pl, pt, ro, sv, tr
+More lanugages more fun, look at dicts.def for the language config :)
 
-This board is more than a novelty, it's an ergonomic wonder!
+This board is more than a novelty, it's an ergonomic wonder! 
 
 ---
 
@@ -42,13 +44,32 @@ Install `dfu-programmer` using your package manager if the `qmk_install.sh` scri
 
 Build and flash with the command below. Be sure to reset your keyboard!
 
-    make ginny:default:flash
+    make ginny:en:flash
 
 To just test your build with the default keymap:
    
-    make ginny:default
+    make ginny:en
 
-Ginny supports many different languages, these can be configured in your keymap.c includes. Please set them!
+Ginny supports many different languages, these can be configured by flashing the relevant keymap.
+
+    make ginny:da
+    make ginny:de
+    make ginny:en
+    make ginny:en-colemak
+    make ginny:en-dvorak
+    make ginny:en-gb
+    make ginny:es
+    make ginny:fn
+    make ginny:fr
+    make ginny:hu
+    make ginny:it
+    make ginny:nl
+    make ginny:nw
+    make ginny:pl
+    make ginny:pt
+    make ginny:ro
+    make ginny:sv
+    make ginny:tr
 
 ---
 
