@@ -110,7 +110,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   }
 
   // Handle any postprocessing
-  cChord = process_engine_post(cChord, keycode, record);
 
   // All keys up, send it!
   if (inChord && !pr && (pressed & IN_CHORD_MASK) == 0) {
@@ -123,6 +122,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   }
   
   cChord |= pressed;
+  cChord = process_engine_post(cChord, keycode, record);
   inChord = (cChord & IN_CHORD_MASK) != 0;
 
   // Store previous state for fastQWER
@@ -248,7 +248,7 @@ C_SIZE mapKeys(C_SIZE chord, bool lookup) {
 
   if ((chord & IN_CHORD_MASK) != chord && mapKeys((chord & IN_CHORD_MASK), true) == (chord & IN_CHORD_MASK)) {
 #ifndef NO_DEBUG
-    uprintf("Try with ignore mask\n");
+    uprintf("Try with ignore mask:%u\n", (chord & IN_CHORD_MASK));
 #endif
     mapKeys((chord & ~IN_CHORD_MASK), lookup);
     mapKeys((chord & IN_CHORD_MASK), lookup);
@@ -257,7 +257,7 @@ C_SIZE mapKeys(C_SIZE chord, bool lookup) {
 #ifndef NO_DEBUG
   uprintf("Reached end\n");
 #endif
-    return 0;
+   return 0;
 }
 // Traverse the chord history to a given point
 // Returns the mask to use
@@ -290,8 +290,31 @@ void processChord(void) {
     return;
   }
 
+  C_SIZE next = process_chord_getnext(cChord);
+  if(next && next != cChord) {
 #ifndef NO_DEBUG
-  uprintf("made it past the maw");
+      uprintf("Trying next candidate: %u\n",next);
+#endif
+      if (mapKeys(next, true) == next) {
+          mapKeys(next, false);
+          // Repeat logic
+          if (repeatFlag) {
+#ifndef NO_DEBUG
+              uprintf("repeating?\n");
+#endif
+              restoreState();
+              repeatFlag = false;
+              processChord();
+          } else {
+              saveState(cChord);
+          }
+          return;
+      }
+  }
+
+
+#ifndef NO_DEBUG
+  uprintf("made it past the maw\n");
 #endif
 
   // Iterate through chord picking out the individual 
