@@ -73,6 +73,7 @@ void 			SET_STICKY(C_SIZE);
 void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
 C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record);
+C_SIZE    process_chord_getnext(C_SIZE cur_chord);
 
 // Keymap helpers
 // New Approach, multiple structures
