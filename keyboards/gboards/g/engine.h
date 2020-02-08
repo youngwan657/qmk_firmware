@@ -19,9 +19,18 @@
 #include "config_engine.h"
 #include <avr/pgmspace.h>
 #include "wait.h"
+#ifdef MOUSEKEY_ENABLE
+  #include "mousekey.h"
+#endif
 
-// Maximum values for combos
-#define COMBO_END 0x00
+// Set defaults 
+#ifndef IN_CHORD_MASK
+  #define IN_CHORD_MASK 0xFFFFFFFFFFFFFFFF
+#endif
+
+#ifndef COMBO_END 
+  #define COMBO_END 0x00
+#endif
 
 // In memory chord datatypes
 enum specialActions {
@@ -56,6 +65,7 @@ struct specialEntry {
 // Chord Temps
 extern C_SIZE cChord;			
 extern C_SIZE test;			
+extern size_t keymapsCount;	// Total keymaps (exported from keymap.c)
 
 // Function defs
 void			processKeysUp(void);
@@ -72,8 +82,12 @@ void 			REPEAT(void);
 void 			SET_STICKY(C_SIZE);
 void 			SWITCH_LAYER(int);
 void 			CLICK_MOUSE(uint8_t);
-C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record);
 C_SIZE    process_chord_getnext(C_SIZE cur_chord);
+// Run before hitting the engine. Return false to skip engine processing
+C_SIZE    process_engine_pre(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record);
+// Run after reading a chord.
+C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record);
+
 
 // Keymap helpers
 // New Approach, multiple structures

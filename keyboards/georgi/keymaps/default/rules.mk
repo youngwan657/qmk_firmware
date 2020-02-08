@@ -3,22 +3,27 @@
 # Make sure you have dfu-programmer installed!
 #----------------------------------------------------------------------------
 
-NO_REPEAT				 = no
-VERBOSE					 = yes
+NO_REPEAT								 = no
+VERBOSE									 = yes
 KEYBOARD_SHARED_EP       = yes
-CUSTOM_MATRIX			 = yes
-STENO_LAYERS			 = no
+CUSTOM_MATRIX						 = yes
+#STENO_LAYERS						 = no
+COMBO_ENABLE						 = yes
 
 #Firmware reduction options
-MOUSEKEY_ENABLE			 = yes 		# 1500 bytes
-NO_TAPPING				 = no 	    # 2000 bytes
-NO_PRINT				 = yes		
+MOUSEKEY_ENABLE					 = yes		# 1500 bytes
+NO_TAPPING							 = no				# 2000 bytes
+NO_PRINT								 = yes		
 
 #Debug options
-CONSOLE_ENABLE			 = no
+CONSOLE_ENABLE					 = no
 DEBUG_MATRIX_SCAN_RATE   = no
-DEBUG_MATRIX			 = no
-ONLY_QWERTY				 = no
+DEBUG_MATRIX						 = no
+ONLY_QWERTY							 = no
+
+#Engine options
+VPATH										+=  keyboards/gboards/
+SRC                 		+=  g/engine.c config_engine.c
 
 # A bunch of stuff that you shouldn't touch unless you
 # know what you're doing.

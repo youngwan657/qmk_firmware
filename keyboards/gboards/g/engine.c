@@ -65,10 +65,11 @@ void processKeysUp() {
 #endif
 
   // handle command mode
+#ifdef COMMAND_MODE
   if (cChord == COMMAND_MODE) {
-#ifndef NO_DEBUG
+  #ifndef NO_DEBUG
     uprintf("COMMAND Toggle\n");
-#endif
+  #endif
     if (cMode != COMMAND) {   // Entering Command Mode
       CMDLEN = 0;
       pMode = cMode;
@@ -83,6 +84,7 @@ void processKeysUp() {
       clear_keyboard();
     }
   }
+#endif
 
   // Process and reset state
   processChord();
@@ -97,6 +99,10 @@ void processKeysUp() {
 
 // Update Chord State 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) { 
+  // Check if we should run at all
+  if (process_engine_pre(cChord, keycode, record) == false)
+    return true;
+
   // Everything happens in here when steno keys come in.
   // Bail on keyup
 
@@ -463,7 +469,11 @@ uint8_t bitpop_v(C_SIZE val) {
   #error unsupported C_SIZE
 #endif
 }
+
+// See engine.h for what these hooks do
 __attribute__((weak)) 
-C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record) {
-  return cur_chord;
-}
+C_SIZE    process_engine_post(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record) { return cur_chord; }
+__attribute__((weak)) 
+C_SIZE    process_engine_pre(C_SIZE cur_chord, uint16_t keycode, keyrecord_t *record) { return true; }
+__attribute__((weak)) 
+C_SIZE process_chord_getnext(C_SIZE cur_chord) { return 0; }

@@ -13,8 +13,8 @@ EXTRAKEY_ENABLE     =   no
 CONSOLE_ENABLE      =   no
 COMMAND_ENABLE      =   no
 
-VPATH               +=  keyboards/gboards/
-SRC                 +=  matrix.c engine.c config_engine.c
+VPATH               +=  keyboards/gboards/ 
+SRC                 +=  matrix.c g/engine.c config_engine.c
 QUANTUM_LIB_SRC     +=  i2c_master.c
 OPT_DEFS            +=  -DONLYQWERTY 
 LTO_ENABLE          =   yes
