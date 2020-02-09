@@ -3,12 +3,16 @@
 # Make sure you have dfu-programmer installed!
 #----------------------------------------------------------------------------
 # Firmware options
-MOUSEKEY_ENABLE = yes  		# Mouse keys(+4700), needed for baller
+MOUSEKEY_ENABLE 					= no
 
 #Debug options
 VERBOSE 		 							= yes
 DEBUG_MATRIX_SCAN_RATE   	= no
 DEBUG_MATRIX		 					= yes
+CONSOLE_ENABLE						= no
+
+#Combos!
+VPATH               			+=  keyboards/gboards/
 
 # A bunch of stuff that you shouldn't touch unless you
 # know what you're doing.
