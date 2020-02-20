@@ -7,13 +7,12 @@ NO_REPEAT								 = no
 VERBOSE									 = yes
 KEYBOARD_SHARED_EP       = yes
 CUSTOM_MATRIX						 = yes
-#STENO_LAYERS						 = no
 COMBO_ENABLE						 = yes
 
 #Firmware reduction options
-MOUSEKEY_ENABLE					 = yes		# 1500 bytes
+MOUSEKEY_ENABLE					 = yes			# 1500 bytes
 NO_TAPPING							 = no				# 2000 bytes
-NO_PRINT								 = yes		
+NO_PRINT								 = no
 
 #Debug options
 CONSOLE_ENABLE					 = no

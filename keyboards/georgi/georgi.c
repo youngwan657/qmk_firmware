@@ -4,7 +4,9 @@ bool i2c_initialized = 0;
 i2c_status_t mcp23018_status = 0x20;
 
 void matrix_init_kb(void) {
+    // For whatever reason you think you need BOLT you're wrong.
   	steno_set_mode(STENO_MODE_GEMINI); // or STENO_MODE_BOLT
+    // Remember to modify config_engine.c or wonky stuff will happen
 
     // (tied to Vcc for hardware convenience)
     //DDRB  &= ~(1<<4);  // set B(4) as input
@@ -20,8 +22,10 @@ void matrix_init_kb(void) {
     PORTE |=  (1<<6);
 
     matrix_init_user();
+#ifdef ONLY_QWERTY
+    layer_on(1);
+#endif
 }
-
 
 uint8_t init_mcp23018(void) {
     print("starting init");

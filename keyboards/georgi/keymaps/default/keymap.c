@@ -37,7 +37,6 @@
  *                   `---------------'    `---------------'
  */
 
-
 // "Layers"
 // Steno layer should be first in your map.
 // Note: If using NO_ACTION_TAPPING, LT will not work!

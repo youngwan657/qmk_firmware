@@ -1,7 +1,6 @@
 //#include "g/engine.h"
 
 // Configuration options for the engine
-
 #define C_SIZE uint32_t             // type for chord
 #define COMBO_MAX 4                     // Longest Combo
 
@@ -47,7 +46,7 @@
 
 // Mapping of QMK Keycodes to chord positions
 #define ENGINE_CONFIG                     \
-        ENGINE_HOOK(KC_RSFT,    FN)       \
+        ENGINE_HOOK(KC_LSFT,    FN)       \
         ENGINE_HOOK(KC_Q,      LSU)       \
         ENGINE_HOOK(KC_W,      LFT)       \
         ENGINE_HOOK(KC_E,       LP)       \
