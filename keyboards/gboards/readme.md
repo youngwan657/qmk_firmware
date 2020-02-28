@@ -1,7 +1,13 @@
-# gBoards Dicts/Combos
+# gBoards Monorepo
 
 Ever wanted to do some crazy stuff with combos or onboard steno? Here's a big repo for you to include into your 
 keymaps. You may need to do some configuration on your part, for the documentation hit up [docs.gboards.ca](http://docs.gboards.ca/)
+
+## Building
+
+You can find all of my keyboards under the k/ folder. Make with 
+
+```make gboards/k/gergoplex:default:dfu``` or similar```
 
 ## Configuration
 Dictionaries are layered ontop of each other at compile time, you specify these in dicts.def and combos.def respectively.
