@@ -16,14 +16,9 @@
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
-    CMD_B = SAFE_RANGE,
-    CMD_Z,
-    CMD_X,
-    CMD_C,
-    CMD_V,
-    CMD_SPACE,
-    CTRL_SPACE,
-    CTRL_GRAVE
+	CMD_SPACE = SAFE_RANGE,
+	CTRL_SPACE,
+	CTRL_GRAVE
 };
 
 
@@ -31,46 +26,46 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Keymap 0: Basic layer
 [_BASE] = LAYOUT_gergoplex(
-    KC_Q, KC_W, KC_F, KC_P, KC_B,  	
+	KC_Q, KC_W, KC_F, KC_P, KC_B,  	
 	KC_J, KC_L, KC_U, KC_Y, KC_SCLN, 
 
-    MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_R), MT(MOD_LGUI, KC_S), MT(MOD_LSFT, KC_T), KC_G,    
-    KC_M, MT(MOD_RSFT, KC_N), MT(MOD_RGUI, KC_E), MT(MOD_RALT, KC_I), MT(MOD_LCTL, KC_O),    
+	MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_R), MT(MOD_LGUI, KC_S), MT(MOD_LSFT, KC_T), KC_G,    
+	KC_M, MT(MOD_RSFT, KC_N), MT(MOD_RGUI, KC_E), MT(MOD_RALT, KC_I), MT(MOD_LCTL, KC_O),    
 
-    KC_Z, KC_X, KC_C, KC_D, KC_V,  	
+	KC_Z, KC_X, KC_C, KC_D, KC_V,  	
 	KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, 
 
-	MT(KC_HYPR, KC_TAB), LT(_NUMBER, KC_SPC), CTRL_GRAVE,
+	KC_TAB, LT(_NUMBER, KC_SPC), CTRL_GRAVE,
 	CMD_SPACE, LT(_SYMBOL, KC_ENT), KC_BSPC
 ),
 
 // Keymap 1: Number layer
 [_NUMBER] = LAYOUT_gergoplex(
-    KC_1, KC_2, KC_3, KC_4, KC_5,
+	KC_1, KC_2, KC_3, KC_4, KC_5,
 	KC_6, KC_7,	KC_8, KC_9, KC_0,
 
-    MT(MOD_LCTL, KC_F1), MT(MOD_LALT, KC_F2), MT(MOD_LGUI, KC_F3), MT(MOD_LSFT, KC_F4), KC_F5,
+	MT(MOD_LCTL, KC_F1), MT(MOD_LALT, KC_F2), MT(MOD_LGUI, KC_F3), MT(MOD_LSFT, KC_F4), KC_F5,
 	KC_LEFT, MT(MOD_RSFT, KC_DOWN), MT(MOD_RGUI, KC_UP), MT(MOD_RALT, KC_RGHT), MO(MOD_LCTL),
 
-    KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
-    _______, _______, _______, _______, _______,
+	KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
+	_______, _______, _______, _______, _______,
 
-    _______,_______,_______,
-  	_______,MO(_MOUSE),_______
+	_______,_______,_______,
+	_______,MO(_MOUSE),_______
 ),
 
 // Keymap 2: Symbol layer
 [_SYMBOL] = LAYOUT_gergoplex(
-    KC_AMPR, KC_PIPE, KC_LPRN, KC_RPRN, KC_PLUS,
-    _______, KC_EXLM, KC_AT, KC_TILD, KC_BSLS,
+	KC_AMPR, KC_PIPE, KC_LPRN, KC_RPRN, KC_PLUS,
+	KC_EXLM, KC_AT, KC_GRAVE, KC_BSLS, _______, 
 
-	MT(MOD_LCTL, KC_CIRC), MT(MOD_LALT, KC_DLR), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_MINS,
-	KC_PERC, MT(MOD_LSFT, KC_ASTR), MT(MOD_LGUI, KC_HASH), MT(MOD_LALT, KC_UNDERSCORE), MO(MOD_LCTL),
+	MT(MOD_LCTL, KC_CIRC), MT(MOD_LALT, KC_DLR), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_MINUS,
+	KC_PERC, MT(MOD_LSFT, KC_ASTR), MT(MOD_LGUI, KC_HASH), MO(MOD_LALT), MO(MOD_LCTL),
 
 	KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_EQL,
-    _______, _______, _______, _______, _______,
+	_______, _______, _______, _______, _______,
 
-    _______, MO(_MOUSE), _______,   
+	_______, MO(_MOUSE), _______,   
 	_______, _______, _______
 ),
 
@@ -92,48 +87,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
+	switch (keycode) {
 
-    case CMD_B:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCMD("b"));
-        }
-        break;
-    case CMD_Z:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCMD("z"));
-        }
-        break;
-    case CMD_X:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCMD("x"));
-        }
-        break;
-    case CMD_C:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCMD("c"));
-        }
-        break;
-    case CMD_V:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCMD("v"));
-        }
-        break;
-    case CMD_SPACE:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCMD(" "));
-        }
-        break;
-    case CTRL_SPACE:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTRL(" "));
-        }
-        break;
-    case CTRL_GRAVE:
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("`"));
-        }
-        break;
+	case CMD_SPACE:
+		if (record->event.pressed) {
+			SEND_STRING(SS_LCMD(" "));
+		}
+		break;
+	case CTRL_SPACE:
+		if (record->event.pressed) {
+			SEND_STRING(SS_LCTRL(" "));
+		}
+		break;
+	case CTRL_GRAVE:
+		if (record->event.pressed) {
+			SEND_STRING(SS_LCTL("`"));
+		}
+		break;
 	}
-    return true;
+	return true;
 };
