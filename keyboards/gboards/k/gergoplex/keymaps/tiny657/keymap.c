@@ -9,10 +9,10 @@
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h"
 
-#define BASE 0 // default layer
-#define NUMS 1
-#define SYMS 2
-#define MOUSE 3
+#define _BASE 0 // default layer
+#define _NUMBER 1
+#define _SYMBOL 2
+#define _MOUSE 3
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
@@ -27,24 +27,10 @@ enum custom_keycodes {
 };
 
 
-/* Combomap
- *
- * ,-----------------------------.       ,--------------------------------.
- * |      |    ESC    |     |     |      |     |    ESC    |    BSLH      |
- * |-----+-----+-----+-----+------|      |--------------------------------|
- * |      |   BSPC   ENT    |     |      |    LES   COLN  GRT    |        | 
- * |-----+-----+-----+--RMB+-LMB--+      |--------------------------------|
- * |      |   MINS    |     |     |      |    QUO   UNDR   |     |        |
- * `------+-----+-----+------+----'	     `--------------------------------'
- *  .-------------------------.           .-----------------.   
- *  |        |       |        |           |        |    |   |
- *  '-------------------------'           '-----------------' 
- */
-
 // Blank template at the bottom
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Keymap 0: Basic layer
-[BASE] = LAYOUT_gergoplex(
+[_BASE] = LAYOUT_gergoplex(
     KC_Q, KC_W, KC_F, KC_P, KC_B,  	
 	KC_J, KC_L, KC_U, KC_Y, KC_SCLN, 
 
@@ -54,12 +40,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Z, KC_X, KC_C, KC_D, KC_V,  	
 	KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, 
 
-	MT(KC_HYPR, KC_TAB), LT(NUMS, KC_SPC), CTRL_GRAVE,
-	CMD_SPACE, LT(SYMS, KC_ENT), KC_BSPC
+	MT(KC_HYPR, KC_TAB), LT(_NUMBER, KC_SPC), CTRL_GRAVE,
+	CMD_SPACE, LT(_SYMBOL, KC_ENT), KC_BSPC
 ),
 
 // Keymap 1: Number layer
-[NUMS] = LAYOUT_gergoplex(
+[_NUMBER] = LAYOUT_gergoplex(
     KC_1, KC_2, KC_3, KC_4, KC_5,
 	KC_6, KC_7,	KC_8, KC_9, KC_0,
 
@@ -67,40 +53,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_LEFT, MT(MOD_RSFT, KC_DOWN), MT(MOD_RGUI, KC_UP), MT(MOD_RALT, KC_RGHT), MO(MOD_LCTL),
 
     KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
-	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    _______, _______, _______, _______, _______,
 
-	KC_TRNS,KC_TRNS,KC_TRNS,
-  	MO(SYMS),KC_TRNS,KC_TRNS
+    _______,_______,_______,
+  	_______,MO(_MOUSE),_______
 ),
 
 // Keymap 2: Symbol layer
-[SYMS] = LAYOUT_gergoplex(
+[_SYMBOL] = LAYOUT_gergoplex(
     KC_AMPR, KC_PIPE, KC_LPRN, KC_RPRN, KC_PLUS,
-    KC_TRNS, KC_EXLM, KC_AT, KC_TILD, KC_BSLS,
+    _______, KC_EXLM, KC_AT, KC_TILD, KC_BSLS,
 
 	MT(MOD_LCTL, KC_CIRC), MT(MOD_LALT, KC_DLR), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_MINS,
 	KC_PERC, MT(MOD_LSFT, KC_ASTR), MT(MOD_LGUI, KC_HASH), MT(MOD_LALT, KC_UNDERSCORE), MO(MOD_LCTL),
 
 	KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_EQL,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    _______, _______, _______, _______, _______,
 
-	KC_TRNS, MO(MOUSE), KC_TRNS,   
-	KC_TRNS, KC_TRNS, KC_TRNS
+    _______, MO(_MOUSE), _______,   
+	_______, _______, _______
 ),
 
-// Keymap 3: Mouse
-[MOUSE] = LAYOUT_gergoplex(
+// Keymap 3: Mouse layer
+[_MOUSE] = LAYOUT_gergoplex(
     KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,
-	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	_______, _______, _______, _______, _______,
 
-	KC_TRNS, KC_TRNS, KC_ACL0, KC_ACL1, KC_ACL2,
+	_______, _______, KC_ACL0, KC_ACL1, KC_ACL2,
 	KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_BTN1,
 
-	KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+	_______, _______, _______, _______, _______,
 	KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN2,
 
-	KC_TRNS, KC_TRNS, KC_TRNS,
-	KC_TRNS, KC_TRNS, KC_TRNS
+	_______, _______, _______,
+	_______, _______, _______
 )
 
 };
