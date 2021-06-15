@@ -56,13 +56,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Keymap 2: Symbol layer
 [_SYMBOL] = LAYOUT_gergoplex(
-	KC_AMPR, KC_PIPE, KC_LPRN, KC_RPRN, KC_PLUS,
-	KC_EXLM, KC_AT, KC_GRAVE, KC_BSLS, _______, 
+	KC_EXLM, KC_AT, KC_LPRN, KC_RPRN, KC_PLUS,
+	KC_GRAVE, KC_BSLS, _______, _______, _______,
 
-	MO(MOD_LCTL), MO(MOD_LALT), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_MINUS,
+	MT(MOD_LCTL, KC_AMPR), MT(MOD_LALT, KC_PIPE), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_EQL,
 	KC_CIRC, MT(MOD_LSFT, KC_ASTR), MT(MOD_LGUI, KC_HASH), MT(MOD_LALT, KC_DLR), MT(MOD_LCTL, KC_PERC),
 
-	KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_EQL,
+	KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_MINUS,
 	_______, _______, _______, _______, _______,
 
 	_______, MO(_MOUSE), _______,   
