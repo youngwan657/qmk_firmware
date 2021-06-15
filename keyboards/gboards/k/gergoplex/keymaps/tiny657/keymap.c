@@ -9,7 +9,7 @@
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h"
 
-#define _BASE 0 // default layer
+#define _BASE 0
 #define _NUMBER 1
 #define _SYMBOL 2
 #define _MOUSE 3
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_LEFT, MT(MOD_RSFT, KC_DOWN), MT(MOD_RGUI, KC_UP), MT(MOD_RALT, KC_RGHT), MO(MOD_LCTL),
 
 	KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
-	_______, _______, _______, _______, _______,
+	KC_HOME, KC_PGDN, KC_PGUP, KC_END, _______,
 
 	_______,_______,_______,
 	_______,MO(_MOUSE),_______
@@ -59,8 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_AMPR, KC_PIPE, KC_LPRN, KC_RPRN, KC_PLUS,
 	KC_EXLM, KC_AT, KC_GRAVE, KC_BSLS, _______, 
 
-	MT(MOD_LCTL, KC_CIRC), MT(MOD_LALT, KC_DLR), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_MINUS,
-	KC_PERC, MT(MOD_LSFT, KC_ASTR), MT(MOD_LGUI, KC_HASH), MO(MOD_LALT), MO(MOD_LCTL),
+	MO(MOD_LCTL), MO(MOD_LALT), MT(MOD_LGUI, KC_LCBR), MT(MOD_LSFT, KC_RCBR), KC_MINUS,
+	KC_CIRC, MT(MOD_LSFT, KC_ASTR), MT(MOD_LGUI, KC_HASH), MT(MOD_LALT, KC_DLR), MT(MOD_LCTL, KC_PERC),
 
 	KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_EQL,
 	_______, _______, _______, _______, _______,
