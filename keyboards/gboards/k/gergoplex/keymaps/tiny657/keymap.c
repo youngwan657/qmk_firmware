@@ -13,6 +13,7 @@
 #define _NUMBER 1
 #define _SYMBOL 2
 #define _MOUSE 3
+#define _QWERTY 4
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
@@ -35,8 +36,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_Z, KC_X, KC_C, KC_D, KC_V,  	
 	KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, 
 
-	KC_TAB, LT(_NUMBER, KC_SPC), CTRL_GRAVE,
-	CMD_SPACE, LT(_SYMBOL, KC_ENT), KC_BSPC
+	KC_TAB, LT(_NUMBER, KC_SPC), TG(_QWERTY),
+	CTRL_GRAVE, LT(_SYMBOL, KC_ENT), KC_BSPC
 ),
 
 // Keymap 1: Number layer
@@ -50,8 +51,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
 	KC_HOME, KC_PGDN, KC_PGUP, KC_END, _______,
 
-	_______,_______,_______,
-	_______,MO(_MOUSE),_______
+	_______, _______, _______,
+	_______, MO(_MOUSE), _______
 ),
 
 // Keymap 2: Symbol layer
@@ -79,6 +80,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	_______, _______, _______, _______, _______,
 	KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN2,
+
+	_______, _______, _______,
+	_______, _______, _______
+),
+
+// Keymap 4: Qwerty layer
+[_QWERTY] = LAYOUT_gergoplex(
+	KC_Q, KC_W, KC_E, KC_R, KC_T,  	
+	KC_Y, KC_U, KC_I, KC_O, KC_P, 
+
+	MT(MOD_LCTL, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), KC_G,    
+	KC_M, MT(MOD_RSFT, KC_J), MT(MOD_RGUI, KC_K), MT(MOD_RALT, KC_L), MT(MOD_LCTL, KC_SCLN),    
+
+	KC_Z, KC_X, KC_C, KC_V, KC_B,  	
+	KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, 
 
 	_______, _______, _______,
 	_______, _______, _______
