@@ -1,7 +1,1 @@
 // Gergoplex specfic combos 
-
-COMB(wfEsc,         KC_ESC,      KC_W, KC_F)
-COMB(rsTab,         KC_TAB,      KC_R, KC_S)
-COMB(eiBackSpace,   KC_BSPACE,   KC_E, KC_I)
-SUBS(o365,          "o365",      KC_O, KC_Q, KC_W, KC_F, KC_P)
-SUBS(ldap,          "ldap",      KC_L, KC_Q, KC_W, KC_F, KC_P)
