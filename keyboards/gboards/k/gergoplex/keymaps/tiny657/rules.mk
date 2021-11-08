@@ -6,10 +6,10 @@
 MOUSEKEY_ENABLE 					= yes
 
 #Debug options
-VERBOSE 		 							= no
+VERBOSE 		 							= yes
 DEBUG_MATRIX_SCAN_RATE   	= no
-DEBUG_MATRIX		 					= no
-CONSOLE_ENABLE						= no
+DEBUG_MATRIX		 					= yes
+CONSOLE_ENABLE						= yes
 
 #Combos!
 VPATH               			+=  keyboards/gboards/
