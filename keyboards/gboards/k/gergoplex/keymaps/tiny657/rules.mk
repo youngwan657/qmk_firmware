@@ -4,6 +4,7 @@
 #----------------------------------------------------------------------------
 # Firmware options
 MOUSEKEY_ENABLE 					= yes
+DEBOUNCE_TYPE       =   eager_pk
 
 #Debug options
 VERBOSE 		 							= yes
