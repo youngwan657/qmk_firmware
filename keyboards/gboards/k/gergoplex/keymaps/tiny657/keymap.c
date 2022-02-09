@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_CIRC, KC_ASTR, KC_HASH, KC_DLR, KC_PERC,
 
 	KC_QUOT, KC_DQUO, KC_LBRC, KC_RBRC, KC_MINUS,
-	_______, _______, _______, _______, _______,
+	_______, _______, LSFT(KC_COMM), LSFT(KC_DOT), _______,
 
 	_______, MO(_MOUSE), _______,   
 	_______, _______, _______
