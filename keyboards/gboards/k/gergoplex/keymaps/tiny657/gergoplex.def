@@ -2,4 +2,4 @@
 
 //COMB(weEsc,      KC_ESC,          KC_W, KC_E)
 
-SUBS(pasta,       "I'd just like to interject for a moment.",       KC_H, KC_J, KC_K, KC_L)
+SUBS(pass,       "O;jdkl00s!657!",       KC_H, KC_J, KC_K)
